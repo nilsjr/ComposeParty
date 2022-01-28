@@ -3,8 +3,11 @@ package de.nilsdruyen.composeparty.nyancat
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -35,14 +38,23 @@ fun IsleExample() {
             .background(Color.White)
     ) {
         entries.forEach { Text(it, modifier = Modifier.padding(16.dp)) }
-        Image(painter = rememberVectorPainter(image = isleHead), contentDescription = null)
-    }
 
-//    Canvas(modifier =Modifier.fillMaxSize().height(200.dp), onDraw = {
-//
-//
-//
-//    })
+        Icon(
+            painter = rememberVectorPainter(image = isleHead),
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(5f),
+            tint = Color.Blue,
+        )
+        Image(
+            painter = rememberVectorPainter(image = isleHead),
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(5f)
+        )
+    }
 }
 
 @Composable
@@ -63,8 +75,8 @@ fun Isle(modifier: Modifier = Modifier, children: @Composable () -> Unit) {
     }
 }
 
-const val isleWidth = 200f
-const val isleHeight = 40f
+const val isleWidth = 100f
+const val isleHeight = 20f
 
 val isleHead = ImageVector.Builder(
     "isleHead",
@@ -73,20 +85,11 @@ val isleHead = ImageVector.Builder(
     viewportWidth = isleWidth,
     viewportHeight = isleHeight,
 ).materialPath {
-    moveTo(0f, 20f)
-
-    quadTo(50f, 0f, 120f, 20f)
-
-
-
-    quadTo(120f, 30f, isleWidth, 20f)
-
-//    lineTo(isleWidth, 10f)
-
+    moveTo(0f, 18f)
+    quadTo(12f, 18f, 35f, 10f)
+    quadTo(65f, 0f, isleWidth, 15f)
     lineTo(isleWidth, isleHeight)
     lineTo(0f, isleHeight)
-
-
     close()
 }.build()
 
@@ -96,7 +99,7 @@ inline fun ImageVector.Builder.materialPath(
     pathFillType: PathFillType = DefaultFillType,
     pathBuilder: PathBuilder.() -> Unit
 ) = path(
-    fill = SolidColor(Color.Black),
+    fill = SolidColor(Color(0xFF196428)),
     fillAlpha = fillAlpha,
     stroke = null,
     strokeAlpha = strokeAlpha,
