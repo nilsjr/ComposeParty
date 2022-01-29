@@ -71,7 +71,8 @@ fun NyanCat() {
         ) {
             draw(Body, BodyPosition)
             draw(Head, HeadPosition)
-            draw(Tail, TailPosition)
+            drawRect(Color.LightGray, Offset(300f, 40f), Size(10f, 10f).times(10f))
+            TailFrames.forEachIndexed { index, item -> draw(item, TailPosition.plus(Offset(0f, 100f * index))) }
             draw(RainBow, RainBowPosition)
         }
     }
@@ -91,10 +92,7 @@ const val PxSize = 10f
 const val PxWidth = 20f
 const val PxHeight = 20f
 
-data class Part(
-    val rect: Rect,
-    val color: Color,
-)
+data class Part(val rect: Rect, val color: Color)
 
 val HeadPosition = Offset(40f, 250f)
 val Head = listOf(
@@ -186,27 +184,32 @@ val Tail = listOf(
     Part(Rect(Offset(2f, 3f), Size(4f, 1f)), Grey),
     Part(Rect(Offset(4f, 4f), Size(2f, 1f)), Grey),
 )
+val Tail2 = listOf(
+    Part(Rect(Offset(1f, 0f), Size(2f, 1f)), Black),
+)
+val TailFrames = listOf(Tail, Tail)
 
+val RainBowWidth = 6f
 val RainBowPosition = Offset(300f, 300f)
 val RainBow = listOf(
     // first
-    Part(Rect(Offset(0f, 0f), Size(5f, 4f)), Color.Red),
-    Part(Rect(Offset(5f, 2f), Size(5f, 4f)), Color.Red),
+    Part(Rect(Offset(0f, 0f), Size(RainBowWidth, 4f)), Color.Red),
+    Part(Rect(Offset(5f, 2f), Size(RainBowWidth, 4f)), Color.Red),
     Part(Rect(Offset(10f, 1f), Size(8f, 4f)), Color.Red),
     // second
-    Part(Rect(Offset(0f, 4f), Size(5f, 4f)), Color.Green),
-    Part(Rect(Offset(5f, 6f), Size(5f, 4f)), Color.Green),
+    Part(Rect(Offset(0f, 4f), Size(RainBowWidth, 4f)), Color.Green),
+    Part(Rect(Offset(5f, 6f), Size(RainBowWidth, 4f)), Color.Green),
     Part(Rect(Offset(10f, 5f), Size(8f, 4f)), Color.Green),
     // third
-    Part(Rect(Offset(0f, 8f), Size(5f, 4f)), Color.Blue),
-    Part(Rect(Offset(5f, 10f), Size(5f, 4f)), Color.Blue),
+    Part(Rect(Offset(0f, 8f), Size(RainBowWidth, 4f)), Color.Blue),
+    Part(Rect(Offset(5f, 10f), Size(RainBowWidth, 4f)), Color.Blue),
     Part(Rect(Offset(10f, 9f), Size(8f, 4f)), Color.Blue),
     // fourth
-    Part(Rect(Offset(0f, 12f), Size(5f, 4f)), Color.Yellow),
-    Part(Rect(Offset(5f, 14f), Size(5f, 4f)), Color.Yellow),
+    Part(Rect(Offset(0f, 12f), Size(RainBowWidth, 4f)), Color.Yellow),
+    Part(Rect(Offset(5f, 14f), Size(RainBowWidth, 4f)), Color.Yellow),
     Part(Rect(Offset(10f, 13f), Size(8f, 4f)), Color.Yellow),
     // fifth
-    Part(Rect(Offset(0f, 16f), Size(5f, 4f)), Color.Cyan),
-    Part(Rect(Offset(5f, 18f), Size(5f, 4f)), Color.Cyan),
+    Part(Rect(Offset(0f, 16f), Size(RainBowWidth, 4f)), Color.Cyan),
+    Part(Rect(Offset(5f, 18f), Size(RainBowWidth, 4f)), Color.Cyan),
     Part(Rect(Offset(10f, 17f), Size(8f, 4f)), Color.Cyan),
 )
