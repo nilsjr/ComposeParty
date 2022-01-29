@@ -71,19 +71,19 @@ fun NyanCat() {
         ) {
             draw(Body, BodyPosition)
             draw(Head, HeadPosition)
-            drawRect(Color.LightGray, Offset(300f, 40f), Size(10f, 10f).times(10f))
-            TailFrames.forEachIndexed { index, item -> draw(item, TailPosition.plus(Offset(0f, 100f * index))) }
+//            drawRect(Color.LightGray, Offset(300f, 40f), Size(10f, 10f).times(10f))
+            TailFrames.forEachIndexed { index, item -> draw(item, TailPosition.plus(Offset(0f, 80f * index))) }
             draw(RainBow, RainBowPosition)
         }
     }
 }
 
-fun DrawScope.draw(list: List<Part>, offset: Offset) {
+fun DrawScope.draw(list: List<Pixel>, offset: Offset) {
     list.forEach {
         drawRect(
             it.color,
-            topLeft = it.rect.topLeft.times(PxSize).plus(offset),
-            size = it.rect.size.times(PxSize)
+            topLeft = it.offset.times(PxSize).plus(offset),
+            size = it.size.times(PxSize)
         )
     }
 }
@@ -93,123 +93,175 @@ const val PxWidth = 20f
 const val PxHeight = 20f
 
 data class Part(val rect: Rect, val color: Color)
+data class Pixel(val offset: Offset, val size: Size, val color: Color)
 
 val HeadPosition = Offset(40f, 250f)
 val Head = listOf(
     // border
-    Part(Rect(Offset(2f, 0f), Size(2f, 1f)), Black),
-    Part(Rect(Offset(4f, 1f), Size(1f, 1f)), Black),
-    Part(Rect(Offset(5f, 2f), Size(1f, 1f)), Black),
-    Part(Rect(Offset(6f, 3f), Size(4f, 1f)), Black),
-    Part(Rect(Offset(10f, 2f), Size(1f, 1f)), Black),
-    Part(Rect(Offset(11f, 1f), Size(1f, 1f)), Black),
-    Part(Rect(Offset(12f, 0f), Size(2f, 1f)), Black),
-    Part(Rect(Offset(14f, 1f), Size(1f, 4f)), Black),
-    Part(Rect(Offset(15f, 5f), Size(1f, 5f)), Black),
-    Part(Rect(Offset(14f, 10f), Size(1f, 1f)), Black),
-    Part(Rect(Offset(13f, 11f), Size(1f, 1f)), Black),
-    Part(Rect(Offset(3f, 12f), Size(10f, 1f)), Black),
-    Part(Rect(Offset(2f, 11f), Size(1f, 1f)), Black),
-    Part(Rect(Offset(1f, 10f), Size(1f, 1f)), Black),
-    Part(Rect(Offset(0f, 5f), Size(1f, 5f)), Black),
-    Part(Rect(Offset(1f, 1f), Size(1f, 4f)), Black),
+    Pixel(Offset(2f, 0f), Size(2f, 1f), Black),
+    Pixel(Offset(4f, 1f), Size(1f, 1f), Black),
+    Pixel(Offset(5f, 2f), Size(1f, 1f), Black),
+    Pixel(Offset(6f, 3f), Size(4f, 1f), Black),
+    Pixel(Offset(10f, 2f), Size(1f, 1f), Black),
+    Pixel(Offset(11f, 1f), Size(1f, 1f), Black),
+    Pixel(Offset(12f, 0f), Size(2f, 1f), Black),
+    Pixel(Offset(14f, 1f), Size(1f, 4f), Black),
+    Pixel(Offset(15f, 5f), Size(1f, 5f), Black),
+    Pixel(Offset(14f, 10f), Size(1f, 1f), Black),
+    Pixel(Offset(13f, 11f), Size(1f, 1f), Black),
+    Pixel(Offset(3f, 12f), Size(10f, 1f), Black),
+    Pixel(Offset(2f, 11f), Size(1f, 1f), Black),
+    Pixel(Offset(1f, 10f), Size(1f, 1f), Black),
+    Pixel(Offset(0f, 5f), Size(1f, 5f), Black),
+    Pixel(Offset(1f, 1f), Size(1f, 4f), Black),
     // bg
-    Part(Rect(Offset(2f, 1f), Size(2f, 4f)), Grey),
-    Part(Rect(Offset(4f, 2f), Size(1f, 3f)), Grey),
-    Part(Rect(Offset(5f, 3f), Size(1f, 1f)), Grey),
-    Part(Rect(Offset(5f, 4f), Size(9f, 1f)), Grey),
-    Part(Rect(Offset(10f, 3f), Size(4f, 1f)), Grey),
-    Part(Rect(Offset(11f, 2f), Size(3f, 1f)), Grey),
-    Part(Rect(Offset(12f, 1f), Size(2f, 1f)), Grey),
-    Part(Rect(Offset(1f, 5f), Size(14f, 5f)), Grey),
-    Part(Rect(Offset(2f, 10f), Size(12f, 1f)), Grey),
-    Part(Rect(Offset(3f, 11f), Size(10f, 1f)), Grey),
+    Pixel(Offset(2f, 1f), Size(2f, 4f), Grey),
+    Pixel(Offset(4f, 2f), Size(1f, 3f), Grey),
+    Pixel(Offset(5f, 3f), Size(1f, 1f), Grey),
+    Pixel(Offset(5f, 4f), Size(9f, 1f), Grey),
+    Pixel(Offset(10f, 3f), Size(4f, 1f), Grey),
+    Pixel(Offset(11f, 2f), Size(3f, 1f), Grey),
+    Pixel(Offset(12f, 1f), Size(2f, 1f), Grey),
+    Pixel(Offset(1f, 5f), Size(14f, 5f), Grey),
+    Pixel(Offset(2f, 10f), Size(12f, 1f), Grey),
+    Pixel(Offset(3f, 11f), Size(10f, 1f), Grey),
     // cheek
-    Part(Rect(Offset(2f, 8f), Size(2f, 2f)), Rosa),
-    Part(Rect(Offset(13f, 8f), Size(2f, 2f)), Rosa),
+    Pixel(Offset(2f, 8f), Size(2f, 2f), Rosa),
+    Pixel(Offset(13f, 8f), Size(2f, 2f), Rosa),
     // mouth
-    Part(Rect(Offset(5f, 10f), Size(7f, 1f)), Black),
-    Part(Rect(Offset(5f, 9f), Size(1f, 1f)), Black),
-    Part(Rect(Offset(8f, 9f), Size(1f, 1f)), Black),
-    Part(Rect(Offset(11f, 9f), Size(1f, 1f)), Black),
+    Pixel(Offset(5f, 10f), Size(7f, 1f), Black),
+    Pixel(Offset(5f, 9f), Size(1f, 1f), Black),
+    Pixel(Offset(8f, 9f), Size(1f, 1f), Black),
+    Pixel(Offset(11f, 9f), Size(1f, 1f), Black),
     // eyes
-    Part(Rect(Offset(4f, 6f), Size(2f, 2f)), Black),
-    Part(Rect(Offset(11f, 6f), Size(2f, 2f)), Black),
-    Part(Rect(Offset(4f, 6f), Size(1f, 1f)), Color.White),
-    Part(Rect(Offset(11f, 6f), Size(1f, 1f)), Color.White),
+    Pixel(Offset(4f, 6f), Size(2f, 2f), Black),
+    Pixel(Offset(11f, 6f), Size(2f, 2f), Black),
+    Pixel(Offset(4f, 6f), Size(1f, 1f), Color.White),
+    Pixel(Offset(11f, 6f), Size(1f, 1f), Color.White),
     // nose
-    Part(Rect(Offset(9f, 7f), Size(1f, 1f)), Black),
+    Pixel(Offset(9f, 7f), Size(1f, 1f), Black),
 )
 
 val BodyPosition = Offset(40f, 40f)
-val Body: List<Part> = listOf(
-    Part(Rect(Offset(2f, 0f), Size(16f, 1f)), Black),
-    Part(Rect(Offset(18f, 1f), Size(1f, 1f)), Black), // single
-    Part(Rect(Offset(19f, 2f), Size(1f, 14f)), Black),
-    Part(Rect(Offset(18f, 16f), Size(1f, 1f)), Black), // single
-    Part(Rect(Offset(2f, 17f), Size(16f, 1f)), Black),
-    Part(Rect(Offset(1f, 16f), Size(1f, 1f)), Black), // single
-    Part(Rect(Offset(0f, 2f), Size(1f, 14f)), Black),
-    Part(Rect(Offset(1f, 1f), Size(1f, 1f)), Black), // single
+val Body  = listOf(
+    Pixel(Offset(2f, 0f), Size(16f, 1f), Black),
+    Pixel(Offset(18f, 1f), Size(1f, 1f), Black), // single
+    Pixel(Offset(19f, 2f), Size(1f, 14f), Black),
+    Pixel(Offset(18f, 16f), Size(1f, 1f), Black), // single
+    Pixel(Offset(2f, 17f), Size(16f, 1f), Black),
+    Pixel(Offset(1f, 16f), Size(1f, 1f), Black), // single
+    Pixel(Offset(0f, 2f), Size(1f, 14f), Black),
+    Pixel(Offset(1f, 1f), Size(1f, 1f), Black), // single
     // inner
-    Part(Rect(Offset(2f, 1f), Size(16f, 16f)), Beige),
-    Part(Rect(Offset(1f, 2f), Size(18f, 14f)), Beige),
+    Pixel(Offset(2f, 1f), Size(16f, 16f), Beige),
+    Pixel(Offset(1f, 2f), Size(18f, 14f), Beige),
     // inner
-    Part(Rect(Offset(2f, 4f), Size(16f, 10f)), Pink),
-    Part(Rect(Offset(3f, 3f), Size(14f, 12f)), Pink),
-    Part(Rect(Offset(4f, 2f), Size(12f, 14f)), Pink),
+    Pixel(Offset(2f, 4f), Size(16f, 10f), Pink),
+    Pixel(Offset(3f, 3f), Size(14f, 12f), Pink),
+    Pixel(Offset(4f, 2f), Size(12f, 14f), Pink),
     // sprinkles
-    Part(Rect(Offset(4f, 4f), Size(1f, 1f)), Purple),
-    Part(Rect(Offset(7f, 3f), Size(1f, 1f)), Purple),
-    Part(Rect(Offset(5f, 8f), Size(1f, 1f)), Purple),
-    Part(Rect(Offset(3f, 10f), Size(1f, 1f)), Purple),
-    Part(Rect(Offset(12f, 6f), Size(1f, 1f)), Purple),
-    Part(Rect(Offset(10f, 3f), Size(1f, 1f)), Purple),
-    Part(Rect(Offset(10f, 10f), Size(1f, 1f)), Purple),
-    Part(Rect(Offset(10f, 13f), Size(1f, 1f)), Purple),
-    Part(Rect(Offset(7f, 14f), Size(1f, 1f)), Purple),
+    Pixel(Offset(4f, 4f), Size(1f, 1f), Purple),
+    Pixel(Offset(7f, 3f), Size(1f, 1f), Purple),
+    Pixel(Offset(5f, 8f), Size(1f, 1f), Purple),
+    Pixel(Offset(3f, 10f), Size(1f, 1f), Purple),
+    Pixel(Offset(12f, 6f), Size(1f, 1f), Purple),
+    Pixel(Offset(10f, 3f), Size(1f, 1f), Purple),
+    Pixel(Offset(10f, 10f), Size(1f, 1f), Purple),
+    Pixel(Offset(10f, 13f), Size(1f, 1f), Purple),
+    Pixel(Offset(7f, 14f), Size(1f, 1f), Purple),
 )
 
 val TailPosition = Offset(300f, 40f)
 val Tail = listOf(
-    Part(Rect(Offset(1f, 0f), Size(2f, 1f)), Black),
-    Part(Rect(Offset(3f, 1f), Size(1f, 2f)), Black),
-    Part(Rect(Offset(3f, 2f), Size(3f, 1f)), Black),
-    Part(Rect(Offset(0f, 1f), Size(1f, 2f)), Black),
-    Part(Rect(Offset(1f, 3f), Size(1f, 1f)), Black),
-    Part(Rect(Offset(2f, 4f), Size(2f, 1f)), Black),
-    Part(Rect(Offset(4f, 5f), Size(2f, 1f)), Black),
+    Pixel(Offset(1f, 0f), Size(2f, 1f), Black),
+    Pixel(Offset(3f, 1f), Size(1f, 2f), Black),
+    Pixel(Offset(3f, 2f), Size(3f, 1f), Black),
+    Pixel(Offset(0f, 1f), Size(1f, 2f), Black),
+    Pixel(Offset(1f, 3f), Size(1f, 1f), Black),
+    Pixel(Offset(2f, 4f), Size(2f, 1f), Black),
+    Pixel(Offset(4f, 5f), Size(2f, 1f), Black),
     // bg
-    Part(Rect(Offset(1f, 1f), Size(2f, 2f)), Grey),
-    Part(Rect(Offset(2f, 3f), Size(4f, 1f)), Grey),
-    Part(Rect(Offset(4f, 4f), Size(2f, 1f)), Grey),
+    Pixel(Offset(1f, 1f), Size(2f, 2f), Grey),
+    Pixel(Offset(2f, 3f), Size(4f, 1f), Grey),
+    Pixel(Offset(4f, 4f), Size(2f, 1f), Grey),
 )
 val Tail2 = listOf(
-    Part(Rect(Offset(1f, 0f), Size(2f, 1f)), Black),
+    Pixel(Offset(0f, 0f), Size(4f, 1f), Black),
+    Pixel(Offset(3f, 1f), Size(2f, 1f), Black),
+    Pixel(Offset(4f, 2f), Size(2f, 1f), Black),
+    Pixel(Offset(5f, 3f), Size(1f, 1f), Black),
+    Pixel(Offset(0f, 1f), Size(1f, 2f), Black),
+    Pixel(Offset(1f, 2f), Size(1f, 2f), Black),
+    Pixel(Offset(2f, 3f), Size(1f, 2f), Black),
+    Pixel(Offset(3f, 4f), Size(1f, 2f), Black),
+    Pixel(Offset(4f, 5f), Size(2f, 1f), Black),
+    Pixel(Offset(5f, 6f), Size(1f, 1f), Black),
+    // bg
+    Pixel(Offset(1f, 1f), Size(2f, 1f), Grey),
+    Pixel(Offset(2f, 2f), Size(2f, 1f), Grey),
+    Pixel(Offset(3f, 3f), Size(2f, 1f), Grey),
+    Pixel(Offset(4f, 4f), Size(2f, 1f), Grey),
 )
-val TailFrames = listOf(Tail, Tail)
+val Tail3 = listOf(
+    Pixel(Offset(1f, 0f), Size(4f, 1f), Black),
+    Pixel(Offset(4f, 1f), Size(3f, 1f), Black),
+    Pixel(Offset(6f, 2f), Size(1f, 1f), Black),
+    Pixel(Offset(0f, 1f), Size(1f, 2f), Black),
+    Pixel(Offset(1f, 2f), Size(1f, 1f), Black),
+    Pixel(Offset(2f, 3f), Size(4f, 1f), Black),
+    Pixel(Offset(5f, 4f), Size(2f, 1f), Black),
+    // bg
+    Pixel(Offset(1f, 1f), Size(3f, 1f), Grey),
+    Pixel(Offset(2f, 2f), Size(4f, 1f), Grey),
+    Pixel(Offset(6f, 3f), Size(1f, 1f), Grey),
+)
+val Tail4 = listOf(
+    Pixel(Offset(0f, 5f), Size(2f, 1f), Black),
+    Pixel(Offset(2f, 4f), Size(4f, 1f), Black),
+    Pixel(Offset(5f, 3f), Size(1f, 1f), Black),
+    Pixel(Offset(0f, 6f), Size(1f, 1f), Black),
+    Pixel(Offset(1f, 7f), Size(4f, 1f), Black),
+    Pixel(Offset(4f, 6f), Size(2f, 1f), Black),
+    // bg
+    Pixel(Offset(1f, 6f), Size(3f, 1f), Grey),
+    Pixel(Offset(2f, 5f), Size(4f, 1f), Grey),
+)
+val Tail5 = listOf(
+    Pixel(Offset(0f, 6f), Size(1f, 2f), Black),
+    Pixel(Offset(1f, 5f), Size(1f, 1f), Black),
+    Pixel(Offset(2f, 4f), Size(2f, 1f), Black),
+    Pixel(Offset(4f, 3f), Size(2f, 1f), Black),
+    Pixel(Offset(1f, 8f), Size(2f, 1f), Black),
+    Pixel(Offset(3f, 6f), Size(1f, 2f), Black),
+    Pixel(Offset(4f, 6f), Size(2f, 1f), Black),
+    // bg
+    Pixel(Offset(1f, 6f), Size(2f, 2f), Grey),
+    Pixel(Offset(2f, 5f), Size(4f, 1f), Grey),
+    Pixel(Offset(4f, 4f), Size(2f, 1f), Grey),
+)
+val TailFrames = listOf(Tail, Tail2, Tail3, Tail4, Tail5)
 
 val RainBowWidth = 6f
-val RainBowPosition = Offset(300f, 300f)
+val RainBowPosition = Offset(20f, 430f)
 val RainBow = listOf(
     // first
-    Part(Rect(Offset(0f, 0f), Size(RainBowWidth, 4f)), Color.Red),
-    Part(Rect(Offset(5f, 2f), Size(RainBowWidth, 4f)), Color.Red),
-    Part(Rect(Offset(10f, 1f), Size(8f, 4f)), Color.Red),
+    Pixel(Offset(0f, 0f), Size(RainBowWidth, 4f), Color.Red),
+    Pixel(Offset(5f, 2f), Size(RainBowWidth, 4f), Color.Red),
+    Pixel(Offset(10f, 1f), Size(8f, 4f), Color.Red),
     // second
-    Part(Rect(Offset(0f, 4f), Size(RainBowWidth, 4f)), Color.Green),
-    Part(Rect(Offset(5f, 6f), Size(RainBowWidth, 4f)), Color.Green),
-    Part(Rect(Offset(10f, 5f), Size(8f, 4f)), Color.Green),
+    Pixel(Offset(0f, 4f), Size(RainBowWidth, 4f), Color.Green),
+    Pixel(Offset(5f, 6f), Size(RainBowWidth, 4f), Color.Green),
+    Pixel(Offset(10f, 5f), Size(8f, 4f), Color.Green),
     // third
-    Part(Rect(Offset(0f, 8f), Size(RainBowWidth, 4f)), Color.Blue),
-    Part(Rect(Offset(5f, 10f), Size(RainBowWidth, 4f)), Color.Blue),
-    Part(Rect(Offset(10f, 9f), Size(8f, 4f)), Color.Blue),
+    Pixel(Offset(0f, 8f), Size(RainBowWidth, 4f), Color.Blue),
+    Pixel(Offset(5f, 10f), Size(RainBowWidth, 4f), Color.Blue),
+    Pixel(Offset(10f, 9f), Size(8f, 4f), Color.Blue),
     // fourth
-    Part(Rect(Offset(0f, 12f), Size(RainBowWidth, 4f)), Color.Yellow),
-    Part(Rect(Offset(5f, 14f), Size(RainBowWidth, 4f)), Color.Yellow),
-    Part(Rect(Offset(10f, 13f), Size(8f, 4f)), Color.Yellow),
+    Pixel(Offset(0f, 12f), Size(RainBowWidth, 4f), Color.Yellow),
+    Pixel(Offset(5f, 14f), Size(RainBowWidth, 4f), Color.Yellow),
+    Pixel(Offset(10f, 13f), Size(8f, 4f), Color.Yellow),
     // fifth
-    Part(Rect(Offset(0f, 16f), Size(RainBowWidth, 4f)), Color.Cyan),
-    Part(Rect(Offset(5f, 18f), Size(RainBowWidth, 4f)), Color.Cyan),
-    Part(Rect(Offset(10f, 17f), Size(8f, 4f)), Color.Cyan),
+    Pixel(Offset(0f, 16f), Size(RainBowWidth, 4f), Color.Cyan),
+    Pixel(Offset(5f, 18f), Size(RainBowWidth, 4f), Color.Cyan),
+    Pixel(Offset(10f, 17f), Size(8f, 4f), Color.Cyan),
 )
