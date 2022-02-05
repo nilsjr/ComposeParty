@@ -3,7 +3,9 @@ package de.nilsdruyen.composeparty.nyancat
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -64,13 +66,12 @@ fun NyanCatParty() {
 
     Box(
         modifier = Modifier
-            .size(600.dp, 400.dp)
+            .fillMaxSize()
             .background(Color(0xFFFFFFFF))
     ) {
         Canvas(
             modifier = Modifier
-                .scale(2f)
-                .background(Color.LightGray)
+                .scale(1f)
                 .size(340.dp, 230.dp)
                 .align(Alignment.Center)
         ) {

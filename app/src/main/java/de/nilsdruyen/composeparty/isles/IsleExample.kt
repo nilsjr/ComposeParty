@@ -29,6 +29,7 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import de.nilsdruyen.composeparty.nyancat.NyanCatParty
 
 val entries = List(4) {
     "Text $it"
@@ -53,7 +54,8 @@ fun IsleExample() {
                     .clip(RoundedCornerShape(16.dp))
                     .background(Color.White)
             ) {
-                Text(text = "Test test", modifier = Modifier.align(Alignment.Center))
+                NyanCatParty()
+//                Text(text = "Test test", modifier = Modifier.align(Alignment.Center))
             }
         }
         Isle(color = Color(0xFFC7AFD5)) {
