@@ -9,8 +9,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import de.nilsdruyen.composeparty.freestyle.DynamicPointMesh
+import de.nilsdruyen.composeparty.freestyle.SquareFun
 import de.nilsdruyen.composeparty.isles.IsleExample
-import de.nilsdruyen.composeparty.nyancat.NyanCatParty
 import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +24,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    IsleExample()
+//                    IsleExample()
+//                    DynamicPointMesh()
+                    SquareFun()
                 }
             }
         }
