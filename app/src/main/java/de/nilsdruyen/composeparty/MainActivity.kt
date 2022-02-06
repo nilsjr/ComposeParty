@@ -9,6 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import de.nilsdruyen.composeparty.animations.TextAnim
 import de.nilsdruyen.composeparty.buttons.LoadingButton
 import de.nilsdruyen.composeparty.buttons.PreviewLoadingButton
 import de.nilsdruyen.composeparty.freestyle.DynamicPointMesh
@@ -29,7 +30,8 @@ class MainActivity : ComponentActivity() {
 //                    IsleExample()
 //                    DynamicPointMesh()
 //                    SquareFun()
-                    PreviewLoadingButton()
+//                    PreviewLoadingButton()
+                    TextAnim()
                 }
             }
         }
