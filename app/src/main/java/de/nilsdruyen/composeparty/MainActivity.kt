@@ -28,10 +28,10 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 //                    IsleExample()
-//                    DynamicPointMesh()
+                    DynamicPointMesh()
 //                    SquareFun()
 //                    PreviewLoadingButton()
-                    TextAnim()
+//                    TextAnim()
                 }
             }
         }
