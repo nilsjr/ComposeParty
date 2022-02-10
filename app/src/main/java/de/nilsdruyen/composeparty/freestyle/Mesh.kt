@@ -1,6 +1,9 @@
 package de.nilsdruyen.composeparty.freestyle
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -13,8 +16,6 @@ import kotlin.math.pow
 import kotlin.math.sin
 import kotlin.math.sqrt
 
-private val PARTICLE_COLOR = Color.White
-private val LINE_COLOR = Color.White
 private const val PARTICLE_QUANTITY = 300
 private const val DEFAULT_SPEED = 2
 private const val VARIANT_SPEED = 1
@@ -31,13 +32,21 @@ private const val HEIGHT = 2022f
 fun DynamicPointMesh(modifier: Modifier = Modifier) {
     val animatedProgress = animationTimeMillis()
 
+    val color = MaterialTheme.colorScheme.onBackground
+    val linkColor = MaterialTheme.colorScheme.primary
+
     val particles = remember {
         (0 until PARTICLE_QUANTITY)
-            .map { generateParticle(WIDTH, HEIGHT) }
+            .map { generateParticle(color, WIDTH, HEIGHT) }
             .toTypedArray()
     }
 
-    Canvas(modifier = modifier) {
+    Canvas(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+            .then(modifier)
+    ) {
         // Unused but required for draw update
         // There may be a better way to do this
         @Suppress("UNUSED_VARIABLE") val progress = animatedProgress.value
@@ -51,7 +60,7 @@ fun DynamicPointMesh(modifier: Modifier = Modifier) {
                 center = Offset(particles[index].x, particles[index].y),
             )
 
-            linkParticles(particles[index], particles, this)
+            linkParticles(particles[index], particles, this, linkColor)
         }
     }
 }
@@ -98,7 +107,7 @@ private data class Particle(
     )
 }
 
-private fun generateParticle(w: Float, h: Float): Particle {
+private fun generateParticle(color: Color, w: Float, h: Float): Particle {
     val directionAngle = floor(Math.random() * 360)
     val speed = DEFAULT_SPEED + Math.random() * VARIANT_SPEED
 
@@ -107,7 +116,7 @@ private fun generateParticle(w: Float, h: Float): Particle {
         y = Math.random().toFloat() * h,
         speed = speed.toFloat(),
         directionAngle = directionAngle.toFloat(),
-        color = PARTICLE_COLOR,
+        color = color,
         radius = DEFAULT_RADIUS + Math.random().toFloat() * VARIANT_RADIUS,
         Vector(
             x = (cos(directionAngle) * speed).toFloat(),
@@ -122,7 +131,8 @@ private fun calculateDistance(x1: Float, y1: Float, x2: Float, y2: Float): Float
 private fun linkParticles(
     currentParticle: Particle,
     particles: Array<Particle>,
-    drawScope: DrawScope
+    drawScope: DrawScope,
+    color: Color,
 ) {
     particles.forEach { particle ->
         val distance =
@@ -130,7 +140,7 @@ private fun linkParticles(
         val opacity = 1 - distance / LINK_RADIUS
         if (opacity > 0) {
             drawScope.drawLine(
-                color = LINE_COLOR.copy(alpha = opacity),
+                color = color.copy(alpha = opacity),
                 start = Offset(currentParticle.x, currentParticle.y),
                 end = Offset(particle.x, particle.y),
                 strokeWidth = 0.5f
