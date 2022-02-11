@@ -9,6 +9,8 @@ composeUi = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 composeFoundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 composeUiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 composeUiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+composeAnimation = { module = "androidx.compose.animation:animation", version = "compose" }
+composeAnimationGraphics = { module = "androidx.compose.animation:animation-graphics", version = "1.2.0-alpha01" }
 composeMaterial = { module = "androidx.compose.material:material", version.ref = "compose" }
 composeMaterialIcons = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
 composeMaterial3 = { module = "androidx.compose.material3:material3", version = "1.0.0-alpha05" }

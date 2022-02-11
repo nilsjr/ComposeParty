@@ -13,6 +13,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "ComposeParty"
-include ':app'
+
+include(":app")
 
 enableFeaturePreview("VERSION_CATALOGS")

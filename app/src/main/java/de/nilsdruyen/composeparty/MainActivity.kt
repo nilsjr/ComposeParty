@@ -15,6 +15,7 @@ import de.nilsdruyen.composeparty.buttons.PreviewLoadingButton
 import de.nilsdruyen.composeparty.freestyle.DynamicPointMesh
 import de.nilsdruyen.composeparty.freestyle.SquareFun
 import de.nilsdruyen.composeparty.isles.IsleExample
+import de.nilsdruyen.composeparty.paths.VectorDemo
 import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,10 +29,11 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 //                    IsleExample()
-                    DynamicPointMesh()
+//                    DynamicPointMesh()
 //                    SquareFun()
 //                    PreviewLoadingButton()
 //                    TextAnim()
+                    VectorDemo()
                 }
             }
         }
