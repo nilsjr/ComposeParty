@@ -1,8 +1,15 @@
 package de.nilsdruyen.composeparty.paths
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutLinearInEasing
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,10 +36,21 @@ fun PawIcon(modifier: Modifier = Modifier) {
     )
 
     val drawParts = remember { parts.map { addPathNodes(it) } }
+    val animatedProgress = remember { Animatable(0f) }
+
+    LaunchedEffect(Unit) {
+        animatedProgress.animateTo(
+            targetValue = 1f,
+            animationSpec = infiniteRepeatable(
+                animation = tween(durationMillis = 600, easing = FastOutLinearInEasing),
+                repeatMode = RepeatMode.Reverse,
+            ),
+        )
+    }
 
     Image(
         modifier = Modifier
-            .size(380.dp)
+            .size(350.dp)
             .then(modifier),
         painter = rememberVectorPainter(
             defaultWidth = 104.dp,
@@ -54,8 +72,8 @@ fun PawIcon(modifier: Modifier = Modifier) {
                 }
                 Group(
                     name = "02",
-                    scaleX = 0.959f,
-                    scaleY = 1f,
+                    scaleX = 0.959f * animatedProgress.value,
+                    scaleY = 1f * animatedProgress.value,
                     translationX = 49.278f,
                     translationY = 50.879f,
                 ) {
@@ -67,8 +85,8 @@ fun PawIcon(modifier: Modifier = Modifier) {
                 }
                 Group(
                     name = "03",
-                    scaleX = 0.94136f,
-                    scaleY = 1f,
+                    scaleX = 0.94136f * animatedProgress.value,
+                    scaleY = 1f * animatedProgress.value,
                     translationX = 50.5f,
                     translationY = 48.335f,
                 ) {
@@ -81,8 +99,8 @@ fun PawIcon(modifier: Modifier = Modifier) {
                 Group(
                     name = "04",
                     rotation = -19.37f,
-                    scaleX = -0.94136f,
-                    scaleY = 1f,
+                    scaleX = -0.94136f * animatedProgress.value,
+                    scaleY = 1f * animatedProgress.value,
                     translationX = 55.597f,
                     translationY = 48.182f,
                 ) {
@@ -95,8 +113,8 @@ fun PawIcon(modifier: Modifier = Modifier) {
                 Group(
                     name = "05",
                     rotation = -25.753f,
-                    scaleX = -0.9197799f,
-                    scaleY = 1f,
+                    scaleX = -0.9197799f * animatedProgress.value,
+                    scaleY = 1f * animatedProgress.value,
                     translationX = 59.041f,
                     translationY = 53.054f,
                 ) {
@@ -105,6 +123,7 @@ fun PawIcon(modifier: Modifier = Modifier) {
                         stroke = SolidColor(Color.White),
                         pathFillType = PathFillType.NonZero,
                         strokeLineWidth = 4f,
+                        strokeAlpha = 1f * animatedProgress.value,
                         strokeLineCap = StrokeCap.Round,
                         strokeLineJoin = StrokeJoin.Round,
                     )
