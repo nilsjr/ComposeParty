@@ -28,7 +28,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun PawIcon(modifier: Modifier = Modifier) {
     val color = SolidColor(Color.White)
-    val duration = 1000
+    val duration = 1200
+    val repeatMode = RepeatMode.Reverse
 
     val parts = listOf(
         "M-0.88 -4.85 C-11.24,-1.32 -9.99,5.65 -11.9,12.35 C-12.79,15.43 -24.91,25.57 -17.64,35.27 C-11.13,43.95 4.34,33.27 8.82,32.85 C13.45,32.41 28,38.8 33.51,26.45 C38.45,15.38 24.69,11.9 19.4,7.72 C14.11,3.53 12.59,-9.43 -0.88,-4.85c",
@@ -51,7 +52,7 @@ fun PawIcon(modifier: Modifier = Modifier) {
                 0.0f at 0
                 1f at 300 with FastOutSlowInEasing
             },
-            repeatMode = RepeatMode.Reverse
+            repeatMode = repeatMode
         )
     )
     val paw02 by infiniteTransition.animateFloat(
@@ -63,7 +64,7 @@ fun PawIcon(modifier: Modifier = Modifier) {
                 0.0f at 200
                 1f at 500 with FastOutSlowInEasing
             },
-            repeatMode = RepeatMode.Reverse
+            repeatMode = repeatMode
         )
     )
     val paw03 by infiniteTransition.animateFloat(
@@ -75,7 +76,7 @@ fun PawIcon(modifier: Modifier = Modifier) {
                 0.0f at 400
                 1f at 700 with FastOutSlowInEasing
             },
-            repeatMode = RepeatMode.Reverse
+            repeatMode = repeatMode
         )
     )
     val paw04 by infiniteTransition.animateFloat(
@@ -87,13 +88,13 @@ fun PawIcon(modifier: Modifier = Modifier) {
                 0.0f at 600
                 1f at 900 with FastOutSlowInEasing
             },
-            repeatMode = RepeatMode.Reverse
+            repeatMode = repeatMode
         )
     )
 
     Image(
         modifier = Modifier
-            .size(350.dp)
+            .size(250.dp)
             .then(modifier),
         painter = rememberVectorPainter(
             defaultWidth = 104.dp,
