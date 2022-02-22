@@ -51,9 +51,9 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.8.0-alpha04")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
-    implementation("androidx.activity:activity-compose:1.5.0-alpha02")
+    implementation(libs.coreKtx)
+    implementation(libs.lifecycle)
+    implementation(libs.composeActivity)
 
     implementation(libs.composeUi)
     implementation(libs.composeMaterial3)
