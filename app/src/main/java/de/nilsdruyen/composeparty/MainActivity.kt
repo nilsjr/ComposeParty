@@ -9,13 +9,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import de.nilsdruyen.composeparty.animations.TextAnim
-import de.nilsdruyen.composeparty.buttons.LoadingButton
-import de.nilsdruyen.composeparty.buttons.PreviewLoadingButton
-import de.nilsdruyen.composeparty.freestyle.DynamicPointMesh
-import de.nilsdruyen.composeparty.freestyle.SquareFun
+import de.nilsdruyen.composeparty.buttons.LoadingButtonDemo
 import de.nilsdruyen.composeparty.isles.IsleExample
-import de.nilsdruyen.composeparty.paths.VectorDemo
 import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
 
 class MainActivity : ComponentActivity() {
@@ -33,7 +28,8 @@ class MainActivity : ComponentActivity() {
 //                    SquareFun()
 //                    PreviewLoadingButton()
 //                    TextAnim()
-                    VectorDemo()
+//                        VectorDemo()
+                    LoadingButtonDemo()
                 }
             }
         }

@@ -7,6 +7,7 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.keyframes
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -22,12 +23,13 @@ import androidx.compose.ui.graphics.vector.Path
 import androidx.compose.ui.graphics.vector.addPathNodes
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 
 @Preview
 @Composable
-fun PawIcon(modifier: Modifier = Modifier) {
-    val color = SolidColor(Color.White)
+fun PawIcon(modifier: Modifier = Modifier, color: Color = Color.White) {
+    val solidColor = SolidColor(color)
     val duration = 1200
     val repeatMode = RepeatMode.Reverse
 
@@ -94,7 +96,7 @@ fun PawIcon(modifier: Modifier = Modifier) {
 
     Image(
         modifier = Modifier
-            .size(250.dp)
+            .size(100.dp)
             .then(modifier),
         painter = rememberVectorPainter(
             defaultWidth = 104.dp,
@@ -110,7 +112,7 @@ fun PawIcon(modifier: Modifier = Modifier) {
                 ) {
                     Path(
                         pathData = drawParts[0],
-                        stroke = color,
+                        stroke = solidColor,
                         strokeLineWidth = 4f
                     )
                 }
@@ -123,7 +125,7 @@ fun PawIcon(modifier: Modifier = Modifier) {
                 ) {
                     Path(
                         pathData = drawParts[1],
-                        stroke = color,
+                        stroke = solidColor,
                         strokeLineWidth = 4f,
                     )
                 }
@@ -136,7 +138,7 @@ fun PawIcon(modifier: Modifier = Modifier) {
                 ) {
                     Path(
                         pathData = drawParts[2],
-                        stroke = color,
+                        stroke = solidColor,
                         strokeLineWidth = 4f
                     )
                 }
@@ -150,7 +152,7 @@ fun PawIcon(modifier: Modifier = Modifier) {
                 ) {
                     Path(
                         pathData = drawParts[3],
-                        stroke = color,
+                        stroke = solidColor,
                         strokeLineWidth = 4f
                     )
                 }
@@ -164,7 +166,7 @@ fun PawIcon(modifier: Modifier = Modifier) {
                 ) {
                     Path(
                         pathData = drawParts[4],
-                        stroke = color,
+                        stroke = solidColor,
                         pathFillType = PathFillType.NonZero,
                         strokeLineWidth = 4f,
                         strokeAlpha = 1f * paw04,
