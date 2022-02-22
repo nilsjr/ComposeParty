@@ -1,10 +1,9 @@
 [versions]
 compose = "1.2.0-alpha03"
 composeCompiler = "1.2.0-alpha03"
-coreKtxVersion = "2.5.0-alpha02"
 
 [libraries]
-coreKtx = { module = "androidx.core:core-ktx", version.ref = "coreKtxVersion" }
+coreKtx = { module = "androidx.core:core-ktx", version = "1.8.0-alpha04" }
 lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0-alpha02"
 # compose
 composeActivity = "androidx.activity:activity-compose:1.5.0-alpha02"
