@@ -60,4 +60,5 @@ dependencies {
     debugImplementation(libs.composeUiTooling)
     implementation(libs.composeUiToolingPreview)
     implementation(libs.composeAnimationGraphics)
+    implementation(libs.composeMaterialIcons)
 }
