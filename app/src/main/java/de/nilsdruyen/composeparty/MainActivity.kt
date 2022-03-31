@@ -9,10 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import de.nilsdruyen.composeparty.buttons.LoadingButtonDemo
-import de.nilsdruyen.composeparty.freestyle.ComposeLogo
-import de.nilsdruyen.composeparty.freestyle.HeartRate
-import de.nilsdruyen.composeparty.freestyle.MenuToClose
+import de.nilsdruyen.composeparty.buttons.AddToCartButtonDemo
 import de.nilsdruyen.composeparty.isles.IsleExample
 import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
 
@@ -33,9 +30,10 @@ class MainActivity : ComponentActivity() {
 //                    TextAnim()
 //                        VectorDemo()
 //                    LoadingButtonDemo()
+                    AddToCartButtonDemo()
 //                    HeartRate()
 //                    ComposeLogo()
-                    MenuToClose()
+//                    MenuToClose()
                 }
             }
         }
