@@ -3,12 +3,19 @@ package de.nilsdruyen.composeparty.buttons
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.SizeTransform
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.with
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.awaitFirstDown
@@ -54,7 +61,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import de.nilsdruyen.composeparty.ui.theme.PurpleGrey80
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -118,7 +124,16 @@ fun AddToCartButton(
                 .height(56.dp)
                 .align(Alignment.BottomCenter),
         ) {
-            AnimatedContent(targetState = state.isExpanded) { isExpanded ->
+            AnimatedContent(
+                targetState = state.isExpanded,
+                transitionSpec = {
+                    fadeIn(animationSpec = tween(220, delayMillis = 90)) with
+                            fadeOut(animationSpec = tween(90)) using
+                            SizeTransform(false) { _, _ ->
+                                spring(Spring.DampingRatioLowBouncy, Spring.StiffnessMediumLow)
+                            }
+                }
+            ) { isExpanded ->
                 if (isExpanded) {
                     Row {
                         IconButton(
@@ -140,7 +155,10 @@ fun AddToCartButton(
                         Box(
                             modifier = Modifier
                                 .align(Alignment.CenterVertically)
-                                .background(PurpleGrey80, CircleShape)
+                                .background(
+                                    MaterialTheme.colorScheme.onPrimaryContainer,
+                                    CircleShape
+                                )
                                 .size(42.dp)
                         ) {
                             Text(
@@ -182,6 +200,7 @@ fun AddToCartButton(
     }
 }
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AnimationComponent(
     count: Int,
@@ -196,7 +215,7 @@ fun AnimationComponent(
             firstRun = false
         } else {
             visible = true
-            delay(1000)
+            delay(1500)
             visible = false
         }
     }
@@ -206,13 +225,21 @@ fun AnimationComponent(
             visible = visible,
             enter = slideInVertically {
                 with(density) { 40.dp.roundToPx() }
-            } + expandVertically(expandFrom = Alignment.Bottom) + fadeIn(initialAlpha = 0.3f),
-            exit = slideOutVertically() + shrinkVertically() + fadeOut()
+            } + expandVertically(
+                expandFrom = Alignment.Bottom
+            ) + fadeIn(
+                initialAlpha = 0.3f
+            ) + scaleIn(),
+            exit = slideOutVertically {
+                with(density) { 40.dp.roundToPx() }
+            } + shrinkVertically(
+                shrinkTowards = Alignment.Bottom
+            ) + fadeOut() + scaleOut()
         ) {
             Text(
                 text = "$count",
                 color = MaterialTheme.colorScheme.onBackground,
-                fontSize = 20.sp,
+                fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier,
             )
@@ -224,7 +251,6 @@ data class AddToCartButtonState(
     val count: Int = 1,
     val isExpanded: Boolean = false,
 )
-
 
 fun Modifier.repeatingClickable(
     interactionSource: InteractionSource,
