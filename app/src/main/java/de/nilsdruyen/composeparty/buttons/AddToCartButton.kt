@@ -4,8 +4,7 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.SizeTransform
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
@@ -23,13 +22,16 @@ import androidx.compose.foundation.gestures.forEachGesture
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
@@ -55,10 +57,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.coroutineScope
@@ -113,15 +117,23 @@ fun AddToCartButton(
 
     Box(
         modifier = Modifier
-            .size(150.dp)
+            .size(260.dp)
+            .background(Color.LightGray)
+            .padding(8.dp)
             .then(modifier)
     ) {
+        val height = 56.dp
+        val cornerRadius: Dp by animateDpAsState(
+            targetValue = if (state.isExpanded) 8.dp else height / 2,
+            animationSpec = tween()
+        )
+
         Button(
             onClick = { toggle(state.isExpanded) },
-            shape = RoundedCornerShape(16.dp),
+            shape = RoundedCornerShape(cornerRadius),
             contentPadding = PaddingValues(0.dp),
             modifier = Modifier
-                .height(56.dp)
+                .height(height)
                 .align(Alignment.BottomCenter),
         ) {
             AnimatedContent(
@@ -130,12 +142,16 @@ fun AddToCartButton(
                     fadeIn(animationSpec = tween(220, delayMillis = 90)) with
                             fadeOut(animationSpec = tween(90)) using
                             SizeTransform(false) { _, _ ->
-                                spring(Spring.DampingRatioLowBouncy, Spring.StiffnessMediumLow)
+                                tween()
+//                                spring(Spring.DampingRatioMediumBouncy, Spring.StiffnessMediumLow)
                             }
                 }
             ) { isExpanded ->
                 if (isExpanded) {
-                    Row {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
                         IconButton(
                             onClick = {},
                             modifier = Modifier

@@ -1,12 +1,12 @@
 [versions]
 compose = "1.2.0-alpha03"
-composeCompiler = "1.2.0-alpha06"
+composeCompiler = "1.2.0-beta03"
 
 [libraries]
-coreKtx = { module = "androidx.core:core-ktx", version = "1.8.0-alpha04" }
-lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0-alpha05"
+coreKtx = { module = "androidx.core:core-ktx", version = "1.9.0-alpha04" }
+lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0-rc01"
 # compose
-composeActivity = "androidx.activity:activity-compose:1.6.0-alpha01"
+composeActivity = "androidx.activity:activity-compose:1.6.0-alpha03"
 composeUi = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 composeFoundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 composeUiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
@@ -15,7 +15,7 @@ composeAnimation = { module = "androidx.compose.animation:animation", version = 
 composeAnimationGraphics = { module = "androidx.compose.animation:animation-graphics", version.ref = "compose" }
 composeMaterial = { module = "androidx.compose.material:material", version.ref = "compose" }
 composeMaterialIcons = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
-composeMaterial3 = { module = "androidx.compose.material3:material3", version = "1.0.0-alpha05" }
+composeMaterial3 = { module = "androidx.compose.material3:material3", version = "1.0.0-alpha13" }
 composeNavigation = { module = "androidx.navigation:navigation-compose", version = "2.5.0-alpha02" }
 constraintCompose = { module = "androidx.constraintlayout:constraintlayout-compose", version = "1.0.0" }
 pagingCompose = "androidx.paging:paging-compose:1.0.0-alpha14"

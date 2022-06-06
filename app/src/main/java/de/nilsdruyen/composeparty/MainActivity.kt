@@ -9,13 +9,19 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import de.nilsdruyen.composeparty.buttons.AddToCartButtonDemo
+import androidx.core.view.WindowCompat
+import de.nilsdruyen.composeparty.freestyle.DashedLine
 import de.nilsdruyen.composeparty.isles.IsleExample
+import de.nilsdruyen.composeparty.material.ScrollableScaffold
 import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
         setContent {
             ComposePartyTheme {
                 // A surface container using the 'background' color from the theme
@@ -30,10 +36,12 @@ class MainActivity : ComponentActivity() {
 //                    TextAnim()
 //                        VectorDemo()
 //                    LoadingButtonDemo()
-                    AddToCartButtonDemo()
+//                    AddToCartButtonDemo()
 //                    HeartRate()
 //                    ComposeLogo()
 //                    MenuToClose()
+                    ScrollableScaffold()
+//                    DashedLine()
                 }
             }
         }

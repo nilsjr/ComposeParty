@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk = 32
+    compileSdkPreview = "Tiramisu"
 
     defaultConfig {
         applicationId = "de.nilsdruyen.composeparty"
         minSdk = 26
-        targetSdk = 32
+        targetSdkPreview = "Tiramisu"
         versionCode = 1
         versionName = "1.0"
 
@@ -21,7 +21,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile ("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -48,17 +51,20 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    namespace = "de.nilsdruyen.composeparty"
 }
 
 dependencies {
     implementation(libs.coreKtx)
     implementation(libs.lifecycle)
-    implementation(libs.composeActivity)
 
     implementation(libs.composeUi)
+    implementation(libs.composeActivity)
     implementation(libs.composeMaterial3)
     debugImplementation(libs.composeUiTooling)
     implementation(libs.composeUiToolingPreview)
     implementation(libs.composeAnimationGraphics)
     implementation(libs.composeMaterialIcons)
+
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.24.9-beta")
 }
