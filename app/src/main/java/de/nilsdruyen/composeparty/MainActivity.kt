@@ -11,6 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
 import de.nilsdruyen.composeparty.freestyle.DashedLine
+import de.nilsdruyen.composeparty.freestyle.DynamicPointMesh
+import de.nilsdruyen.composeparty.freestyle.SquareFun
 import de.nilsdruyen.composeparty.isles.IsleExample
 import de.nilsdruyen.composeparty.material.ScrollableScaffold
 import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
@@ -31,16 +33,16 @@ class MainActivity : ComponentActivity() {
                 ) {
 //                    IsleExample()
 //                    DynamicPointMesh()
-//                    SquareFun()
+                    SquareFun()
 //                    PreviewLoadingButton()
 //                    TextAnim()
-//                        VectorDemo()
+//                    VectorDemo()
 //                    LoadingButtonDemo()
 //                    AddToCartButtonDemo()
 //                    HeartRate()
 //                    ComposeLogo()
 //                    MenuToClose()
-                    ScrollableScaffold()
+//                    ScrollableScaffold()
 //                    DashedLine()
                 }
             }

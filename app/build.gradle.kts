@@ -66,5 +66,5 @@ dependencies {
     implementation(libs.composeAnimationGraphics)
     implementation(libs.composeMaterialIcons)
 
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.24.9-beta")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.24.11-rc")
 }

@@ -3,13 +3,16 @@ package de.nilsdruyen.composeparty.freestyle
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlin.math.cos
 import kotlin.math.floor
 import kotlin.math.pow
@@ -41,9 +44,18 @@ fun DynamicPointMesh(modifier: Modifier = Modifier) {
             .toTypedArray()
     }
 
+    val systemUiController = rememberSystemUiController()
+    SideEffect {
+        systemUiController.setStatusBarColor(
+            color = Color.Transparent,
+            darkIcons = true
+        )
+    }
+
     Canvas(
         modifier = Modifier
             .fillMaxSize()
+            .statusBarsPadding()
             .background(MaterialTheme.colorScheme.background)
             .then(modifier)
     ) {
