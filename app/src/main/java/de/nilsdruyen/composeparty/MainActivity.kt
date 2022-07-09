@@ -10,6 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
+import de.nilsdruyen.composeparty.buttons.AddToCartButtonDemo
+import de.nilsdruyen.composeparty.buttons.ChipButton
+import de.nilsdruyen.composeparty.buttons.PreviewLoadingButton
 import de.nilsdruyen.composeparty.freestyle.DashedLine
 import de.nilsdruyen.composeparty.freestyle.DynamicPointMesh
 import de.nilsdruyen.composeparty.freestyle.SquareFun
@@ -33,11 +36,12 @@ class MainActivity : ComponentActivity() {
                 ) {
 //                    IsleExample()
 //                    DynamicPointMesh()
-                    SquareFun()
+//                    SquareFun()
 //                    PreviewLoadingButton()
 //                    TextAnim()
 //                    VectorDemo()
 //                    LoadingButtonDemo()
+                    ChipButton()
 //                    AddToCartButtonDemo()
 //                    HeartRate()
 //                    ComposeLogo()

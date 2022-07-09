@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdkPreview = "Tiramisu"
+    compileSdk = 32
 
     defaultConfig {
         applicationId = "de.nilsdruyen.composeparty"
         minSdk = 26
-        targetSdkPreview = "Tiramisu"
+        targetSdk = 32
         versionCode = 1
         versionName = "1.0"
 
@@ -66,5 +66,5 @@ dependencies {
     implementation(libs.composeAnimationGraphics)
     implementation(libs.composeMaterialIcons)
 
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.24.11-rc")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.24.13-rc")
 }
