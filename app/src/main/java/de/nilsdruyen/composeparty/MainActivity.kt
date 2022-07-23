@@ -10,14 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
-import de.nilsdruyen.composeparty.buttons.AddToCartButtonDemo
-import de.nilsdruyen.composeparty.buttons.ChipButton
-import de.nilsdruyen.composeparty.buttons.PreviewLoadingButton
-import de.nilsdruyen.composeparty.freestyle.DashedLine
-import de.nilsdruyen.composeparty.freestyle.DynamicPointMesh
 import de.nilsdruyen.composeparty.freestyle.SquareFun
 import de.nilsdruyen.composeparty.isles.IsleExample
-import de.nilsdruyen.composeparty.material.ScrollableScaffold
 import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
 
 class MainActivity : ComponentActivity() {
@@ -34,14 +28,15 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+//                    WrappingText()
 //                    IsleExample()
 //                    DynamicPointMesh()
-//                    SquareFun()
+                    SquareFun()
 //                    PreviewLoadingButton()
 //                    TextAnim()
 //                    VectorDemo()
 //                    LoadingButtonDemo()
-                    ChipButton()
+//                    ChipButton()
 //                    AddToCartButtonDemo()
 //                    HeartRate()
 //                    ComposeLogo()

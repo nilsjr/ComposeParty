@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -34,6 +33,7 @@ import kotlinx.coroutines.delay
 // 18 x 21
 // h180 x w210
 
+@Preview
 @Composable
 fun NyanCatParty() {
     val frames = TailFrames
