@@ -2,6 +2,7 @@ package de.nilsdruyen.composeparty.material
 
 import androidx.compose.animation.rememberSplineBasedDecay
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -13,7 +14,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarScrollState
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.remember
@@ -26,18 +27,18 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScrollableScaffold() {
-    val barState = rememberTopAppBarScrollState()
-    val decayAnimationSpec = rememberSplineBasedDecay<Float>()
+    val barState = rememberTopAppBarState()
     val scrollBehavior = remember {
         TopAppBarDefaults.enterAlwaysScrollBehavior(barState)
     }
 
     val systemUiController = rememberSystemUiController()
+    val isInDarkTheme = isSystemInDarkTheme()
 
     SideEffect {
         systemUiController.setStatusBarColor(
             color = Color.Transparent,
-            darkIcons = true
+            darkIcons = !isInDarkTheme
         )
     }
 

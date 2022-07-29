@@ -2,6 +2,7 @@ package de.nilsdruyen.composeparty.freestyle
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.MaterialTheme
@@ -45,10 +46,11 @@ fun DynamicPointMesh(modifier: Modifier = Modifier) {
     }
 
     val systemUiController = rememberSystemUiController()
+    val isInDarkTheme = isSystemInDarkTheme()
     SideEffect {
         systemUiController.setStatusBarColor(
             color = Color.Transparent,
-            darkIcons = true
+            darkIcons = !isInDarkTheme
         )
     }
 
