@@ -65,6 +65,5 @@ dependencies {
     implementation(libs.composeUiToolingPreview)
     implementation(libs.composeAnimationGraphics)
     implementation(libs.composeMaterialIcons)
-
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.24.13-rc")
+    implementation(libs.accompanist.systemuicontroller)
 }
