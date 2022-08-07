@@ -32,13 +32,12 @@ import androidx.core.graphics.component1
 import androidx.core.graphics.component2
 import androidx.core.graphics.component3
 import androidx.core.graphics.component4
+import de.nilsdruyen.composeparty.utils.Centered
 
 @Preview
 @Composable
 fun HeartRate() {
-    Box(
-        contentAlignment = Alignment.Center
-    ) {
+    Centered {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {

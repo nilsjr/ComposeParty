@@ -2,7 +2,7 @@
 accompanist = "0.26.0-alpha"
 compose = "1.2.0-rc01"
 composeAnimationGraphics = "1.3.0-alpha02"
-composeCompiler = "1.3.0-rc01"
+composeCompiler = "1.3.0-rc02"
 composeMaterial3 = "1.0.0-alpha15"
 composeMaterialIcons = "1.3.0-alpha02"
 composeUi = "1.3.0-alpha02"

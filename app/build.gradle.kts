@@ -66,4 +66,9 @@ dependencies {
     implementation(libs.composeAnimationGraphics)
     implementation(libs.composeMaterialIcons)
     implementation(libs.accompanist.systemuicontroller)
+
+    implementation("androidx.core:core-splashscreen:1.0.0")
+
+    implementation("androidx.compose.animation:animation-graphics:1.3.0-alpha02")
+
 }

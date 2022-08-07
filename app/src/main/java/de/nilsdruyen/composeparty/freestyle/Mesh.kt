@@ -47,6 +47,7 @@ fun DynamicPointMesh(modifier: Modifier = Modifier) {
 
     val systemUiController = rememberSystemUiController()
     val isInDarkTheme = isSystemInDarkTheme()
+
     SideEffect {
         systemUiController.setStatusBarColor(
             color = Color.Transparent,

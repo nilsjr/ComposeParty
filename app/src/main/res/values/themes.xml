@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.ComposeParty" parent="android:Theme.Material.NoActionBar">
+    <style name="Theme.ComposePartyApp" parent="android:Theme.Material.NoActionBar">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Theme.ComposeParty" parent="Theme.ComposePartyApp">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Theme.SplashParty" parent="Theme.ComposePartyApp">
+        <item name="windowSplashScreenBackground">@color/purple_500</item>
+        <item name="windowSplashScreenAnimationDuration">800</item>
+<!--        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_loading</item>-->
+        <item name="postSplashScreenTheme">@style/Theme.ComposeParty</item>
     </style>
 </resources>
