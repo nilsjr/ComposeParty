@@ -36,9 +36,9 @@ val demoItems = mapOf<String, @Composable () -> Unit>(
     "PreviewLoadingButton" to { PreviewLoadingButton() },
     "ScrollableScaffold" to { ScrollableScaffold() },
     "SquareFun" to { SquareFun() },
+    "StaggeredGridLayout" to { SampleStaggeredGridLayout() },
     "TextAnim" to { TextAnim() },
     "TextBrushing" to { TextBrushing() },
     "VectorDemo" to { VectorDemo() },
     "Wrapping Text" to { WrappingText() },
-    "StaggeredGridLayout" to { SampleStaggeredGridLayout() },
 )
