@@ -9,7 +9,11 @@ import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -26,7 +30,9 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun MenuToClose() {
     Box(
-        modifier = Modifier.fillMaxSize().background(Color.Black),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black),
         contentAlignment = Alignment.Center
     ) {
         var showMenu by remember { mutableStateOf(true) }
@@ -66,7 +72,7 @@ fun MenuToClose() {
         ) {
             val (width, height) = size
 
-            fun line(start: Offset, end: Offset, alpha: Float = 1f): Unit {
+            fun line(start: Offset, end: Offset, alpha: Float = 1f) {
                 drawLine(
                     color = Color.White,
                     strokeWidth = strokeWidth,
@@ -81,7 +87,7 @@ fun MenuToClose() {
                 end = Offset(x = width, y = lineOneEndY)
             )
             withTransform({
-                scale(lineTwoScale, Offset(x = 0f, y = height /2))
+                scale(lineTwoScale, Offset(x = 0f, y = height / 2))
             }) {
                 line(
                     start = Offset(x = 0f, y = height / 2),

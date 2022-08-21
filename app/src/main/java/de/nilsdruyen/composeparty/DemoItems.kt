@@ -15,28 +15,30 @@ import de.nilsdruyen.composeparty.freestyle.MenuToClose
 import de.nilsdruyen.composeparty.freestyle.MeshBlockify
 import de.nilsdruyen.composeparty.freestyle.SquareFun
 import de.nilsdruyen.composeparty.isles.IsleExample
+import de.nilsdruyen.composeparty.layouts.SampleStaggeredGridLayout
 import de.nilsdruyen.composeparty.material.ScrollableScaffold
 import de.nilsdruyen.composeparty.paths.VectorDemo
 import de.nilsdruyen.composeparty.text.TextBrushing
 import de.nilsdruyen.composeparty.text.WrappingText
 
 val demoItems = mapOf<String, @Composable () -> Unit>(
+    "AVD Sample" to { AnimatedVectorDrawable() },
     "AddToCartButtonDemo" to { AddToCartButtonDemo() },
     "ChipButton" to { ChipButton() },
     "ComposeLogo" to { ComposeLogo() },
     "DashedLine" to { DashedLine() },
     "DynamicPointMesh" to { DynamicPointMesh() },
-    "MeshBlockify" to { MeshBlockify() },
     "HeartRate" to { HeartRate() },
     "IsleExample" to { IsleExample() },
     "LoadingButtonDemo" to { LoadingButtonDemo() },
     "MenuToClose" to { MenuToClose() },
+    "MeshBlockify" to { MeshBlockify() },
     "PreviewLoadingButton" to { PreviewLoadingButton() },
     "ScrollableScaffold" to { ScrollableScaffold() },
     "SquareFun" to { SquareFun() },
     "TextAnim" to { TextAnim() },
+    "TextBrushing" to { TextBrushing() },
     "VectorDemo" to { VectorDemo() },
     "Wrapping Text" to { WrappingText() },
-    "TextBrushing" to { TextBrushing() },
-    "AVD Sample" to { AnimatedVectorDrawable() },
+    "StaggeredGridLayout" to { SampleStaggeredGridLayout() },
 )

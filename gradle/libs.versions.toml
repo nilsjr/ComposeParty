@@ -6,7 +6,7 @@ composeCompiler = "1.3.0"
 composeMaterial3 = "1.0.0-alpha16"
 composeMaterialIcons = "1.3.0-alpha03"
 composeUi = "1.3.0-alpha03"
-composeUiTooling = "1.3.0-alpha02"
+composeUiTooling = "1.3.0-alpha03"
 kotlin = "1.7.10"
 
 [libraries]
