@@ -3,9 +3,6 @@ package de.nilsdruyen.composeparty.layouts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -32,8 +29,7 @@ fun SampleStaggeredGridLayout() {
         StaggeredGrid(
             spanCount = 3,
             orientation = StaggeredGrid.Orientation.HORIZONTAL,
-            contentPadding = PaddingValues(12.dp),
-            itemSpacing = 4.dp,
+            itemSpacing = 12.dp,
         ) {
             elements.forEach {
                 Text(
@@ -45,26 +41,13 @@ fun SampleStaggeredGridLayout() {
                 )
             }
         }
-        Spacer(modifier = Modifier.height(16.dp))
-//        StaggeredHorizontalGrid(
-//            rows = 4,
-//            modifier = Modifier.horizontalScroll(rememberScrollState()),
-//        ) {
-//            elements.forEach {
-//                Text(
-//                    it,
-//                    modifier = Modifier
-//                        .padding(4.dp)
-//                        .background(Color.LightGray, shape = RoundedCornerShape(4.dp))
-//                        .clickable { }
-//                        .padding(8.dp)
-//                )
-//            }
-//        }
     }
 }
 
 @Preview
+@Preview(fontScale = .25f)
+@Preview(fontScale = 1.5f)
+@Preview(fontScale = 2f)
 @Composable
 fun PreviewLayout() {
     ComposePartyTheme {

@@ -1,11 +1,7 @@
 package de.nilsdruyen.composeparty.layouts
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
@@ -15,19 +11,11 @@ import androidx.compose.ui.unit.dp
 fun StaggeredHorizontalGrid(
     @androidx.annotation.IntRange(from = 1) rows: Int,
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(),
     itemSpacing: Dp = 0.dp,
     content: @Composable () -> Unit,
 ) {
     val spacingInPx = with(LocalDensity.current) { itemSpacing.toPx().toInt() }
-
-    Layout(
-        content = content,
-        modifier = modifier
-            .background(Color.Blue)
-            .padding(contentPadding)
-            .background(Color.Red)
-    ) { measurables, constraints ->
+    Layout(content = content, modifier = modifier) { measurables, constraints ->
         val rowWidths = IntArray(rows) { 0 }
         val rowHeights = IntArray(rows) { 0 }
 
@@ -73,5 +61,5 @@ fun StaggeredHorizontalGrid(
 }
 
 private fun IntArray.shortestRow(): Int {
-    return mapIndexed { index, width -> width to index }.minBy { it.first }.second
+    return mapIndexed { index, width -> width to index }.minByOrNull { it.first }?.second ?: 0
 }

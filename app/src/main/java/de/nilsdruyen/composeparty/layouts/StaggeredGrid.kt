@@ -1,7 +1,6 @@
 package de.nilsdruyen.composeparty.layouts
 
 import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,7 +19,6 @@ fun StaggeredGrid(
     spanCount: Int,
     orientation: StaggeredGrid.Orientation,
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(),
     itemSpacing: Dp = 0.dp,
     content: @Composable () -> Unit,
 ) {
@@ -29,7 +27,6 @@ fun StaggeredGrid(
             rows = spanCount,
             content = content,
             modifier = modifier.horizontalScroll(rememberScrollState()),
-            contentPadding = contentPadding,
             itemSpacing = itemSpacing,
         )
         StaggeredGrid.Orientation.VERTIcAL -> StaggeredVerticalGrid(

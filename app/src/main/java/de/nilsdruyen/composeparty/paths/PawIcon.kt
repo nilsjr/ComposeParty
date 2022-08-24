@@ -7,7 +7,6 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.keyframes
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,7 +22,6 @@ import androidx.compose.ui.graphics.vector.Path
 import androidx.compose.ui.graphics.vector.addPathNodes
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 
 @Preview
@@ -103,6 +101,7 @@ fun PawIcon(modifier: Modifier = Modifier, color: Color = Color.White) {
             defaultHeight = 104.dp,
             viewportWidth = 104f,
             viewportHeight = 104f,
+            autoMirror = false,
         ) { vw, vh ->
             Group {
                 Group(
