@@ -1,10 +1,14 @@
 package de.nilsdruyen.composeparty.paths
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
@@ -16,8 +20,8 @@ import androidx.compose.ui.graphics.vector.addPathNodes
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
 
-@Preview
 @Composable
 fun PawIcon(modifier: Modifier = Modifier, color: Color = Color.White) {
     val solidColor = SolidColor(color)
@@ -57,7 +61,7 @@ fun PawIcon(modifier: Modifier = Modifier, color: Color = Color.White) {
                     name = "paw01",
                     scaleX = 0.959f,
                     scaleY = 1f,
-                    translationX = 49.278f - 25,
+                    translationX = 49.278f - 3,
                     translationY = 50.879f - 5,
                 ) {
                     Path(
@@ -115,4 +119,17 @@ fun PawIcon(modifier: Modifier = Modifier, color: Color = Color.White) {
         },
         contentDescription = null,
     )
+}
+
+@Preview(showBackground = true, backgroundColor = 0xfff)
+@Composable
+fun PreviewPawIcon() {
+    ComposePartyTheme {
+        Box(modifier = Modifier.fillMaxSize()) {
+            PawIcon(
+                modifier = Modifier.scale(.5f).align(Alignment.Center),
+                color = Color.DarkGray,
+            )
+        }
+    }
 }

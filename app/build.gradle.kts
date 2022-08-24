@@ -69,6 +69,6 @@ dependencies {
 
     implementation("androidx.core:core-splashscreen:1.0.0")
 
-    implementation("androidx.compose.animation:animation-graphics:1.3.0-alpha02")
+    implementation("androidx.compose.animation:animation-graphics:1.3.0-beta01")
 
 }
