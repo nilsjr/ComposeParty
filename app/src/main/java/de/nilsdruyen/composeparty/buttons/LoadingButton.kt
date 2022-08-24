@@ -28,7 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import de.nilsdruyen.composeparty.paths.PawIcon
+import de.nilsdruyen.composeparty.paths.PawAnimatedIcon
 import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
 
 @Composable
@@ -95,7 +95,7 @@ fun LoadingButton(modifier: Modifier = Modifier, isIdle: Boolean = true, onClick
                     Icon(imageVector = Icons.Filled.Add, contentDescription = null)
                     Text("Click me", Modifier.align(Alignment.Center))
                 } else {
-                    PawIcon(
+                    PawAnimatedIcon(
                         modifier = Modifier.align(Alignment.Center),
                         color = MaterialTheme.colorScheme.onPrimary,
                     )

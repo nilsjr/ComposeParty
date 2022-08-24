@@ -1,6 +1,5 @@
 package de.nilsdruyen.composeparty.material
 
-import androidx.compose.animation.rememberSplineBasedDecay
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
@@ -17,7 +16,6 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -28,9 +26,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 @Composable
 fun ScrollableScaffold() {
     val barState = rememberTopAppBarState()
-    val scrollBehavior = remember {
-        TopAppBarDefaults.enterAlwaysScrollBehavior(barState)
-    }
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(barState)
 
     val systemUiController = rememberSystemUiController()
     val isInDarkTheme = isSystemInDarkTheme()
