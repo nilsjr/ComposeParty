@@ -5,6 +5,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -17,6 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.graphics.StampedPathEffectStyle
 import androidx.compose.ui.graphics.asAndroidPath
 import androidx.compose.ui.graphics.asComposePath
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -52,16 +55,20 @@ fun PathPawAnimation() {
         start.value = 1f
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+    ) {
         Canvas(
             modifier = Modifier
                 .fillMaxSize()
 //                .offset(x = (-80).dp)
-//                .rotate(55f)
+//                .rotate(45f)
         ) {
-            val stepX = 300
+            val stepX = 200
             val x = size.width / 5.0f
-            val y = 80.dp.toPx()
+            val y = 40.dp.toPx()
             val advance = stepX * 2.0f
 
             val path = Path()
@@ -81,19 +88,31 @@ fun PathPawAnimation() {
 
             val segment = android.graphics.Path()
             measure.getSegment(0.0f, length * progress.value, segment, true)
-
             measure.getPosTan(length * progress.value, position, tangent)
 
-//            drawPath(
-//                path = path,
-//                color = Color.DarkGray,
-//                style = Stroke(width = 5f),
-//            )
+            drawPath(
+                path = path,
+                color = Color.DarkGray,
+                style = Stroke(width = 5f),
+            )
+
+            drawPath(
+                path = PawIconPath.path.asComposePath(),
+                color = Color.DarkGray,
+                style = Stroke(width = 5f),
+            )
 
             drawPath(
                 path = segment.asComposePath(),
                 color = Color.Blue,
-                style = Stroke(width = 10f),
+                style = Stroke(
+                    pathEffect = PathEffect.stampedPathEffect(
+                        shape = PawIconPath.path.asComposePath(),
+                        phase = 0.0f,
+                        advance = 79.0f,
+                        style = StampedPathEffectStyle.Translate
+                    ),
+                )
             )
 
             drawCircle(
