@@ -1,18 +1,18 @@
 [versions]
 accompanist = "0.26.4-beta"
 compose = "1.2.0-rc01"
-composeAnimationGraphics = "1.3.0-beta03"
-composeCompiler = "1.3.1"
-composeMaterial3 = "1.0.0-beta03"
-composeMaterialIcons = "1.3.0-beta03"
-composeUi = "1.3.0-beta03"
-composeUiTooling = "1.3.0-beta03"
-kotlin = "1.7.10"
+composeAnimationGraphics = "1.3.0-rc01"
+composeCompiler = "1.3.2"
+composeMaterial3 = "1.0.0-rc01"
+composeMaterialIcons = "1.3.0-rc01"
+composeUi = "1.3.0-rc01"
+composeUiTooling = "1.3.0-rc01"
+kotlin = "1.7.20"
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 coilCompose = "io.coil-kt:coil-compose:1.4.0"
-composeActivity = "androidx.activity:activity-compose:1.6.0"
+composeActivity = "androidx.activity:activity-compose:1.7.0-alpha01"
 composeAnimation = { module = "androidx.compose.animation:animation", version = "compose" }
 composeAnimationGraphics = { module = "androidx.compose.animation:animation-graphics", version.ref = "composeAnimationGraphics" }
 composeFoundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }

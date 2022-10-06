@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace = "de.nilsdruyen.composeparty"
     compileSdk = 33
 
     defaultConfig {
@@ -51,7 +52,6 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    namespace = "de.nilsdruyen.composeparty"
 }
 
 dependencies {
