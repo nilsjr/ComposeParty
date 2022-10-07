@@ -15,6 +15,7 @@ import de.nilsdruyen.composeparty.freestyle.MenuToClose
 import de.nilsdruyen.composeparty.freestyle.MeshBlockify
 import de.nilsdruyen.composeparty.freestyle.SquareFun
 import de.nilsdruyen.composeparty.isles.IsleExample
+import de.nilsdruyen.composeparty.layouts.CollapsingToolbarLayoutExample
 import de.nilsdruyen.composeparty.layouts.SampleStaggeredGridLayout
 import de.nilsdruyen.composeparty.material.ScrollableScaffold
 import de.nilsdruyen.composeparty.paths.PathPawAnimation
@@ -26,6 +27,7 @@ val demoItems = mapOf<String, @Composable () -> Unit>(
     "AVD Sample" to { AnimatedVectorDrawable() },
     "AddToCartButtonDemo" to { AddToCartButtonDemo() },
     "ChipButton" to { ChipButton() },
+    "CollapsingToolbarLayout" to { CollapsingToolbarLayoutExample()},
     "ComposeLogo" to { ComposeLogo() },
     "DashedLine" to { DashedLine() },
     "DynamicPointMesh" to { DynamicPointMesh() },

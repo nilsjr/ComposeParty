@@ -61,10 +61,12 @@ dependencies {
     implementation(libs.composeUi)
     implementation(libs.composeActivity)
     implementation(libs.composeMaterial3)
-    debugImplementation(libs.composeUiTooling)
-    implementation(libs.composeUiToolingPreview)
     implementation(libs.composeAnimationGraphics)
     implementation(libs.composeMaterialIcons)
+
+    debugImplementation(libs.composeUiTooling)
+    implementation(libs.composeUiToolingPreview)
+
     implementation(libs.accompanist.systemuicontroller)
 
     implementation("androidx.core:core-splashscreen:1.0.0")
