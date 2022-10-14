@@ -13,6 +13,9 @@ import de.nilsdruyen.composeparty.freestyle.DynamicPointMesh
 import de.nilsdruyen.composeparty.freestyle.HeartRate
 import de.nilsdruyen.composeparty.freestyle.MenuToClose
 import de.nilsdruyen.composeparty.freestyle.MeshBlockify
+import de.nilsdruyen.composeparty.freestyle.SensorSample
+import de.nilsdruyen.composeparty.freestyle.FlingAnimation
+import de.nilsdruyen.composeparty.freestyle.SpringAnimation
 import de.nilsdruyen.composeparty.freestyle.SquareFun
 import de.nilsdruyen.composeparty.isles.IsleExample
 import de.nilsdruyen.composeparty.layouts.CollapsingToolbarLayoutExample
@@ -27,7 +30,7 @@ val demoItems = mapOf<String, @Composable () -> Unit>(
     "AVD Sample" to { AnimatedVectorDrawable() },
     "AddToCartButtonDemo" to { AddToCartButtonDemo() },
     "ChipButton" to { ChipButton() },
-    "CollapsingToolbarLayout" to { CollapsingToolbarLayoutExample()},
+    "CollapsingToolbarLayout" to { CollapsingToolbarLayoutExample() },
     "ComposeLogo" to { ComposeLogo() },
     "DashedLine" to { DashedLine() },
     "DynamicPointMesh" to { DynamicPointMesh() },
@@ -39,6 +42,9 @@ val demoItems = mapOf<String, @Composable () -> Unit>(
     "Path Paw Anim" to { PathPawAnimation() },
     "PreviewLoadingButton" to { PreviewLoadingButton() },
     "ScrollableScaffold" to { ScrollableScaffold() },
+    "Sensor Sample" to { SensorSample() },
+    "Fling Anim" to { FlingAnimation() },
+    "Spring Animation" to { SpringAnimation() },
     "SquareFun" to { SquareFun() },
     "StaggeredGridLayout" to { SampleStaggeredGridLayout() },
     "TextAnim" to { TextAnim() },

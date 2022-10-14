@@ -70,4 +70,5 @@ dependencies {
     implementation(libs.accompanist.systemuicontroller)
 
     implementation("androidx.core:core-splashscreen:1.0.0")
+    implementation("com.jakewharton.timber:timber:5.0.1")
 }

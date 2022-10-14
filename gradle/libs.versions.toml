@@ -1,5 +1,5 @@
 [versions]
-accompanist = "0.26.4-beta"
+accompanist = "0.26.5-rc"
 compose = "1.2.0-rc01"
 composeAnimationGraphics = "1.3.0-rc01"
 composeCompiler = "1.3.2"
