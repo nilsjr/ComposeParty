@@ -53,8 +53,4 @@ val DefaultDeviceData = DeviceData(0f, 0f, 0f)
 operator fun DeviceData.minus(other: DeviceData): DeviceData {
     return DeviceData(this.x - other.x, this.y - other.y, this.z - other.z)
 }
-
-data class ObjectMovement(val x: Int, val y: Int)
-
-fun DeviceData.map(): ObjectMovement = ObjectMovement((x * 10).toInt(), (y * 10).toInt())
-fun DeviceData.toOffset(): Offset = Offset(x * 10, y * 10)
+fun DeviceData.toOffset(): Offset = Offset(x * 10, -y * 10)

@@ -1,31 +1,25 @@
 package de.nilsdruyen.composeparty.freestyle
 
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.AnimationVector2D
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.VectorConverter
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.round
 import de.nilsdruyen.composeparty.R
 import de.nilsdruyen.composeparty.utils.SensorManager
@@ -35,13 +29,7 @@ import timber.log.Timber
 
 @Composable
 fun SensorSample() {
-    val offset = remember { Animatable(Offset(0f, 0f), Offset.VectorConverter) }
-
-    DisposableSensorEffect(0.3f) {
-        offset.animateTo(it, spring(dampingRatio = Spring.DampingRatioLowBouncy))
-    }
-
-    Timber.d("offset: ${offset.value}")
+    val offset = rememberSensorOffset()
 
     Box(Modifier.fillMaxSize()) {
         Image(
@@ -53,27 +41,22 @@ fun SensorSample() {
                 .offset {
                     offset.value.round()
                 }
-                .scale(1.1f)
+                .scale(1.2f)
         )
-//        Box(
-//            modifier = Modifier
-//                .offset {
-//                    offset.value
-//                        .round()
-//                        .times(1.3f)
-//                }
-//                .size(100.dp)
-//                .clip(RoundedCornerShape(8.dp))
-//                .background(Color.Red)
-//                .align(Alignment.Center)
-//        )
     }
 }
 
-@Preview
 @Composable
-fun SensorPreview() {
-    SensorSample()
+fun rememberSensorOffset(): Animatable<Offset, AnimationVector2D> {
+    val offset = remember { Animatable(Offset(0f, 0f), Offset.VectorConverter) }
+
+    Timber.d("offset: ${offset.value}")
+
+    DisposableSensorEffect(1.5f) {
+        offset.animateTo(it, spring(dampingRatio = Spring.DampingRatioLowBouncy))
+    }
+
+    return offset
 }
 
 @Composable
@@ -87,15 +70,16 @@ fun DisposableSensorEffect(muliplier: Float = 1f, onChange: suspend (Offset) -> 
         sensorManager.onChangeListener = {
             scope.launch {
                 onChange(it.toOffset().times(muliplier))
-//                offset.animateTo(
-//                    it.toOffset(), spring(
-//                        dampingRatio = Spring.DampingRatioLowBouncy
-//                    )
-//                )
             }
         }
         onDispose {
             sensorManager.stop()
         }
     })
+}
+
+@Preview
+@Composable
+fun SensorPreview() {
+    SensorSample()
 }
