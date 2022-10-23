@@ -39,6 +39,7 @@ android {
             freeCompilerArgs = listOf(
                 "-progressive",
                 "-Xopt-in=kotlin.RequiresOptIn",
+                "-Xcontext-receivers",
             )
         }
     }
@@ -72,4 +73,5 @@ dependencies {
 
     implementation("androidx.core:core-splashscreen:1.0.0")
     implementation("com.jakewharton.timber:timber:5.0.1")
+    implementation("com.airbnb.android:lottie-compose:5.2.0")
 }

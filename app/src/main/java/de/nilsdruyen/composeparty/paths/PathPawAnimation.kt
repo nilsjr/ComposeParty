@@ -1,8 +1,10 @@
 package de.nilsdruyen.composeparty.paths
 
 import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.animateIntAsState
+import androidx.compose.animation.core.repeatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -42,7 +44,11 @@ fun PathPawAnimation() {
     val start = remember { mutableStateOf(0f) }
     val progress = animateFloatAsState(
         targetValue = start.value,
-        animationSpec = tween(durationMillis = 4000, easing = LinearEasing)
+        animationSpec = repeatable(
+            iterations = 6,
+            animation = tween(durationMillis = 2000, easing = LinearEasing),
+            repeatMode = RepeatMode.Reverse
+        )
     )
 
     var xState by remember { mutableStateOf(0) }

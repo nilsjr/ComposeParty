@@ -7,50 +7,41 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.compose.ui.geometry.Offset
 import androidx.core.content.getSystemService
-import timber.log.Timber
 
 class SensorManager constructor(context: Context) : SensorEventListener {
 
     private val sensorManager = context.getSystemService<SensorManager>()!!
-    private val accelerometer: Sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+    private val gravitySensor: Sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY)
+    private val magneticSensor: Sensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
 
-    private var startDeviceOrientation: DeviceData? = null
-    var onChangeListener: (DeviceData) -> Unit = {}
+    private var gravity: FloatArray? = null
+    private var geomagnetic: FloatArray? = null
+
+    var onChangeListener: (Offset) -> Unit = {}
 
     override fun onSensorChanged(event: SensorEvent?) {
         event ?: return
-        if (startDeviceOrientation != null) {
-            val changed = DeviceData(
-                x = event.values[0],
-                y = event.values[1],
-                z = event.values[2]
-            ) - (startDeviceOrientation ?: DefaultDeviceData)
-            onChangeListener(changed)
-        } else {
-            startDeviceOrientation = DeviceData(event.values[0], event.values[1], event.values[2])
+        if (event.sensor?.type == Sensor.TYPE_GRAVITY) gravity = event.values
+        if (event.sensor?.type == Sensor.TYPE_MAGNETIC_FIELD) geomagnetic = event.values
+        if (gravity != null && geomagnetic != null) {
+            val r = FloatArray(9)
+            val i = FloatArray(9)
+            if (SensorManager.getRotationMatrix(r, i, gravity, geomagnetic)) {
+                val orientation = FloatArray(3)
+                SensorManager.getOrientation(r, orientation)
+                onChangeListener(Offset(orientation[2] * 10, orientation[1] * 10))
+            }
         }
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
 
     fun start() {
-        sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI)
+        sensorManager.registerListener(this, gravitySensor, SensorManager.SENSOR_DELAY_UI)
+        sensorManager.registerListener(this, magneticSensor, SensorManager.SENSOR_DELAY_UI)
     }
 
     fun stop() {
         sensorManager.unregisterListener(this)
     }
 }
-
-data class DeviceData(
-    val x: Float,
-    val y: Float,
-    val z: Float,
-)
-
-val DefaultDeviceData = DeviceData(0f, 0f, 0f)
-
-operator fun DeviceData.minus(other: DeviceData): DeviceData {
-    return DeviceData(this.x - other.x, this.y - other.y, this.z - other.z)
-}
-fun DeviceData.toOffset(): Offset = Offset(x * 10, -y * 10)
