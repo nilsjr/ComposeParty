@@ -1,18 +1,18 @@
 [versions]
-accompanist = "0.26.5-rc"
+accompanist = "0.27.0"
 compose = "1.2.0-rc01"
-composeAnimationGraphics = "1.3.0-rc01"
+composeAnimationGraphics = "1.4.0-alpha01"
 composeCompiler = "1.3.2"
-composeMaterial3 = "1.0.0-rc01"
-composeMaterialIcons = "1.3.0-rc01"
-composeUi = "1.3.0-rc01"
-composeUiTooling = "1.3.0-rc01"
+composeMaterial3 = "1.1.0-alpha01"
+composeMaterialIcons = "1.4.0-alpha01"
+composeUi = "1.4.0-alpha01"
+composeUiTooling = "1.4.0-alpha01"
 kotlin = "1.7.20"
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 coilCompose = "io.coil-kt:coil-compose:1.4.0"
-composeActivity = "androidx.activity:activity-compose:1.7.0-alpha01"
+composeActivity = "androidx.activity:activity-compose:1.7.0-alpha02"
 composeAnimation = { module = "androidx.compose.animation:animation", version = "compose" }
 composeAnimationGraphics = { module = "androidx.compose.animation:animation-graphics", version.ref = "composeAnimationGraphics" }
 composeFoundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
@@ -25,5 +25,5 @@ composeUiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "c
 composeUiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "composeUiTooling" }
 constraintCompose = { module = "androidx.constraintlayout:constraintlayout-compose", version = "1.0.0" }
 coreKtx = { module = "androidx.core:core-ktx", version = "1.9.0" }
-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.6.0-alpha02" }
+lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.6.0-alpha03" }
 pagingCompose = "androidx.paging:paging-compose:1.0.0-alpha14"
