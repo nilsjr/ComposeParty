@@ -24,10 +24,12 @@ import de.nilsdruyen.composeparty.material.ScrollableScaffold
 import de.nilsdruyen.composeparty.paths.PathPawAnimation
 import de.nilsdruyen.composeparty.paths.VectorDemo
 import de.nilsdruyen.composeparty.swipe.SwipeDemo
+import de.nilsdruyen.composeparty.text.FontScaleDemo
 import de.nilsdruyen.composeparty.text.TextBrushing
 import de.nilsdruyen.composeparty.text.WrappingText
 
 val demoItems = mapOf<String, @Composable () -> Unit>(
+    "Font Scale Demo" to { FontScaleDemo() },
     "AVD Sample" to { AnimatedVectorDrawable() },
     "AddToCartButtonDemo" to { AddToCartButtonDemo() },
     "ChipButton" to { ChipButton() },
