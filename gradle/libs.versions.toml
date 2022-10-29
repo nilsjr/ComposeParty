@@ -7,7 +7,7 @@ composeMaterial3 = "1.1.0-alpha01"
 composeMaterialIcons = "1.4.0-alpha01"
 composeUi = "1.4.0-alpha01"
 composeUiTooling = "1.4.0-alpha01"
-composeConstraintLayout = "1.0.1"
+composeConstraintLayout = "1.1.0-alpha04"
 kotlin = "1.7.20"
 
 [libraries]
