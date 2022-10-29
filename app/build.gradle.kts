@@ -65,6 +65,7 @@ dependencies {
     implementation(libs.composeMaterial3)
     implementation(libs.composeAnimationGraphics)
     implementation(libs.composeMaterialIcons)
+    implementation(libs.androidx.compose.constraint)
 
     debugImplementation(libs.composeUiTooling)
     implementation(libs.composeUiToolingPreview)

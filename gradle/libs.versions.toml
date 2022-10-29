@@ -7,10 +7,12 @@ composeMaterial3 = "1.1.0-alpha01"
 composeMaterialIcons = "1.4.0-alpha01"
 composeUi = "1.4.0-alpha01"
 composeUiTooling = "1.4.0-alpha01"
+composeConstraintLayout = "1.0.1"
 kotlin = "1.7.20"
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
+androidx-compose-constraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
 coilCompose = "io.coil-kt:coil-compose:1.4.0"
 composeActivity = "androidx.activity:activity-compose:1.7.0-alpha02"
 composeAnimation = { module = "androidx.compose.animation:animation", version = "compose" }

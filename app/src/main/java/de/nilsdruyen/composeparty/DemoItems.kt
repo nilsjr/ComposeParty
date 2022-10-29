@@ -7,6 +7,7 @@ import de.nilsdruyen.composeparty.buttons.AddToCartButtonDemo
 import de.nilsdruyen.composeparty.buttons.ChipButton
 import de.nilsdruyen.composeparty.buttons.LoadingButtonDemo
 import de.nilsdruyen.composeparty.buttons.PreviewLoadingButton
+import de.nilsdruyen.composeparty.cards.TeaserSample
 import de.nilsdruyen.composeparty.freestyle.ComposeLogo
 import de.nilsdruyen.composeparty.freestyle.DashedLine
 import de.nilsdruyen.composeparty.freestyle.DynamicPointMesh
@@ -29,6 +30,7 @@ import de.nilsdruyen.composeparty.text.TextBrushing
 import de.nilsdruyen.composeparty.text.WrappingText
 
 val demoItems = mapOf<String, @Composable () -> Unit>(
+    "Teaser Card" to { TeaserSample() },
     "Font Scale Demo" to { FontScaleDemo() },
     "AVD Sample" to { AnimatedVectorDrawable() },
     "AddToCartButtonDemo" to { AddToCartButtonDemo() },
