@@ -2,6 +2,8 @@ package de.nilsdruyen.composeparty
 
 import androidx.compose.runtime.Composable
 import de.nilsdruyen.composeparty.animations.AnimatedVectorDrawable
+import de.nilsdruyen.composeparty.animations.ClockSample
+import de.nilsdruyen.composeparty.animations.MoveableSample
 import de.nilsdruyen.composeparty.animations.TextAnim
 import de.nilsdruyen.composeparty.buttons.AddToCartButtonDemo
 import de.nilsdruyen.composeparty.buttons.ChipButton
@@ -33,6 +35,7 @@ import de.nilsdruyen.composeparty.text.WrappingText
 val demoItems = mapOf<String, @Composable () -> Unit>(
     "AVD Sample" to { AnimatedVectorDrawable() },
     "AddToCartButtonDemo" to { AddToCartButtonDemo() },
+    "Clock" to { ClockSample() },
     "ChipButton" to { ChipButton() },
     "CollapsingToolbarLayout" to { CollapsingToolbarLayoutExample() },
     "ComposeLogo" to { ComposeLogo() },
@@ -45,6 +48,7 @@ val demoItems = mapOf<String, @Composable () -> Unit>(
     "LoadingButtonDemo" to { LoadingButtonDemo() },
     "MenuToClose" to { MenuToClose() },
     "MeshBlockify" to { MeshBlockify() },
+    "Orbital" to { MoveableSample() },
     "Path Paw Anim" to { PathPawAnimation() },
     "PreviewLoadingButton" to { PreviewLoadingButton() },
     "Progress Sample" to { ProgressSample() },

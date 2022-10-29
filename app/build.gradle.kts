@@ -66,6 +66,7 @@ dependencies {
     implementation(libs.composeAnimationGraphics)
     implementation(libs.composeMaterialIcons)
     implementation(libs.androidx.compose.constraint)
+    implementation(libs.coilCompose)
 
     debugImplementation(libs.composeUiTooling)
     implementation(libs.composeUiToolingPreview)
@@ -75,4 +76,5 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.0")
     implementation("com.jakewharton.timber:timber:5.0.1")
     implementation("com.airbnb.android:lottie-compose:5.2.0")
+    implementation("com.github.skydoves:orbital:0.2.2")
 }
