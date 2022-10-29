@@ -15,6 +15,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
@@ -32,7 +33,8 @@ fun TeaserSample() {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(32.dp),
+                .padding(32.dp)
+                .clip(Shapeable(ShapeDecoration(ShapeCorner(CornerType.CUT, 25.dp)))),
             shape = RoundedCornerShape(16.dp),
             elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp),
         ) {
