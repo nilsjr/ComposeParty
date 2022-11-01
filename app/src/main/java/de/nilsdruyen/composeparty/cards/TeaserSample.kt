@@ -1,7 +1,10 @@
 package de.nilsdruyen.composeparty.cards
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -30,61 +33,88 @@ fun TeaserSample() {
     val cardHeight = remember { mutableStateOf(200) }
 
     Box(modifier = Modifier.fillMaxSize()) {
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(32.dp)
-                .clip(Shapeable(ShapeDecoration(ShapeCorner(CornerType.CUT, 25.dp)))),
-            shape = RoundedCornerShape(16.dp),
-            elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp),
+        Column(
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            ConstraintLayout(
+            Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(cardHeight.value.dp)
+                    .padding(32.dp),
+                shape = RoundedCornerShape(16.dp),
+                elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp),
             ) {
-                val (illustration) = createRefs()
-                Box(
+                ConstraintLayout(
                     modifier = Modifier
-                        .constrainAs(illustration) {
-                            width = Dimension.percent(.36f)
-                            height = Dimension.fillToConstraints
-                            linkTo(parent.top, parent.bottom)
-                            start.linkTo(parent.start)
-                        },
-                    contentAlignment = Alignment.Center
+                        .fillMaxWidth()
+                        .height(cardHeight.value.dp)
                 ) {
-                    val brush = Brush.verticalGradient(
-                        listOf(
-                            Color(0xFFB0D8F0),
-                            Color(0xFFFFFFFF),
-                            Color(0xFFB0D8F0),
-                        )
-                    )
-                    Canvas(
-                        modifier = Modifier.fillMaxSize()
+                    val (illustration) = createRefs()
+                    Box(
+                        modifier = Modifier
+                            .constrainAs(illustration) {
+                                width = Dimension.percent(.36f)
+                                height = Dimension.fillToConstraints
+                                linkTo(parent.top, parent.bottom)
+                                start.linkTo(parent.start)
+                            },
+                        contentAlignment = Alignment.Center
                     ) {
-                        val curveWidth = size.width * .25f
-                        val widthMultiplier = 1.1f
-                        val path = Path()
-                        path.moveTo(0f, 0f)
-                        path.lineTo(size.width - curveWidth, 0f)
-                        path.cubicTo(
-                            x1 = size.width * widthMultiplier,
-                            y1 = size.height * .3f,
-                            x2 = size.width * widthMultiplier,
-                            y2 = size.height * .7f,
-                            x3 = size.width - curveWidth,
-                            y3 = size.height
+                        val brush = Brush.verticalGradient(
+                            listOf(
+                                Color(0xFFB0D8F0),
+                                Color(0xFFFFFFFF),
+                                Color(0xFFB0D8F0),
+                            )
                         )
-                        path.lineTo(0f, size.height)
+                        Canvas(
+                            modifier = Modifier.fillMaxSize()
+                        ) {
+                            val curveWidth = size.width * .25f
+                            val widthMultiplier = 1.1f
+                            val path = Path()
+                            path.moveTo(0f, 0f)
+                            path.lineTo(size.width - curveWidth, 0f)
+                            path.cubicTo(
+                                x1 = size.width * widthMultiplier,
+                                y1 = size.height * .3f,
+                                x2 = size.width * widthMultiplier,
+                                y2 = size.height * .7f,
+                                x3 = size.width - curveWidth,
+                                y3 = size.height
+                            )
+                            path.lineTo(0f, size.height)
+                            path.close()
 
-                        drawPath(
-                            path = path,
-                            brush = brush,
-                        )
+                            drawPath(
+                                path = path,
+                                brush = brush,
+                            )
+                        }
                     }
                 }
+            }
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+                    .padding(16.dp)
+                    .clip(
+                        Shapeable(
+                            ShapeDecoration(
+                                topStart = ShapeCorner(CornerType.CUT, 35.dp),
+                                topEnd = ShapeCorner(CornerType.ROUND, 16.dp),
+                                bottomEnd = ShapeCorner(CornerType.CUT, 50.dp),
+                            )
+                        )
+                    ),
+                colors = CardDefaults.cardColors(containerColor = Color.Blue),
+                elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp),
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.Red)
+                )
             }
         }
         Slider(

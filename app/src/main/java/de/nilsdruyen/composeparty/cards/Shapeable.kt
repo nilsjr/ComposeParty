@@ -22,12 +22,76 @@ class Shapeable(val decoration: ShapeDecoration) : Shape {
         val bottomStartSize = decoration.bottomStart.size.value * density.density
 
         val path = Path().apply {
-            moveTo(size.width / 2f, 0f)
-            lineTo(size.width, size.height)
-            lineTo(0f, size.height)
+            applyTopStartPath(decoration.topStart.type, topStartSize)
+            applyTopEndPath(decoration.topEnd.type, topEndSize, size)
+            applyBottomEndPath(decoration.bottomEnd.type, bottomEndSize, size)
+            applyBottomStartPath(decoration.bottomStart.type, bottomStartSize, size)
             close()
         }
         return Outline.Generic(path)
+    }
+}
+
+fun Path.applyTopStartPath(type: CornerType, shapeSize: Float) {
+    when (type) {
+        CornerType.CUT -> {
+            moveTo(0f, shapeSize)
+            lineTo(shapeSize, 0f)
+        }
+        CornerType.ROUND -> {
+            moveTo(0f, shapeSize)
+            cubicTo(0f, 0f, 0f, 0f, shapeSize, 0f)
+        }
+        CornerType.NONE -> {
+            moveTo(0f, 0f)
+        }
+    }
+}
+fun Path.applyTopEndPath(type: CornerType, shapeSize: Float, size: Size) {
+    when (type) {
+        CornerType.CUT -> {
+            lineTo(size.width - shapeSize, 0f)
+            lineTo(size.width, shapeSize)
+        }
+        CornerType.ROUND -> {
+            lineTo(size.width - shapeSize, 0f)
+            cubicTo(size.width, 0f, size.width, 0f, size.width, shapeSize)
+        }
+        CornerType.NONE -> {
+            lineTo(size.width, 0f)
+        }
+    }
+}
+
+fun Path.applyBottomEndPath(type: CornerType, shapeSize: Float, size: Size) {
+    when (type) {
+        CornerType.CUT -> {
+            lineTo(size.width, size.height - shapeSize)
+            lineTo(size.width - shapeSize, size.height)
+        }
+        CornerType.ROUND -> {
+            lineTo(size.width, size.height - shapeSize)
+            cubicTo(size.width, size.height, size.width, size.height, size.width - shapeSize, size.height)
+        }
+        CornerType.NONE -> {
+            lineTo(size.width, size.height)
+        }
+    }
+}
+
+fun Path.applyBottomStartPath(type: CornerType, shapeSize: Float, size: Size) {
+    when (type) {
+        CornerType.CUT -> {
+            lineTo(shapeSize, size.height)
+            lineTo(0f, size.height - shapeSize)
+        }
+        CornerType.ROUND -> {
+            lineTo(shapeSize, size.height)
+            cubicTo(0f, size.height, 0f, size.height, 0f, size.height - shapeSize)
+        }
+        CornerType.NONE -> {
+           lineTo(0f, size.height)
+        }
     }
 }
 
