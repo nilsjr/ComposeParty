@@ -25,30 +25,37 @@ import glm_.glm
 import glm_.glm.sin
 import kotlinx.coroutines.isActive
 
-private val minDotRad: Float = 2f
-private val maxDotRad: Float = 10f
-private val xAbsVariance: Float = 10f
-private val yAbsVariance: Float = 10f
-private val xFreq: Float = 1f
-private val yFreq: Float = 2f
-private val hueMax: Float = 200f
-private val hueMin: Float = 90f
-private val hueSat: Float = 60f
-private val hueValue: Float = 100f
+data class DynamicHueSpec(
+    val dotCount: Int = 25,
+    val minDotRad: Float = 2f,
+    val maxDotRad: Float = 10f,
+    val xAbsVariance: Float = 10f,
+    val yAbsVariance: Float = 10f,
+    val xFreq: Float = 1f,
+    val yFreq: Float = 2f,
+    val hueMin: Float = 0f,
+    val hueMax: Float = 300f,
+    val hueSat: Float = 70f,
+    val hueValue: Float = 100f,
+)
 
 @Composable
 fun DynamicHueSample() {
-    DynamicHueSample(Modifier.fillMaxSize())
+    DynamicHueSample(modifier = Modifier.fillMaxSize())
 }
 
 @Composable
-fun DynamicHueSample(modifier: Modifier = Modifier) {
+fun DynamicHueSample(
+    modifier: Modifier = Modifier,
+    speed: Float = .1f,
+    spec: DynamicHueSpec = DynamicHueSpec()
+) {
     val advance = remember { AnimationState(0f) }
 
     LaunchedEffect(Unit) {
         while (isActive) {
             advance.animateTo(
-                targetValue = advance.value + .1f,
+                targetValue = advance.value + speed,
                 animationSpec = tween(7000, 50, easing = LinearEasing),
                 sequentialAnimation = true
             )
@@ -59,7 +66,7 @@ fun DynamicHueSample(modifier: Modifier = Modifier) {
         drawDynamicHue(
             time = advance.value,
             size = size,
-            dotCount = 45,
+            spec = spec,
         )
     }
 }
@@ -67,13 +74,13 @@ fun DynamicHueSample(modifier: Modifier = Modifier) {
 fun DrawScope.drawDynamicHue(
     time: Float,
     size: Size,
-    dotCount: Int,
+    spec: DynamicHueSpec,
 ) {
     val rel = size.width / size.height
-    val verticalDotCount = (dotCount / rel).toInt()
-    (0 until dotCount).forEach { x ->
+    val verticalDotCount = (spec.dotCount / rel).toInt()
+    (0 until spec.dotCount).forEach { x ->
         (0 until verticalDotCount).forEach { y ->
-            val u = x / (dotCount - 1).toFloat()
+            val u = x / (spec.dotCount - 1).toFloat()
             val v = y / (verticalDotCount - 1).toFloat()
 
             val posX = lerp(min = 0f, max = size.width, norm = u)
@@ -83,33 +90,33 @@ fun DrawScope.drawDynamicHue(
                 (sin((v + time * 20) * TWO_PI) + glm.cos((u + time * 20) * TWO_PI)).toFloat(),
                 -2f,
                 2f,
-                minDotRad,
-                maxDotRad
+                spec.minDotRad,
+                spec.maxDotRad
             )
             val shiftedX = posX + map(
-                sin((u * xFreq + time * 10) * TWO_PI).toFloat(),
+                sin((u * spec.xFreq + time * 10) * TWO_PI).toFloat(),
                 -1f,
                 1f,
-                -xAbsVariance,
-                xAbsVariance
+                -spec.xAbsVariance,
+                spec.xAbsVariance
             )
             val shiftedY = posY + map(
-                glm.cos((v * yFreq + time * 10) * TWO_PI).toFloat(),
+                glm.cos((v * spec.yFreq + time * 10) * TWO_PI).toFloat(),
                 -1f,
                 1f,
-                -yAbsVariance,
-                yAbsVariance
+                -spec.yAbsVariance,
+                spec.yAbsVariance
             )
             val color = Color.hsv(
                 hue = map(
                     value = effectiveRad,
-                    sourceMin = minDotRad,
-                    sourceMax = maxDotRad,
-                    destMin = hueMax,
-                    destMax = hueMin
+                    sourceMin = spec.minDotRad,
+                    sourceMax = spec.maxDotRad,
+                    destMin = spec.hueMin,
+                    destMax = spec.hueMax,
                 ),
-                saturation = hueSat / 100f,
-                value = hueValue / 100f
+                saturation = spec.hueSat / 100f,
+                value = spec.hueValue / 100f
             )
             drawCircle(
                 color = color,
@@ -123,7 +130,7 @@ fun DrawScope.drawDynamicHue(
 @Preview
 @Composable
 fun PreviewDynamicHueSample() {
-    DynamicHueSample(Modifier.fillMaxSize())
+    DynamicHueSample(modifier = Modifier.fillMaxSize())
 }
 
 @Preview
