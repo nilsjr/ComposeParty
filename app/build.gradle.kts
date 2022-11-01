@@ -22,8 +22,8 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("debug")
-            isMinifyEnabled = true
             isShrinkResources = true
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -85,5 +85,5 @@ dependencies {
     implementation(libs.skydoves.orbital)
 
     implementation(libs.graphics.glm)
-    implementation("com.valentinilk.shimmer:compose-shimmer:1.0.3")
+//    implementation("com.valentinilk.shimmer:compose-shimmer:1.0.3")
 }
