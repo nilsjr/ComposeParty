@@ -168,9 +168,9 @@ fun easing1(x: Float): Float {
 
 }
 
-fun easing2(x: Float): Float =
+private fun easing2(x: Float): Float =
     if (x < 0.5) (8 * x * x * x * x) else (1 - (-2 * x + 2).toDouble().pow(4.0) / 2).toFloat()
 
-fun map(value: Float, start1: Float, stop1: Float, start2: Float, stop2: Float): Float {
+private fun map(value: Float, start1: Float, stop1: Float, start2: Float, stop2: Float): Float {
     return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1))
 }

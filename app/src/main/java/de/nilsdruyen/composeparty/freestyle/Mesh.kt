@@ -33,7 +33,17 @@ private const val WIDTH = 1080f
 private const val HEIGHT = 2022f
 
 @Composable
-fun DynamicPointMesh(modifier: Modifier = Modifier) {
+fun MeshSample() {
+    DynamicPointMesh(
+        Modifier
+            .fillMaxSize()
+            .statusBarsPadding()
+            .background(MaterialTheme.colorScheme.background)
+    )
+}
+
+@Composable
+fun DynamicPointMesh(modifier: Modifier) {
     val animatedProgress = animationTimeMillis()
 
     val color = MaterialTheme.colorScheme.onBackground
@@ -56,11 +66,7 @@ fun DynamicPointMesh(modifier: Modifier = Modifier) {
     }
 
     Canvas(
-        modifier = Modifier
-            .fillMaxSize()
-            .statusBarsPadding()
-            .background(MaterialTheme.colorScheme.background)
-            .then(modifier)
+        modifier = modifier
     ) {
         // Unused but required for draw update
         // There may be a better way to do this

@@ -2,6 +2,7 @@ package de.nilsdruyen.composeparty
 
 import androidx.compose.runtime.Composable
 import de.nilsdruyen.composeparty.animations.ClockSample
+import de.nilsdruyen.composeparty.animations.DynamicHueSample
 import de.nilsdruyen.composeparty.animations.MoveableSample
 import de.nilsdruyen.composeparty.animations.TextAnim
 import de.nilsdruyen.composeparty.buttons.AddToCartButtonDemo
@@ -11,9 +12,9 @@ import de.nilsdruyen.composeparty.cards.CardTiltSample
 import de.nilsdruyen.composeparty.cards.TeaserSample
 import de.nilsdruyen.composeparty.freestyle.ComposeLogo
 import de.nilsdruyen.composeparty.freestyle.DashedLine
-import de.nilsdruyen.composeparty.freestyle.DynamicPointMesh
 import de.nilsdruyen.composeparty.freestyle.FlingAnimation
 import de.nilsdruyen.composeparty.freestyle.HeartRate
+import de.nilsdruyen.composeparty.freestyle.MeshSample
 import de.nilsdruyen.composeparty.freestyle.ProgressSample
 import de.nilsdruyen.composeparty.freestyle.SensorSample
 import de.nilsdruyen.composeparty.freestyle.SpringAnimation
@@ -40,7 +41,7 @@ val demoItems = mapOf<String, @Composable () -> Unit>(
     "CollapsingToolbarLayout" to { CollapsingToolbarLayoutExample() },
     "ComposeLogo" to { ComposeLogo() },
     "DashedLine" to { DashedLine() },
-    "DynamicPointMesh" to { DynamicPointMesh() },
+    "DynamicPointMesh" to { MeshSample() },
     "Fling Anim" to { FlingAnimation() },
     "Font Scale Demo" to { FontScaleDemo() },
     "HeartRate" to { HeartRate() },
@@ -62,4 +63,5 @@ val demoItems = mapOf<String, @Composable () -> Unit>(
     "TextBrushing" to { TextBrushing() },
     "VectorDemo" to { VectorDemo() },
     "Wrapping Text" to { WrappingText() },
+    "DynamicHue Sample" to { DynamicHueSample() },
 )
