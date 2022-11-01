@@ -18,27 +18,30 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import de.nilsdruyen.composeparty.utils.Centered
 
 @Composable
 fun ChipButton() {
     var isSelected by remember { mutableStateOf(false) }
 
-    Button(
-        onClick = { isSelected = !isSelected },
-        modifier = Modifier
-            .wrapContentSize()
+    Centered {
+
+        Button(
+            onClick = { isSelected = !isSelected },
+            modifier = Modifier
+                .wrapContentSize()
 //            .animateContentSize()
-    ) {
+        ) {
 //        AnimatedContent(targetState = isSelected) { isSelected ->
-        Row {
-            AnimatedVisibility(visible = isSelected) {
-                Icon(
-                    imageVector = Icons.Filled.Add,
-                    modifier = Modifier.align(Alignment.CenterVertically),
-                    tint = Color.White,
-                    contentDescription = "Thin checkmark"
-                )
-            }
+            Row {
+                AnimatedVisibility(visible = isSelected) {
+                    Icon(
+                        imageVector = Icons.Filled.Add,
+                        modifier = Modifier.align(Alignment.CenterVertically),
+                        tint = Color.White,
+                        contentDescription = "Thin checkmark"
+                    )
+                }
 //                if (isSelected) {
 //                    Icon(
 //                        imageVector = Icons.Filled.Add,
@@ -47,13 +50,14 @@ fun ChipButton() {
 //                        contentDescription = "Thin checkmark"
 //                    )
 //                }
-            Text(
-                text = "Text",
-                modifier = Modifier
-                    .padding(horizontal = 8.dp)
-                    .align(Alignment.CenterVertically)
-            )
-        }
+                Text(
+                    text = "Text",
+                    modifier = Modifier
+                        .padding(horizontal = 8.dp)
+                        .align(Alignment.CenterVertically)
+                )
+            }
 //        }
+        }
     }
 }

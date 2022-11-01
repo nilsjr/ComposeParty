@@ -5,6 +5,7 @@ import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -41,7 +42,10 @@ fun SquareFun(modifier: Modifier = Modifier) {
         )
     }
 
-    Canvas(modifier = modifier) {
+    Canvas(
+        modifier = modifier
+            .fillMaxSize()
+    ) {
         val t = animatedProgress.value
         val w = size.width
         val h = size.height
@@ -148,12 +152,15 @@ fun easing1(x: Float): Float {
         x == 0f -> {
             0f
         }
+
         x == 1f -> {
             1f
         }
+
         x < 0.5f -> {
             2.0.pow(20 * x - 10.0).toFloat() / 2
         }
+
         else -> {
             (2f - 2.0.pow(-20f * x + 10.0)).toFloat() / 2
         }

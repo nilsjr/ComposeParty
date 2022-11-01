@@ -42,6 +42,7 @@ import kotlin.math.sin
 @Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
 @Composable
 fun ProgressSample() {
+    // TODO: drag value on path missing
     var progress by remember { mutableStateOf(.1f) }
     val measurer = rememberTextMeasurer()
     val percentage = remember {
