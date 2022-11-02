@@ -17,26 +17,17 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import de.nilsdruyen.composeparty.demoItems
 import de.nilsdruyen.composeparty.isles.IsleExample
 import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
 
 @Composable
 fun ItemList(onItemClicked: (String) -> Unit) {
-    val systemUiController = rememberSystemUiController()
-
-    SideEffect {
-        systemUiController.setStatusBarColor(Color.Transparent, darkIcons = true)
-    }
-
     Column(
         modifier = Modifier
             .fillMaxSize()
