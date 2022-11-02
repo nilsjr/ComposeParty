@@ -33,8 +33,8 @@ data class DynamicHueSpec(
     val yAbsVariance: Float = 10f,
     val xFreq: Float = 1f,
     val yFreq: Float = 2f,
-    val hueMin: Float = 0f,
-    val hueMax: Float = 300f,
+    val hueMin: Float = 160f,
+    val hueMax: Float = 360f,
     val hueSat: Float = 70f,
     val hueValue: Float = 100f,
 )

@@ -52,8 +52,14 @@ import de.nilsdruyen.composeparty.animations.DynamicHueSpec
 import de.nilsdruyen.composeparty.utils.lerp
 import kotlinx.coroutines.launch
 
-private val maxAngleRange = -5f..5f
 private const val moveValue = 100f
+private val maxAngleRange = -10f..10f
+private val gradientColors = listOf(
+    Color.Black,
+    Color.Blue.copy(alpha = .8f),
+    Color.Black,
+    Color.Blue.copy(alpha = .6f)
+)
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Preview(showBackground = true, backgroundColor = 0xFFFDFDFD)
@@ -74,12 +80,6 @@ fun CardTiltSample() {
     val animatedRotationY by animateFloatAsState(targetValue = rotation.value.y)
     val animatedElementOffset by animateOffsetAsState(targetValue = elementOffset)
 
-    val gradientColors = listOf(
-        Color.Black,
-        Color.Blue.copy(alpha = .8f),
-        Color.Black,
-        Color.Blue.copy(alpha = .6f)
-    )
     val brush = remember(rotation.value.x, rotation.value.y) {
         object : ShaderBrush() {
             override fun createShader(size: Size): Shader {
@@ -123,14 +123,12 @@ fun CardTiltSample() {
                                 )
                             }
                         }
-
                         MotionEvent.ACTION_MOVE -> {
                             val offset = Offset(it.x, it.y).calculateTilt(center)
                             scope.launch {
                                 rotation.animateTo(offset, tween(0))
                             }
                         }
-
                         MotionEvent.ACTION_UP -> {
                             scope.launch {
                                 rotation.animateTo(
@@ -139,7 +137,6 @@ fun CardTiltSample() {
                                 )
                             }
                         }
-
                         else -> {}
                     }
                     true
@@ -226,29 +223,6 @@ fun CardTiltSample() {
                 )
             }
         }
-        // controls
-//        Column(modifier = Modifier.align(Alignment.BottomCenter)) {
-//            Text(
-//                text = "$rotationX - $rotationY",
-//                modifier = Modifier.align(Alignment.CenterHorizontally)
-//            )
-//            Slider(
-//                value = rotationX,
-//                onValueChange = { rotationX = it },
-//                valueRange = 0f..1f,
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .padding(horizontal = 16.dp)
-//            )
-//            Slider(
-//                value = rotationY,
-//                onValueChange = { rotationY = it },
-//                valueRange = 0f..1f,
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .padding(horizontal = 16.dp)
-//            )
-//        }
     }
 }
 
