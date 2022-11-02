@@ -33,9 +33,6 @@ import de.nilsdruyen.composeparty.text.TextBrushing
 import de.nilsdruyen.composeparty.text.WrappingText
 
 val demoItems = mapOf<String, @Composable () -> Unit>(
-    "Shader Sample" to { ShaderSample() },
-    "Text Animation" to { TextAnimationSample() },
-//    "AVD Sample" to { AnimatedVectorDrawable() }, // TODO: not working
     "AddToCartButtonDemo" to { AddToCartButtonDemo() },
     "Card Sample" to { CardTiltSample() },
     "ChipButton" to { ChipButton() },
@@ -43,27 +40,30 @@ val demoItems = mapOf<String, @Composable () -> Unit>(
     "CollapsingToolbarLayout" to { CollapsingToolbarLayoutExample() },
     "ComposeLogo" to { ComposeLogo() },
     "DashedLine" to { DashedLine() },
+    "DynamicHue Sample" to { DynamicHueSample() },
     "DynamicPointMesh" to { MeshSample() },
     "Fling Anim" to { FlingAnimation() },
     "Font Scale Demo" to { FontScaleDemo() },
     "HeartRate" to { HeartRate() },
     "IsleExample" to { IsleExample() },
     "LoadingButtonDemo" to { LoadingButtonDemo() },
-//    "MenuToClose" to { MenuToClose() }, // TODO: error
-//    "MeshBlockify" to { MeshBlockify() }, // TODO: error
     "Orbital" to { MoveableSample() },
     "Path Paw Anim" to { PathPawAnimation() },
     "Progress Sample" to { ProgressSample() },
     "ScrollableScaffold" to { ScrollableScaffold() },
     "Sensor Sample" to { SensorSample() },
+    "Shader Sample" to { ShaderSample() },
     "Spring Animation" to { SpringAnimation() },
     "SquareFun" to { SquareFun() },
     "StaggeredGridLayout" to { SampleStaggeredGridLayout() },
     "Swipe Game" to { SwipeDemo() },
     "Teaser Card" to { TeaserSample() },
+    "Text Animation" to { TextAnimationSample() },
     "TextAnim" to { TextAnim() },
     "TextBrushing" to { TextBrushing() },
     "VectorDemo" to { VectorDemo() },
     "Wrapping Text" to { WrappingText() },
-    "DynamicHue Sample" to { DynamicHueSample() },
+//    "AVD Sample" to { AnimatedVectorDrawable() }, // TODO: not working
+//    "MenuToClose" to { MenuToClose() }, // TODO: error
+//    "MeshBlockify" to { MeshBlockify() }, // TODO: error
 )
