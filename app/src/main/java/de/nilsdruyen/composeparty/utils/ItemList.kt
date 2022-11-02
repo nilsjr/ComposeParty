@@ -32,7 +32,6 @@ fun ItemList(onItemClicked: (String) -> Unit) {
         modifier = Modifier
             .fillMaxSize()
             .systemBarsPadding()
-            .padding(horizontal = 16.dp)
             .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
@@ -42,6 +41,7 @@ fun ItemList(onItemClicked: (String) -> Unit) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(42.dp)
+                    .padding(horizontal = 8.dp)
                     .clip(RoundedCornerShape(8.dp))
                     .background(MaterialTheme.colorScheme.primaryContainer)
                     .clickable {
