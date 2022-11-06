@@ -34,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.LinearGradientShader
 import androidx.compose.ui.graphics.Shader
 import androidx.compose.ui.graphics.ShaderBrush
@@ -42,6 +43,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -95,6 +97,8 @@ fun CardTiltSample() {
         }
     }
 
+    val image = ImageBitmap.imageResource(id = R.drawable.galaxy)
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -123,12 +127,14 @@ fun CardTiltSample() {
                                 )
                             }
                         }
+
                         MotionEvent.ACTION_MOVE -> {
                             val offset = Offset(it.x, it.y).calculateTilt(center)
                             scope.launch {
                                 rotation.animateTo(offset, tween(0))
                             }
                         }
+
                         MotionEvent.ACTION_UP -> {
                             scope.launch {
                                 rotation.animateTo(
@@ -137,6 +143,7 @@ fun CardTiltSample() {
                                 )
                             }
                         }
+
                         else -> {}
                     }
                     true
@@ -149,12 +156,6 @@ fun CardTiltSample() {
                     .background(Color.Black)
                     .background(brush)
             ) {
-//                Image(
-//                    painter = painterResource(id = R.drawable.bg_forest),
-//                    contentDescription = null,
-//                    contentScale = ContentScale.Crop,
-//                    modifier = Modifier.fillMaxSize(),
-//                )
                 DynamicHueSample(
                     modifier = Modifier.fillMaxSize(),
                     speed = .1f,
@@ -172,6 +173,19 @@ fun CardTiltSample() {
                         hueValue = 90f,
                     ),
                 )
+//                Canvas(
+//                    modifier = Modifier
+//                        .fillMaxSize()
+//                        .scale(1.2f)
+//                ) {
+//                    drawImage(
+//                        image = image,
+//                        blendMode = BlendMode.Multiply,
+//                        alpha = .3f,
+//                        dstSize = IntSize(size.width.roundToInt(), size.height.roundToInt()),
+//                        dstOffset = animatedElementOffset.round(),
+//                    )
+//                }
                 Canvas(
                     modifier = Modifier
                         .fillMaxSize()
