@@ -14,6 +14,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import de.nilsdruyen.composeparty.utils.animationTimeMillis
 import kotlin.math.cos
 import kotlin.math.floor
 import kotlin.math.pow

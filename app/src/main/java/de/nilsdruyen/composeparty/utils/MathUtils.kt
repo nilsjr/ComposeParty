@@ -2,6 +2,8 @@ package de.nilsdruyen.composeparty.utils
 
 fun lerp(min: Float, max: Float, norm: Float): Float = (max - min) * norm + min
 
+fun lerp(min: Int, max: Int, norm: Int): Int = (max - min) * norm + min
+
 fun norm(value: Float, min: Float, max: Float): Float {
     return (value - min) / (max - min)
 }

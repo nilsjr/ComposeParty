@@ -1,4 +1,4 @@
-package de.nilsdruyen.composeparty.freestyle
+package de.nilsdruyen.composeparty.utils
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

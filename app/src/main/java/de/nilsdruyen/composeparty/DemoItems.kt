@@ -9,9 +9,11 @@ import de.nilsdruyen.composeparty.buttons.AddToCartButtonDemo
 import de.nilsdruyen.composeparty.buttons.ChipButton
 import de.nilsdruyen.composeparty.buttons.LoadingButtonDemo
 import de.nilsdruyen.composeparty.cards.CardTiltSample
+import de.nilsdruyen.composeparty.cards.PeopleCardSample
 import de.nilsdruyen.composeparty.cards.TeaserSample
 import de.nilsdruyen.composeparty.freestyle.ComposeLogo
 import de.nilsdruyen.composeparty.freestyle.DashedLine
+import de.nilsdruyen.composeparty.freestyle.EqualizerSample
 import de.nilsdruyen.composeparty.freestyle.FlingAnimation
 import de.nilsdruyen.composeparty.freestyle.HeartRate
 import de.nilsdruyen.composeparty.freestyle.MeshSample
@@ -24,7 +26,9 @@ import de.nilsdruyen.composeparty.isles.IsleExample
 import de.nilsdruyen.composeparty.layouts.CollapsingToolbarLayoutExample
 import de.nilsdruyen.composeparty.layouts.SampleStaggeredGridLayout
 import de.nilsdruyen.composeparty.material.ScrollableScaffold
+import de.nilsdruyen.composeparty.math.GravitySample
 import de.nilsdruyen.composeparty.paths.PathPawAnimation
+import de.nilsdruyen.composeparty.paths.ScaleShapeSample
 import de.nilsdruyen.composeparty.paths.VectorDemo
 import de.nilsdruyen.composeparty.swipe.SwipeDemo
 import de.nilsdruyen.composeparty.text.FontScaleDemo
@@ -33,6 +37,10 @@ import de.nilsdruyen.composeparty.text.TextBrushing
 import de.nilsdruyen.composeparty.text.WrappingText
 
 val demoItems = mapOf<String, @Composable () -> Unit>(
+    "ScaleShapeSample" to { ScaleShapeSample() },
+    "EqualizerSample" to { EqualizerSample() },
+    "GravitySample" to { GravitySample() },
+    "PeopleCardSample" to { PeopleCardSample() },
     "AddToCartButtonDemo" to { AddToCartButtonDemo() },
     "Card Sample" to { CardTiltSample() },
     "ChipButton" to { ChipButton() },
