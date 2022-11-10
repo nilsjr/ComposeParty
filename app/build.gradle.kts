@@ -76,6 +76,7 @@ dependencies {
 
     implementation(libs.coil.compose)
     implementation(libs.lottie.compose)
+    implementation(libs.konfetti)
 
     implementation(libs.timber)
     implementation(libs.skydoves.orbital)
