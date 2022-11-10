@@ -11,6 +11,7 @@ import de.nilsdruyen.composeparty.buttons.LoadingButtonDemo
 import de.nilsdruyen.composeparty.cards.CardTiltSample
 import de.nilsdruyen.composeparty.cards.PeopleCardSample
 import de.nilsdruyen.composeparty.cards.TeaserSample
+import de.nilsdruyen.composeparty.freestyle.CanvasSample
 import de.nilsdruyen.composeparty.freestyle.ComposeLogo
 import de.nilsdruyen.composeparty.freestyle.DashedLine
 import de.nilsdruyen.composeparty.freestyle.EqualizerSample
@@ -31,12 +32,15 @@ import de.nilsdruyen.composeparty.paths.PathPawAnimation
 import de.nilsdruyen.composeparty.paths.ScaleShapeSample
 import de.nilsdruyen.composeparty.paths.VectorDemo
 import de.nilsdruyen.composeparty.swipe.SwipeDemo
+import de.nilsdruyen.composeparty.text.AutoSizeTextSample
 import de.nilsdruyen.composeparty.text.FontScaleDemo
 import de.nilsdruyen.composeparty.text.TextAnimationSample
 import de.nilsdruyen.composeparty.text.TextBrushing
 import de.nilsdruyen.composeparty.text.WrappingText
 
 val demoItems = mapOf<String, @Composable () -> Unit>(
+    "AutoSizeTextSample" to { AutoSizeTextSample() },
+    "CanvasSample" to { CanvasSample() },
     "ScaleShapeSample" to { ScaleShapeSample() },
     "EqualizerSample" to { EqualizerSample() },
     "GravitySample" to { GravitySample() },
