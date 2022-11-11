@@ -3,14 +3,14 @@ accompanist = "0.27.0"
 compose = "1.4.0-alpha02"
 composeAnimation = "1.4.0-alpha02"
 composeAnimationGraphics = "1.4.0-alpha02"
-composeCompiler = "1.4.0-alpha01"
+composeCompiler = "1.4.0-alpha02"
 composeConstraintLayout = "1.1.0-alpha04"
 composeMaterial3 = "1.1.0-alpha02"
 composeMaterialIcons = "1.4.0-alpha02"
 composeUi = "1.4.0-alpha02"
 composeUiTooling = "1.4.0-alpha02"
 glm = "0.9.9.1-5"
-kotlin = "1.7.20"
+kotlin = "1.7.21"
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
