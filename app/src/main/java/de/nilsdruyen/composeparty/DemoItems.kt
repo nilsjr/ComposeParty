@@ -21,6 +21,7 @@ import de.nilsdruyen.composeparty.freestyle.MeshSample
 import de.nilsdruyen.composeparty.freestyle.ProgressSample
 import de.nilsdruyen.composeparty.freestyle.SensorSample
 import de.nilsdruyen.composeparty.freestyle.ShaderSample
+import de.nilsdruyen.composeparty.freestyle.SnowFallSample
 import de.nilsdruyen.composeparty.freestyle.SpringAnimation
 import de.nilsdruyen.composeparty.freestyle.SquareFun
 import de.nilsdruyen.composeparty.isles.IsleExample
@@ -39,6 +40,7 @@ import de.nilsdruyen.composeparty.text.TextBrushing
 import de.nilsdruyen.composeparty.text.WrappingText
 
 val demoItems = mapOf<String, @Composable () -> Unit>(
+    "SnowFallSample" to { SnowFallSample() },
     "AutoSizeTextSample" to { AutoSizeTextSample() },
     "CanvasSample" to { CanvasSample() },
     "ScaleShapeSample" to { ScaleShapeSample() },
