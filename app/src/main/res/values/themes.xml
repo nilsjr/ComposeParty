@@ -11,10 +11,10 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="Theme.SplashParty" parent="Theme.ComposePartyApp">
+    <style name="Theme.SplashScreenTheme" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/purple_500</item>
-        <item name="windowSplashScreenAnimationDuration">800</item>
-<!--        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_loading</item>-->
-        <item name="postSplashScreenTheme">@style/Theme.ComposeParty</item>
+        <item name="windowSplashScreenAnimationDuration">2000</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.ComposePartyApp</item>
     </style>
 </resources>

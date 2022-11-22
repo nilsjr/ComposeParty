@@ -10,6 +10,8 @@ import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.awaitEachGesture
+import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,6 +33,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -41,11 +44,14 @@ import androidx.compose.ui.graphics.ShaderBrush
 import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.changedToUp
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.round
 import de.nilsdruyen.composeparty.R
@@ -255,3 +261,54 @@ private fun Float.toDegrees(inverted: Boolean = false): Float {
         lerp(maxAngleRange.endInclusive, maxAngleRange.start, this)
     }
 }
+
+fun Modifier.tiltOnTouch(
+    maxTiltDegrees: Float = DEF_MAX_TILT_DEGREES
+) = this.then(
+    composed {
+        val scope = rememberCoroutineScope()
+        val offset = remember { Animatable(Offset.Zero, Offset.VectorConverter) }
+
+        pointerInput(Unit) {
+            awaitEachGesture {
+                var newOffset = awaitFirstDown().position.normalize(size)
+                scope.launch {
+                    offset.animateTo(newOffset, spring)
+                }
+                do {
+                    val event = awaitPointerEvent()
+                    newOffset = event.changes.last().position.normalize(size)
+                    scope.launch {
+                        offset.animateTo(newOffset, spring)
+                    }
+                } while (event.changes.none { it.changedToUp() })
+                scope.launch {
+                    offset.animateTo(Offset.Zero, releaseSpring)
+                }
+            }
+        }.tilt(
+            offset = offset.value,
+            maxTiltDegrees = maxTiltDegrees
+        )
+    }
+)
+
+private val spring = spring<Offset>(stiffness = Spring.StiffnessMediumLow)
+private val releaseSpring =
+    spring<Offset>(dampingRatio = Spring.DampingRatioHighBouncy, stiffness = 300f)
+
+private fun Offset.normalize(size: IntSize) = Offset(
+    ((x - (size.width / 2)) / (size.width / 2)).coerceIn(-1f..1f),
+    ((y - (size.height / 2)) / (size.height / 2)).coerceIn(-1f..1f)
+)
+
+fun Modifier.tilt(
+    offset: Offset = Offset.Zero,
+    maxTiltDegrees: Float = DEF_MAX_TILT_DEGREES
+) = this.graphicsLayer(
+    rotationY = offset.x * maxTiltDegrees,
+    rotationX = -offset.y * maxTiltDegrees,
+    cameraDistance = 20f
+)
+
+const val DEF_MAX_TILT_DEGREES = 15f

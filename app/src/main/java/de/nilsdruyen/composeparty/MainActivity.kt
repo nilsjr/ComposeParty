@@ -1,6 +1,5 @@
 package de.nilsdruyen.composeparty
 
-import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
@@ -24,6 +23,7 @@ class MainActivity : ComponentActivity() {
 //            val splashScreen = installSplashScreen()
 //            splashScreen.setKeepOnScreenCondition { true }
 //        }
+        installSplashScreen()
 
         super.onCreate(savedInstanceState)
 
