@@ -55,7 +55,7 @@ fun ComposePartyTheme(
     val systemUiController = rememberSystemUiController()
 
     SideEffect {
-        systemUiController.setStatusBarColor(Color.Transparent, darkIcons = !darkTheme)
+        systemUiController.setSystemBarsColor(Color.Transparent, darkIcons = !darkTheme)
     }
 
     MaterialTheme(
