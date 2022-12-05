@@ -1,5 +1,5 @@
 [versions]
-accompanist = "0.27.1"
+accompanist = "0.28.0"
 compose = "1.4.0-alpha02"
 composeAnimation = "1.4.0-alpha02"
 composeAnimationGraphics = "1.4.0-alpha02"
