@@ -84,5 +84,4 @@ dependencies {
     implementation(libs.skydoves.orbital)
 
     implementation(libs.graphics.glm)
-//    implementation("com.valentinilk.shimmer:compose-shimmer:1.0.3")
 }
