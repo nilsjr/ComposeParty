@@ -11,19 +11,7 @@ import de.nilsdruyen.composeparty.buttons.LoadingButtonDemo
 import de.nilsdruyen.composeparty.cards.CardTiltSample
 import de.nilsdruyen.composeparty.cards.PeopleCardSample
 import de.nilsdruyen.composeparty.cards.TeaserSample
-import de.nilsdruyen.composeparty.freestyle.CanvasSample
-import de.nilsdruyen.composeparty.freestyle.ComposeLogo
-import de.nilsdruyen.composeparty.freestyle.DashedLine
-import de.nilsdruyen.composeparty.freestyle.EqualizerSample
-import de.nilsdruyen.composeparty.freestyle.FlingAnimation
-import de.nilsdruyen.composeparty.freestyle.HeartRate
-import de.nilsdruyen.composeparty.freestyle.MeshSample
-import de.nilsdruyen.composeparty.freestyle.ProgressSample
-import de.nilsdruyen.composeparty.freestyle.SensorSample
-import de.nilsdruyen.composeparty.freestyle.ShaderSample
-import de.nilsdruyen.composeparty.freestyle.SnowFallSample
-import de.nilsdruyen.composeparty.freestyle.SpringAnimation
-import de.nilsdruyen.composeparty.freestyle.SquareFun
+import de.nilsdruyen.composeparty.freestyle.*
 import de.nilsdruyen.composeparty.isles.IsleExample
 import de.nilsdruyen.composeparty.layouts.CollapsingToolbarLayoutExample
 import de.nilsdruyen.composeparty.layouts.SampleStaggeredGridLayout
@@ -40,6 +28,7 @@ import de.nilsdruyen.composeparty.text.TextBrushing
 import de.nilsdruyen.composeparty.text.WrappingText
 
 val demoItems = mapOf<String, @Composable () -> Unit>(
+    "Fire Shader Sample" to { FireAnimationShaderSample() },
     "AddToCartButtonDemo" to { AddToCartButtonDemo() },
     "AutoSizeTextSample" to { AutoSizeTextSample() },
     "CanvasSample" to { CanvasSample() },
