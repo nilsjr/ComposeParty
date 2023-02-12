@@ -1,8 +1,7 @@
 plugins {
-    id("com.android.application") version "8.0.0-alpha08" apply false
-    id("com.android.library") version "8.0.0-alpha08" apply false
-    kotlin("android") version "1.7.21" apply false
-    id("com.github.ben-manes.versions") version "0.43.0"
+    id("com.android.application") version "8.1.0-alpha04" apply false
+    kotlin("android") version "1.8.10" apply false
+    id("com.github.ben-manes.versions") version "0.44.0"
 }
 
 tasks.register<Delete>("clean") {
