@@ -59,9 +59,11 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
 import de.nilsdruyen.composeparty.utils.Centered
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
@@ -87,6 +89,14 @@ fun AddToCartButtonDemo() {
                 state = state.copy(count = state.count - 1)
             },
         )
+    }
+}
+
+@Preview
+@Composable
+fun AddToCartPreview() {
+    ComposePartyTheme {
+        AddToCartButtonDemo()
     }
 }
 
@@ -136,10 +146,7 @@ fun AddToCartButton(
                 transitionSpec = {
                     fadeIn(animationSpec = tween(220, delayMillis = 90)) with
                             fadeOut(animationSpec = tween(90)) using
-                            SizeTransform(false) { _, _ ->
-                                tween()
-//                                spring(Spring.DampingRatioMediumBouncy, Spring.StiffnessMediumLow)
-                            }
+                            SizeTransform(false) { _, _ -> tween() }
                 }
             ) { isExpanded ->
                 if (isExpanded) {

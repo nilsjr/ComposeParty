@@ -33,6 +33,7 @@ android {
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).all {
         kotlinOptions {
             jvmTarget = "11"
+            languageVersion = "1.8"
             freeCompilerArgs = listOf(
                 "-progressive",
                 "-Xopt-in=kotlin.RequiresOptIn",
@@ -42,6 +43,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
@@ -82,5 +84,4 @@ dependencies {
     implementation(libs.skydoves.orbital)
 
     implementation(libs.graphics.glm)
-//    implementation("com.valentinilk.shimmer:compose-shimmer:1.0.3")
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.SplashScreenTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">
+            @android:color/system_accent1_100
+        </item>
+        <item name="windowSplashScreenAnimationDuration">2000</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.ComposePartyApp</item>
+    </style>
+</resources>
