@@ -3,7 +3,7 @@ accompanist = "0.28.0"
 compose = "1.4.0-beta01"
 composeAnimation = "1.4.0-beta01"
 composeAnimationGraphics = "1.4.0-beta01"
-composeCompiler = "1.4.0-beta01"
+composeCompiler = "1.4.2"
 composeConstraintLayout = "1.1.0-alpha07"
 composeMaterial3 = "1.1.0-beta01"
 composeMaterialIcons = "1.4.0-beta01"
@@ -14,7 +14,7 @@ kotlin = "1.7.21"
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
-androidx-compose-activity = "androidx.activity:activity-compose:1.8.0-alpha01"
+androidx-compose-activity = "androidx.activity:activity-compose:1.7.0-beta01"
 androidx-compose-animation = { module = "androidx.compose.animation:animation", version.ref = "composeAnimation" }
 androidx-compose-animation-graphics = { module = "androidx.compose.animation:animation-graphics", version.ref = "composeAnimationGraphics" }
 androidx-compose-constraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
