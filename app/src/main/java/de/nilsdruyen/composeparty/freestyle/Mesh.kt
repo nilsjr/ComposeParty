@@ -4,7 +4,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
@@ -22,7 +22,7 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 
 private const val PARTICLE_QUANTITY = 300
-private const val DEFAULT_SPEED = 2
+private const val DEFAULT_SPEED = 1f
 private const val VARIANT_SPEED = 1
 private const val DEFAULT_RADIUS = 4
 private const val VARIANT_RADIUS = 2
@@ -38,8 +38,8 @@ fun MeshSample() {
     DynamicPointMesh(
         Modifier
             .fillMaxSize()
-            .statusBarsPadding()
             .background(MaterialTheme.colorScheme.background)
+            .systemBarsPadding()
     )
 }
 
