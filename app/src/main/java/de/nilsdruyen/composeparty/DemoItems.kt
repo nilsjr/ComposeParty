@@ -9,6 +9,7 @@ import de.nilsdruyen.composeparty.animations.TextAnim
 import de.nilsdruyen.composeparty.buttons.AddToCartButtonDemo
 import de.nilsdruyen.composeparty.buttons.ChipButton
 import de.nilsdruyen.composeparty.buttons.LoadingButtonDemo
+import de.nilsdruyen.composeparty.buttons.TextButtonSample
 import de.nilsdruyen.composeparty.cards.CardTiltSample
 import de.nilsdruyen.composeparty.cards.PeopleCardSample
 import de.nilsdruyen.composeparty.cards.TeaserSample
@@ -40,9 +41,12 @@ import de.nilsdruyen.composeparty.text.FontScaleDemo
 import de.nilsdruyen.composeparty.text.TextAnimationSample
 import de.nilsdruyen.composeparty.text.TextBrushing
 import de.nilsdruyen.composeparty.text.TextFieldColors
+import de.nilsdruyen.composeparty.text.TextFieldTransformation
 import de.nilsdruyen.composeparty.text.WrappingText
 
 val demoItems = mapOf<String, @Composable () -> Unit>(
+    "TextFieldTransformation" to { TextFieldTransformation() },
+    "TextButtonSample" to { TextButtonSample() },
     "TextFieldColors" to { TextFieldColors() },
     "Row Animation" to { AnimatedRow() },
     "Fire Shader Sample" to { FireAnimationShaderSample() },
