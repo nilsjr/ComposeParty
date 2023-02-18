@@ -34,6 +34,6 @@ androidx-splashscreen = "androidx.core:core-splashscreen:1.0.0"
 coil-compose = "io.coil-kt:coil-compose:2.2.2"
 graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
 lottie-compose = "com.airbnb.android:lottie-compose:6.0.0"
-skydoves-orbital = "com.github.skydoves:orbital:0.2.3"
+skydoves-orbital = "com.github.skydoves:orbital:0.2.4"
 timber = "com.jakewharton.timber:timber:5.0.1"
 konfetti = "nl.dionsegijn:konfetti-compose:2.0.2"

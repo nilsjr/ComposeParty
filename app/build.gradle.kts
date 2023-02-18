@@ -36,7 +36,7 @@ android {
             languageVersion = "1.8"
             freeCompilerArgs = listOf(
                 "-progressive",
-                "-Xopt-in=kotlin.RequiresOptIn",
+                "-opt-in=kotlin.RequiresOptIn",
                 "-Xcontext-receivers",
             )
         }
