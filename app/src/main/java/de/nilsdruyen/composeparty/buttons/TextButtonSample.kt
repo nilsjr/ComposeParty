@@ -33,7 +33,7 @@ fun TextButtonSample() {
                 onClick = { },
                 modifier = Modifier
                     .height(56.dp)
-                    .testTag("button_")
+                    .testTag("button_2")
             ) {
                 Text("Continue 2", modifier = Modifier.testTag("button_text_2"))
             }
