@@ -111,7 +111,7 @@ fun TextFieldTransformation() {
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
                     ) {
-                        Text("Input: ${input.text}")
+                        Text("Input: ${input.text}", Modifier.alignByBaseline())
                         Text("${input.text.length}/$maxLength")
                     }
                 },

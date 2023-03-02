@@ -4,8 +4,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Text
@@ -95,5 +95,7 @@ class UnconstrainedSizeModifier : LayoutModifier {
 @Preview
 @Composable
 fun AutoSizeTextPreview() {
-    AutoSizeText(text = "Hallo Test", Modifier.fillMaxWidth())
+    Box(Modifier.size(100.dp)) {
+        AutoSizeText(text = "Hallo Test", Modifier.fillMaxSize())
+    }
 }

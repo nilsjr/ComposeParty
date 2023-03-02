@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
                         screen.value = ""
                     }
 
-                    Crossfade(targetState = screen.value) {
+                    Crossfade(targetState = screen.value, label = "mainCrossFade") {
                         if (it.isNotEmpty()) {
                             demoItems[it]?.invoke()
                         } else {
