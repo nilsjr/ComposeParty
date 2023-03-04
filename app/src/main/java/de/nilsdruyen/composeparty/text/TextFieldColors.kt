@@ -69,7 +69,8 @@ fun TextFieldColors() {
                     .focusRequester(focusRequester)
                     .padding(horizontal = 32.dp),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
-                    placeholderColor = Color.Yellow,
+                    focusedPlaceholderColor = Color.Yellow,
+                    unfocusedPlaceholderColor = Color.Yellow,
                     focusedLabelColor = Color.Red,
                     unfocusedLabelColor = Color.Red.copy(alpha = .3f),
                     disabledLabelColor = Color.Red.copy(alpha = .1f),

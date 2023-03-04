@@ -17,6 +17,7 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.contentColorFor
+import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.PullRefreshState
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.pullRefreshIndicatorTransform
@@ -80,7 +81,7 @@ fun PullRefreshSample() {
             }
         }
 
-//        PullRefreshIndicator(refreshing, state, Modifier.align(Alignment.TopCenter))
+        PullRefreshIndicator(refreshing, state, Modifier.align(Alignment.TopCenter))
         PawRefreshIndicator(refreshing, state, Modifier.align(Alignment.TopCenter))
     }
 }

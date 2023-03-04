@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import de.nilsdruyen.composeparty.animations.AnimatedRow
 import de.nilsdruyen.composeparty.animations.ClockSample
 import de.nilsdruyen.composeparty.animations.DynamicHueSample
+import de.nilsdruyen.composeparty.animations.LayoutAnimationSample
 import de.nilsdruyen.composeparty.animations.MoveableSample
 import de.nilsdruyen.composeparty.animations.ProgressAnimationSample
 import de.nilsdruyen.composeparty.animations.TextAnim
@@ -35,6 +36,7 @@ import de.nilsdruyen.composeparty.text.TextFieldTransformation
 import de.nilsdruyen.composeparty.text.WrappingText
 
 val demoItems = mapOf<String, @Composable () -> Unit>(
+    "LayoutAnimationSample" to { LayoutAnimationSample() },
     "ProgressAnimationSample" to { ProgressAnimationSample() },
     "AddToCartButtonDemo" to { AddToCartButtonDemo() },
     "AutoSizeTextSample" to { AutoSizeTextSample() },
