@@ -62,7 +62,7 @@ dependencies {
         implementation(lifecycle)
         implementation(splashscreen)
 
-        implementation(platform("dev.chrisbanes.compose:compose-bom:2023.02.00-beta03"))
+        implementation(platform("dev.chrisbanes.compose:compose-bom:2023.02.00-rc02"))
         // Use whichever Compose artifacts you need without a version number
         implementation("androidx.compose.ui:ui")
         implementation("androidx.compose.runtime:runtime")
