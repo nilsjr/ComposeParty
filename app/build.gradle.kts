@@ -6,6 +6,7 @@ plugins {
 android {
     namespace = "de.nilsdruyen.composeparty"
     compileSdk = 33
+    compileSdkPreview = "UpsideDownCake"
 
     defaultConfig {
         applicationId = "de.nilsdruyen.composeparty"
@@ -80,6 +81,8 @@ dependencies {
     }
 
     implementation(libs.accompanist.systemuicontroller)
+//    implementation(libs.accompanist.placeholder)
+    implementation(libs.accompanist.placeholder.material)
 
     implementation(libs.coil.compose)
     implementation(libs.lottie.compose)
