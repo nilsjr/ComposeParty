@@ -16,12 +16,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.placeholder.PlaceholderHighlight
 import com.google.accompanist.placeholder.material3.fade
 import com.google.accompanist.placeholder.material3.placeholder
+import com.google.accompanist.placeholder.shimmer
 import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
 import de.nilsdruyen.composeparty.utils.Centered
 
@@ -37,15 +39,16 @@ fun PlaceholderSample() {
                 .padding(16.dp)
                 .heightIn(80.dp)
                 .border(width = 1.dp, shape = RoundedCornerShape(16.dp), color = Color.LightGray)
-                .padding(16.dp)
-                .clickable { visible = !visible },
+                .clip(RoundedCornerShape(16.dp))
+                .clickable { visible = !visible }
+                .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Text(
                 text = "Nils is super toll",
                 modifier = Modifier.placeholder(
                     visible = visible,
-                    highlight = PlaceholderHighlight.fade(),
+                    highlight = PlaceholderHighlight.shimmer(highlightColor = Color.White),
                 ),
                 style = MaterialTheme.typography.headlineLarge,
             )
