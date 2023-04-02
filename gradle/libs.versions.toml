@@ -1,7 +1,7 @@
 [versions]
 accompanist = "0.29.2-rc"
 composeCompiler = "1.4.4-dev-k1.8.20-RC-88d9f3a8232"
-composeConstraintLayout = "1.1.0-alpha08"
+composeConstraintLayout = "1.1.0-alpha09"
 glm = "0.9.9.1-5"
 
 [libraries]
