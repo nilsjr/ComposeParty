@@ -53,6 +53,7 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
             excludes += "META-INF/INDEX.LIST"
+            excludes += "META-INF/linux/x64/org/lwjgl/stb/liblwjgl_stb.so.sha1"
         }
     }
 }
