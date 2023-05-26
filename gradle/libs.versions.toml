@@ -1,9 +1,8 @@
 [versions]
 accompanist = "0.31.2-alpha"
 composeCompiler = "1.4.7"
-composeConstraintLayout = "1.1.0-alpha09"
+composeConstraintLayout = "1.1.0-alpha10"
 glm = "0.9.9.1-5"
-
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
@@ -13,9 +12,9 @@ androidx-compose-activity = "androidx.activity:activity-compose:1.8.0-alpha04"
 androidx-compose-constraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.12.0-alpha04" }
 androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.6.1" }
-androidx-paging-compose = "androidx.paging:paging-compose:1.0.0-alpha19"
+androidx-paging-compose = "androidx.paging:paging-compose:1.0.0-alpha20"
 androidx-splashscreen = "androidx.core:core-splashscreen:1.1.0-alpha01"
-coil-compose = "io.coil-kt:coil-compose:2.3.0"
+coil-compose = "io.coil-kt:coil-compose:2.4.0"
 graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
 lottie-compose = "com.airbnb.android:lottie-compose:6.0.0"
 skydoves-orbital = "com.github.skydoves:orbital:0.2.4"
