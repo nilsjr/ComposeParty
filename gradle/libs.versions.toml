@@ -16,7 +16,7 @@ androidx-paging-compose = "androidx.paging:paging-compose:1.0.0-alpha20"
 androidx-splashscreen = "androidx.core:core-splashscreen:1.1.0-alpha01"
 coil-compose = "io.coil-kt:coil-compose:2.4.0"
 graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
-lottie-compose = "com.airbnb.android:lottie-compose:6.0.0"
+lottie-compose = "com.airbnb.android:lottie-compose:6.0.1"
 skydoves-orbital = "com.github.skydoves:orbital:0.2.4"
 timber = "com.jakewharton.timber:timber:5.0.1"
 konfetti = "nl.dionsegijn:konfetti-compose:2.0.2"
