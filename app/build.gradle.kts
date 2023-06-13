@@ -34,7 +34,7 @@ android {
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).all {
         kotlinOptions {
             jvmTarget = "11"
-            languageVersion = "1.8"
+            languageVersion = "1.9"
             freeCompilerArgs = listOf(
                 "-progressive",
                 "-opt-in=kotlin.RequiresOptIn",
@@ -64,7 +64,7 @@ dependencies {
         implementation(lifecycle)
         implementation(splashscreen)
 
-        implementation(platform("dev.chrisbanes.compose:compose-bom:2023.04.00-beta01.1"))
+        implementation(platform("dev.chrisbanes.compose:compose-bom:2023.04.00-beta02"))
         // Use whichever Compose artifacts you need without a version number
         implementation("androidx.compose.ui:ui")
         implementation("androidx.compose.runtime:runtime")
