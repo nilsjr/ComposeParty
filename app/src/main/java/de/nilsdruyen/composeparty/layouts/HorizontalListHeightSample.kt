@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -64,12 +65,19 @@ fun HorizontalListHeightSample() {
         Spacer(modifier = Modifier.size(16.dp))
         Row(
             modifier = Modifier
-                .height(IntrinsicSize.Min)
+                .fillMaxWidth()
+                .height(IntrinsicSize.Max)
                 .horizontalScroll(rememberScrollState()),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             data.forEach {
-                ListEntry(value = it, Modifier.fillMaxHeight())
+                ListEntry(
+                    value = it,
+                    Modifier
+                        .fillMaxWidth()
+//                        .width(IntrinsicSize.Max)
+                        .fillMaxHeight()
+                )
             }
         }
     }
@@ -82,7 +90,9 @@ fun CustomRow() {
 
 @Composable
 private fun ListEntry(value: String, modifier: Modifier = Modifier) {
-    Box(modifier = modifier.background(Color.Red)) {
+    Box(modifier = modifier
+        .background(Color.Red)
+        .padding(16.dp)) {
         Text(text = value)
     }
 }

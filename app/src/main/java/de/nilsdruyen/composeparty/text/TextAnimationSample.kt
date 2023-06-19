@@ -29,12 +29,13 @@ fun TextAnimationSample() {
     var animate by remember { mutableStateOf(false) }
     val progress by animateFloatAsState(
         targetValue = if (animate) 0f else 1f,
-        animationSpec = tween()
+        animationSpec = tween(durationMillis = 1_000),
+        label = "textStyleFloat",
     )
 
     LaunchedEffect(Unit) {
         while (true) {
-            delay(800)
+            delay(2_000)
             when (progress) {
                 1f -> startStyle = randomTextStyle()
                 0f -> endStyle = randomTextStyle()
