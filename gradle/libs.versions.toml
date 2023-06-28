@@ -1,6 +1,6 @@
 [versions]
-accompanist = "0.31.3-beta"
-composeCompiler = "1.4.7-dev-k1.9.0-Beta-bb7dc8b44eb"
+accompanist = "0.31.4-beta"
+composeCompiler = "1.4.8-dev-k1.9.0-RC-5532d15c918"
 composeConstraintLayout = "1.1.0-alpha10"
 glm = "0.9.9.1-5"
 
@@ -12,7 +12,6 @@ androidx-compose-activity = "androidx.activity:activity-compose:1.8.0-alpha05"
 androidx-compose-constraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.12.0-alpha05" }
 androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.6.1" }
-androidx-paging-compose = "androidx.paging:paging-compose:1.0.0-alpha20"
 androidx-splashscreen = "androidx.core:core-splashscreen:1.1.0-alpha01"
 coil-compose = "io.coil-kt:coil-compose:2.4.0"
 graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
