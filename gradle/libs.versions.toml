@@ -1,5 +1,5 @@
 [versions]
-accompanist = "0.31.4-beta"
+accompanist = "0.31.5-beta"
 composeCompiler = "1.4.8-dev-k1.9.0-RC-5532d15c918"
 composeConstraintLayout = "1.1.0-alpha10"
 glm = "0.9.9.1-5"
