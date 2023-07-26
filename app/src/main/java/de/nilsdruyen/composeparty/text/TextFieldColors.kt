@@ -19,8 +19,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -68,7 +68,7 @@ fun TextFieldColors() {
                     .fillMaxWidth()
                     .focusRequester(focusRequester)
                     .padding(horizontal = 32.dp),
-                colors = TextFieldDefaults.outlinedTextFieldColors(
+                colors = OutlinedTextFieldDefaults.colors(
                     focusedPlaceholderColor = Color.Yellow,
                     unfocusedPlaceholderColor = Color.Yellow,
                     focusedLabelColor = Color.Red,
