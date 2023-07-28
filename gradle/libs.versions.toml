@@ -1,7 +1,7 @@
 [versions]
-accompanist = "0.31.5-beta"
-composeCompiler = "1.5.0-dev-k1.9.0-6a60475e07f"
-composeConstraintLayout = "1.1.0-alpha10"
+accompanist = "0.31.6-rc"
+composeCompiler = "1.5.1"
+composeConstraintLayout = "1.1.0-alpha11"
 glm = "0.9.9.1-5"
 
 [libraries]
@@ -10,8 +10,8 @@ accompanist-placeholder = { module = "com.google.accompanist:accompanist-placeho
 accompanist-placeholder-material = { module = "com.google.accompanist:accompanist-placeholder-material3", version.ref = "accompanist" }
 androidx-compose-activity = "androidx.activity:activity-compose:1.8.0-alpha05"
 androidx-compose-constraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
-androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.12.0-alpha05" }
-androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.6.1" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.12.0-beta01" }
+androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.7.0-alpha01" }
 androidx-splashscreen = "androidx.core:core-splashscreen:1.1.0-alpha01"
 coil-compose = "io.coil-kt:coil-compose:2.4.0"
 graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
