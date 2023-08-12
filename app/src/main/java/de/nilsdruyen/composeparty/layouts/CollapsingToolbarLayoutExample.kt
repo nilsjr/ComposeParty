@@ -165,7 +165,7 @@ private fun Toolbar(scroll: ScrollState, headerHeightPx: Float, toolbarHeightPx:
                 }
             },
             title = {},
-            colors = TopAppBarDefaults.smallTopAppBarColors(
+            colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = Color.Transparent
             )
         )

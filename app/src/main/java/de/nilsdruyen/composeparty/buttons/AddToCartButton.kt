@@ -14,7 +14,7 @@ import androidx.compose.animation.scaleOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
-import androidx.compose.animation.with
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
@@ -128,7 +128,7 @@ fun AddToCartButton(
         val height = 56.dp
         val cornerRadius: Dp by animateDpAsState(
             targetValue = if (state.isExpanded) 8.dp else height / 2,
-            animationSpec = tween()
+            animationSpec = tween(), label = "animatedDp"
         )
 
         Button(
@@ -142,10 +142,10 @@ fun AddToCartButton(
             AnimatedContent(
                 targetState = state.isExpanded,
                 transitionSpec = {
-                    fadeIn(animationSpec = tween(220, delayMillis = 90)) with
+                    fadeIn(animationSpec = tween(220, delayMillis = 90)) togetherWith
                             fadeOut(animationSpec = tween(90)) using
                             SizeTransform(false) { _, _ -> tween() }
-                }
+                }, label = "AddToCart"
             ) { isExpanded ->
                 if (isExpanded) {
                     Row(

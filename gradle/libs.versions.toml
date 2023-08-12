@@ -1,16 +1,16 @@
 [versions]
-accompanist = "0.31.6-rc"
+accompanist = "0.33.0-alpha"
 composeCompiler = "1.5.1"
-composeConstraintLayout = "1.1.0-alpha11"
+composeConstraintLayout = "1.1.0-alpha12"
 glm = "0.9.9.1-5"
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 accompanist-placeholder = { module = "com.google.accompanist:accompanist-placeholder", version.ref = "accompanist" }
 accompanist-placeholder-material = { module = "com.google.accompanist:accompanist-placeholder-material3", version.ref = "accompanist" }
-androidx-compose-activity = "androidx.activity:activity-compose:1.8.0-alpha05"
+androidx-compose-activity = "androidx.activity:activity-compose:1.8.0-alpha06"
 androidx-compose-constraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
-androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.12.0-beta01" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.12.0-rc01" }
 androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.7.0-alpha01" }
 androidx-splashscreen = "androidx.core:core-splashscreen:1.1.0-alpha01"
 coil-compose = "io.coil-kt:coil-compose:2.4.0"

@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "de.nilsdruyen.composeparty"
-    compileSdk = 33
+    compileSdk = 34
     compileSdkPreview = "UpsideDownCake"
 
     defaultConfig {
@@ -28,12 +28,12 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).all {
         kotlinOptions {
-            jvmTarget = "11"
+            jvmTarget = "17"
             languageVersion = "1.9"
             freeCompilerArgs = listOf(
                 "-progressive",
@@ -64,7 +64,7 @@ dependencies {
         implementation(lifecycle)
         implementation(splashscreen)
 
-        implementation(platform("dev.chrisbanes.compose:compose-bom:2023.07.00-alpha02"))
+        implementation(platform("dev.chrisbanes.compose:compose-bom:2023.09.00-alpha01"))
         // Use whichever Compose artifacts you need without a version number
         implementation("androidx.compose.ui:ui")
         implementation("androidx.compose.runtime:runtime")

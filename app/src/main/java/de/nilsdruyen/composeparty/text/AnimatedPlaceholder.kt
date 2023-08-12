@@ -2,14 +2,12 @@ package de.nilsdruyen.composeparty.text
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ContentTransform
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
-import androidx.compose.animation.with
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.animation.togetherWith
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -19,14 +17,10 @@ import androidx.compose.runtime.produceState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
-import de.nilsdruyen.composeparty.R
 import kotlinx.coroutines.delay
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AnimatedPlaceholder(
     hints: List<String>,
@@ -75,21 +69,19 @@ suspend fun <T> ListIterator<T>.doWhenHasNextOrPrevious(
     }
 }
 
-@OptIn(ExperimentalAnimationApi::class)
 object ScrollAnimation {
 
     operator fun invoke(): ContentTransform {
         return slideInVertically(
             initialOffsetY = { 50 },
             animationSpec = tween()
-        ) + fadeIn() with slideOutVertically(
+        ) + fadeIn() togetherWith  slideOutVertically(
             targetOffsetY = { -50 },
             animationSpec = tween()
         ) + fadeOut()
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchBar(
     modifier: Modifier = Modifier,
