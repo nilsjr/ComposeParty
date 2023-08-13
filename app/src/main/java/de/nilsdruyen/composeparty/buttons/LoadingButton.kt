@@ -84,7 +84,8 @@ fun LoadingButton(modifier: Modifier = Modifier, isIdle: Boolean = true, onClick
                                 }
                             }
                         }
-            }
+            },
+            label = "loadingButton"
         ) { isIdle ->
             Box(
                 modifier = Modifier

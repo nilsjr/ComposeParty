@@ -6,7 +6,6 @@ import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -17,7 +16,7 @@ import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
-import de.nilsdruyen.composeparty.utils.ItemList
+import de.nilsdruyen.composeparty.utils.Items
 
 class MainActivity : ComponentActivity() {
 
@@ -39,7 +38,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier
                         .fillMaxSize()
                         .semantics { testTagsAsResourceId = true },
-                    color = MaterialTheme.colorScheme.background
                 ) {
                     val screen = remember { mutableStateOf("") }
 
@@ -51,9 +49,12 @@ class MainActivity : ComponentActivity() {
                         if (it.isNotEmpty()) {
                             demoItems[it]?.invoke()
                         } else {
-                            ItemList { path ->
-                                screen.value = path
-                            }
+                            Items(
+                                onItemClicked = { path -> screen.value = path },
+                                showSettings = {
+                                    screen.value = "settings"
+                                }
+                            )
                         }
                     }
                 }

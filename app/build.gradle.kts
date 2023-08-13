@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    kotlin("plugin.serialization")
 }
 
 android {
@@ -54,6 +55,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
             excludes += "META-INF/INDEX.LIST"
             excludes += "META-INF/linux/x64/org/lwjgl/stb/liblwjgl_stb.so.sha1"
+            excludes += "META-INF/versions/9/previous-compilation-data.bin"
         }
     }
 }
@@ -80,6 +82,10 @@ dependencies {
         implementation(compose.activity)
         implementation(compose.constraint)
     }
+
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.colorpicker.compose)
 
     implementation(libs.accompanist.systemuicontroller)
 //    implementation(libs.accompanist.placeholder)
