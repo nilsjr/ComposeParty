@@ -15,6 +15,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import de.nilsdruyen.composeparty.settings.ColorSettings
 import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
 import de.nilsdruyen.composeparty.utils.Items
 
@@ -46,15 +47,22 @@ class MainActivity : ComponentActivity() {
                     }
 
                     Crossfade(targetState = screen.value, label = "mainCrossFade") {
-                        if (it.isNotEmpty()) {
-                            demoItems[it]?.invoke()
-                        } else {
-                            Items(
-                                onItemClicked = { path -> screen.value = path },
-                                showSettings = {
-                                    screen.value = "settings"
-                                }
-                            )
+                        when {
+                            it == "settings" -> ColorSettings {
+                                screen.value = ""
+                            }
+                            it.isNotEmpty() -> {
+                                demoItems[it]?.invoke()
+                            }
+
+                            else -> {
+                                Items(
+                                    onItemClicked = { path -> screen.value = path },
+                                    showSettings = {
+                                        screen.value = "settings"
+                                    }
+                                )
+                            }
                         }
                     }
                 }

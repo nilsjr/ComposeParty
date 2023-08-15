@@ -15,21 +15,7 @@ import de.nilsdruyen.composeparty.buttons.TextButtonSample
 import de.nilsdruyen.composeparty.cards.CardTiltSample
 import de.nilsdruyen.composeparty.cards.PeopleCardSample
 import de.nilsdruyen.composeparty.cards.TeaserSample
-import de.nilsdruyen.composeparty.freestyle.CanvasSample
-import de.nilsdruyen.composeparty.freestyle.ComposeLogo
-import de.nilsdruyen.composeparty.freestyle.DashedLine
-import de.nilsdruyen.composeparty.freestyle.EqualizerSample
-import de.nilsdruyen.composeparty.freestyle.FireAnimationShaderSample
-import de.nilsdruyen.composeparty.freestyle.FlingAnimation
-import de.nilsdruyen.composeparty.freestyle.HeartRate
-import de.nilsdruyen.composeparty.freestyle.MeshSample
-import de.nilsdruyen.composeparty.freestyle.ProgressSample
-import de.nilsdruyen.composeparty.freestyle.PullRefreshSample
-import de.nilsdruyen.composeparty.freestyle.SensorSample
-import de.nilsdruyen.composeparty.freestyle.ShaderSample
-import de.nilsdruyen.composeparty.freestyle.SnowFallSample
-import de.nilsdruyen.composeparty.freestyle.SpringAnimation
-import de.nilsdruyen.composeparty.freestyle.SquareFun
+import de.nilsdruyen.composeparty.freestyle.*
 import de.nilsdruyen.composeparty.isles.IsleExample
 import de.nilsdruyen.composeparty.layouts.CollapsingToolbarLayoutExample
 import de.nilsdruyen.composeparty.layouts.ConstraintAnimation
@@ -44,7 +30,6 @@ import de.nilsdruyen.composeparty.math.GravitySample
 import de.nilsdruyen.composeparty.paths.PathPawAnimation
 import de.nilsdruyen.composeparty.paths.ScaleShapeSample
 import de.nilsdruyen.composeparty.paths.VectorDemo
-import de.nilsdruyen.composeparty.settings.ColorSettings
 import de.nilsdruyen.composeparty.swipe.SwipeDemo
 import de.nilsdruyen.composeparty.text.AutoSizeTextSample
 import de.nilsdruyen.composeparty.text.FontScaleDemo
@@ -55,7 +40,6 @@ import de.nilsdruyen.composeparty.text.TextFieldTransformation
 import de.nilsdruyen.composeparty.text.WrappingText
 
 val demoItems = mapOf<String, @Composable () -> Unit>(
-    "settings" to { ColorSettings() },
     "HorizontalListHeightSample" to { HorizontalListHeightSample() },
     "ScaffoldTabSample" to { ScaffoldTabSample() },
     "DropDownLayout" to { DropDownLayout() },

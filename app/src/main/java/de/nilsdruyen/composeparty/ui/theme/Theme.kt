@@ -6,8 +6,10 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import de.nilsdruyen.composeparty.settings.component.rememberColorScheme
 
 val LightColors = lightColorScheme(
     primary = md_theme_light_primary,
@@ -80,15 +82,16 @@ fun ComposePartyTheme(
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-//        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-//            val context = LocalContext.current
-//            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-//        }
-        darkTheme -> DarkColors
-        else -> LightColors
-    }
+//    val colorScheme = when {
+////        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+////            val context = LocalContext.current
+////            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+////        }
+//        darkTheme -> DarkColors
+//        else -> LightColors
+//    }
 
+    val colorScheme by rememberColorScheme(darkTheme)
     val systemUiController = rememberSystemUiController()
 
     SideEffect {
