@@ -79,7 +79,7 @@ fun ColorSettings(onBack: () -> Unit) {
             confirmButton = {
                 TextButton({
                     editableColorScheme = editableColorScheme.copy(
-                        editableColorScheme.selected.toMutableMap().apply {
+                        selected = editableColorScheme.selected.toMutableMap().apply {
                             input?.let { this[key] = it }
                         }
                     )
