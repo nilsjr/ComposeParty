@@ -66,7 +66,7 @@ dependencies {
         implementation(lifecycle)
         implementation(splashscreen)
 
-        implementation(platform("dev.chrisbanes.compose:compose-bom:2023.09.00-alpha02"))
+        implementation(platform("dev.chrisbanes.compose:compose-bom:2023.09.00-alpha03"))
         // Use whichever Compose artifacts you need without a version number
         implementation("androidx.compose.ui:ui")
         implementation("androidx.compose.runtime:runtime")
@@ -76,8 +76,8 @@ dependencies {
         implementation("androidx.compose.material:material")
         implementation("androidx.compose.material:material-icons-extended")
         implementation("androidx.compose.material3:material3")
-        debugImplementation("androidx.compose.ui:ui-tooling")
         implementation("androidx.compose.ui:ui-tooling-preview")
+        debugImplementation("androidx.compose.ui:ui-tooling")
 
         implementation(compose.activity)
         implementation(compose.constraint)
