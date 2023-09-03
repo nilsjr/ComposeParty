@@ -8,11 +8,11 @@ import android.hardware.SensorManager
 import androidx.compose.ui.geometry.Offset
 import androidx.core.content.getSystemService
 
-class SensorManager constructor(context: Context) : SensorEventListener {
+class SensorManager(context: Context) : SensorEventListener {
 
     private val sensorManager = context.getSystemService<SensorManager>()!!
-    private val gravitySensor: Sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY)
-    private val magneticSensor: Sensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
+    private val gravitySensor: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY)
+    private val magneticSensor: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
 
     private var gravity: FloatArray? = null
     private var geomagnetic: FloatArray? = null
