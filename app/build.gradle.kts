@@ -34,7 +34,7 @@ android {
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).all {
         kotlinOptions {
             jvmTarget = "17"
-            languageVersion = "1.9"
+            languageVersion = "2.0"
             freeCompilerArgs = listOf(
                 "-progressive",
                 "-opt-in=kotlin.RequiresOptIn",
