@@ -82,6 +82,7 @@ dependencies {
     }
 
     implementation(libs.accompanist.systemuicontroller)
+    implementation(libs.accompanist.flowlayout)
 //    implementation(libs.accompanist.placeholder)
     implementation(libs.accompanist.placeholder.material)
 
