@@ -1,6 +1,6 @@
 [versions]
 accompanist = "0.33.1-alpha"
-composeCompiler = "1.5.4-dev-k1.9.20-Beta2-ac5f960bdaf"
+composeCompiler = "1.5.4-dev-k1.9.20-RC-1edce5fd625"
 composeConstraintLayout = "1.1.0-alpha13"
 glm = "0.9.9.1-5"
 
