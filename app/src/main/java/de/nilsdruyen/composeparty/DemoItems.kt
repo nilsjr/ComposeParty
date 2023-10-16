@@ -21,6 +21,7 @@ import de.nilsdruyen.composeparty.layouts.CollapsingToolbarLayoutExample
 import de.nilsdruyen.composeparty.layouts.ConstraintAnimation
 import de.nilsdruyen.composeparty.layouts.DropDownLayout
 import de.nilsdruyen.composeparty.layouts.HorizontalListHeightSample
+import de.nilsdruyen.composeparty.layouts.HorizontalParallaxList
 import de.nilsdruyen.composeparty.layouts.MotionLayoutExample
 import de.nilsdruyen.composeparty.layouts.PlaceholderSample
 import de.nilsdruyen.composeparty.layouts.SampleStaggeredGridLayout
@@ -40,6 +41,7 @@ import de.nilsdruyen.composeparty.text.TextFieldTransformation
 import de.nilsdruyen.composeparty.text.WrappingText
 
 val demoItems = mapOf<String, @Composable () -> Unit>(
+    "HorizontalParallaxList" to { HorizontalParallaxList() },
     "HorizontalListHeightSample" to { HorizontalListHeightSample() },
     "ScaffoldTabSample" to { ScaffoldTabSample() },
     "DropDownLayout" to { DropDownLayout() },
