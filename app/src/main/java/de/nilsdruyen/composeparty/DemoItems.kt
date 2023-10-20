@@ -33,6 +33,7 @@ import de.nilsdruyen.composeparty.paths.ScaleShapeSample
 import de.nilsdruyen.composeparty.paths.VectorDemo
 import de.nilsdruyen.composeparty.swipe.SwipeDemo
 import de.nilsdruyen.composeparty.text.AutoSizeTextSample
+import de.nilsdruyen.composeparty.text.CascadingText
 import de.nilsdruyen.composeparty.text.FontScaleDemo
 import de.nilsdruyen.composeparty.text.TextAnimationSample
 import de.nilsdruyen.composeparty.text.TextBrushing
@@ -41,6 +42,7 @@ import de.nilsdruyen.composeparty.text.TextFieldTransformation
 import de.nilsdruyen.composeparty.text.WrappingText
 
 val demoItems = mapOf<String, @Composable () -> Unit>(
+    "CascadingText" to { CascadingText() },
     "HorizontalParallaxList" to { HorizontalParallaxList() },
     "HorizontalListHeightSample" to { HorizontalListHeightSample() },
     "ScaffoldTabSample" to { ScaffoldTabSample() },
