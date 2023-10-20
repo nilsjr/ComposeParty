@@ -16,6 +16,7 @@ import de.nilsdruyen.composeparty.cards.CardTiltSample
 import de.nilsdruyen.composeparty.cards.PeopleCardSample
 import de.nilsdruyen.composeparty.cards.TeaserSample
 import de.nilsdruyen.composeparty.freestyle.*
+import de.nilsdruyen.composeparty.freestyle.dragdrop.DragAndDropSample
 import de.nilsdruyen.composeparty.isles.IsleExample
 import de.nilsdruyen.composeparty.layouts.CollapsingToolbarLayoutExample
 import de.nilsdruyen.composeparty.layouts.ConstraintAnimation
@@ -42,6 +43,7 @@ import de.nilsdruyen.composeparty.text.TextFieldTransformation
 import de.nilsdruyen.composeparty.text.WrappingText
 
 val demoItems = mapOf<String, @Composable () -> Unit>(
+    "DragAndDropSample" to { DragAndDropSample() },
     "CascadingText" to { CascadingText() },
     "HorizontalParallaxList" to { HorizontalParallaxList() },
     "HorizontalListHeightSample" to { HorizontalListHeightSample() },
