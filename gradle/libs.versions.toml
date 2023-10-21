@@ -12,7 +12,7 @@ accompanist-placeholder-material = { module = "com.google.accompanist:accompanis
 androidx-compose-activity = "androidx.activity:activity-compose:1.8.0"
 androidx-compose-constraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.12.0" }
-androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.7.0-alpha02" }
+androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.7.0-alpha03" }
 androidx-splashscreen = "androidx.core:core-splashscreen:1.1.0-alpha02"
 coil-compose = "io.coil-kt:coil-compose:2.4.0"
 graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
