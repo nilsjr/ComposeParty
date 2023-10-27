@@ -32,11 +32,13 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).all {
+        compilerOptions {
+            progressiveMode.set(true)
+        }
         kotlinOptions {
             jvmTarget = "17"
             languageVersion = "2.0"
             freeCompilerArgs = listOf(
-                "-progressive",
                 "-opt-in=kotlin.RequiresOptIn",
                 "-Xcontext-receivers",
             )
@@ -83,7 +85,6 @@ dependencies {
 
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.accompanist.flowlayout)
-//    implementation(libs.accompanist.placeholder)
     implementation(libs.accompanist.placeholder.material)
 
     implementation(libs.coil.compose)
