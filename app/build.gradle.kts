@@ -60,28 +60,25 @@ android {
     }
 }
 
+//noinspection UseTomlInstead
 dependencies {
-    with(libs.androidx) {
-        implementation(core.ktx)
-        implementation(lifecycle)
-        implementation(splashscreen)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle)
+    implementation(libs.androidx.compose.activity)
+    implementation(libs.androidx.compose.constraint)
 
-        implementation(platform("dev.chrisbanes.compose:compose-bom:2023.11.00-alpha02"))
-        // Use whichever Compose artifacts you need without a version number
-        implementation("androidx.compose.ui:ui")
-        implementation("androidx.compose.runtime:runtime")
-        implementation("androidx.compose.foundation:foundation")
-        implementation("androidx.compose.animation:animation")
-        implementation("androidx.compose.animation:animation-graphics")
-        implementation("androidx.compose.material:material")
-        implementation("androidx.compose.material:material-icons-extended")
-        implementation("androidx.compose.material3:material3")
-        implementation("androidx.compose.ui:ui-tooling-preview")
-        debugImplementation("androidx.compose.ui:ui-tooling")
-
-        implementation(compose.activity)
-        implementation(compose.constraint)
-    }
+    implementation(platform("dev.chrisbanes.compose:compose-bom:2023.11.00-alpha02"))
+    // Use whichever Compose artifacts you need without a version number
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.runtime:runtime")
+    implementation("androidx.compose.foundation:foundation")
+    implementation("androidx.compose.animation:animation")
+    implementation("androidx.compose.animation:animation-graphics")
+    implementation("androidx.compose.material:material")
+    implementation("androidx.compose.material:material-icons-extended")
+    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    debugImplementation("androidx.compose.ui:ui-tooling")
 
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.accompanist.flowlayout)
