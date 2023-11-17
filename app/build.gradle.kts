@@ -68,7 +68,7 @@ dependencies {
     implementation(libs.androidx.compose.constraint)
     implementation(libs.androidx.splashscreen)
 
-    implementation(platform("dev.chrisbanes.compose:compose-bom:2023.11.00-alpha02"))
+    implementation(platform("dev.chrisbanes.compose:compose-bom:2023.12.00-alpha01"))
     // Use whichever Compose artifacts you need without a version number
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.runtime:runtime")
