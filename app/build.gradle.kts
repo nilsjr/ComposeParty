@@ -93,4 +93,7 @@ dependencies {
     implementation(libs.skydoves.orbital)
 
     implementation(libs.graphics.glm)
+
+    implementation("nl.dionsegijn:konfetti-compose:2.0.3")
+    implementation("io.github.klassenkonstantin:physics-layout:0.4.1")
 }
