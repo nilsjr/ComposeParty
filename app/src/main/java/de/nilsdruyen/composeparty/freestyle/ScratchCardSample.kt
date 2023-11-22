@@ -61,17 +61,12 @@ fun ScratchCardSample() {
             .background(Color.Black),
         contentAlignment = Alignment.Center,
     ) {
-        AsyncImage(
-            model = url,
-            contentDescription = null,
-        )
+        AsyncImage(model = url, contentDescription = null)
         AnimatedVisibility(
             visible = showCanvas,
             exit = fadeOut(tween(3000))
         ) {
-            Overlay {
-                showCanvas = false
-            }
+            Overlay { showCanvas = false }
         }
     }
 }
@@ -93,12 +88,12 @@ fun Overlay(hideCanvas: () -> Unit) {
     }
 
     LaunchedEffect(percentage) {
-        if (percentage <= .5f) hideCanvas()
+        if (percentage <= .45f) hideCanvas()
     }
 
     LaunchedEffect(capturedBitmap) {
         capturedBitmap?.let {
-            percentage = percentTransparent(it, 50)
+            percentage = percentTransparent(it, 100)
             Timber.d("\uD83D\uDD25 OH SHIT $percentage")
             capturedBitmap = null
         }
