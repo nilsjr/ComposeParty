@@ -48,6 +48,7 @@ import de.nilsdruyen.composeparty.layouts.PhysicalSample
 import de.nilsdruyen.composeparty.layouts.PlaceholderSample
 import de.nilsdruyen.composeparty.layouts.SampleStaggeredGridLayout
 import de.nilsdruyen.composeparty.layouts.ScaffoldTabSample
+import de.nilsdruyen.composeparty.layouts.ZoomImageSample
 import de.nilsdruyen.composeparty.material.ScrollableScaffold
 import de.nilsdruyen.composeparty.math.GravitySample
 import de.nilsdruyen.composeparty.paths.PathPawAnimation
@@ -68,6 +69,7 @@ import de.nilsdruyen.composeparty.utils.ItemList
 class MainActivity : ComponentActivity() {
 
     private val demoItems = mapOf<String, @Composable () -> Unit>(
+        "ZoomImageSample" to { ZoomImageSample() },
         "AdventCalendarSample" to { AdventCalendarSample() },
         "PhysicalSample" to { PhysicalSample() },
         "VideoSample" to { VideoSample() },

@@ -98,4 +98,6 @@ dependencies {
 
     implementation("androidx.media3:media3-exoplayer:1.2.0")
     implementation("androidx.media3:media3-ui:1.2.0")
+
+    implementation("net.engawapg.lib:zoomable:1.5.2")
 }
