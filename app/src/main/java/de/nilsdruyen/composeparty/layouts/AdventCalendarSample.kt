@@ -102,13 +102,13 @@ fun AdventCalendarSample() {
         targetState = screen,
         transitionSpec = { fadeIn() togetherWith fadeOut() },
         label = "screenTransition"
-    ) {
-        when (it) {
+    ) { currentScreen ->
+        when (currentScreen) {
             CalendarScreen.Overview -> Grid {
                 screen = CalendarScreen.Detail(it)
             }
 
-            is CalendarScreen.Detail -> Detail(it.day)
+            is CalendarScreen.Detail -> Detail(currentScreen.day)
         }
     }
 }
@@ -142,7 +142,9 @@ private fun Grid(onClick: (Day) -> Unit) {
                         Image(
                             painterResource(id = day.icon),
                             contentDescription = null,
-                            modifier = Modifier.fillMaxWidth().padding(4.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp),
                         )
                         Box(
                             modifier = Modifier
