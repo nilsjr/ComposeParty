@@ -88,7 +88,7 @@ fun Overlay(hideCanvas: () -> Unit) {
     }
 
     LaunchedEffect(percentage) {
-        if (percentage <= .45f) hideCanvas()
+        if (percentage <= .4f) hideCanvas()
     }
 
     LaunchedEffect(capturedBitmap) {

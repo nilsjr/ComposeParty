@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
@@ -19,7 +20,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.WindowCompat
 import de.nilsdruyen.composeparty.animations.AnimatedRow
 import de.nilsdruyen.composeparty.animations.ClockSample
 import de.nilsdruyen.composeparty.animations.DynamicHueSample
@@ -43,6 +43,7 @@ import de.nilsdruyen.composeparty.layouts.DropDownLayout
 import de.nilsdruyen.composeparty.layouts.HorizontalListHeightSample
 import de.nilsdruyen.composeparty.layouts.HorizontalParallaxList
 import de.nilsdruyen.composeparty.layouts.MotionLayoutExample
+import de.nilsdruyen.composeparty.layouts.PhysicalSample
 import de.nilsdruyen.composeparty.layouts.PlaceholderSample
 import de.nilsdruyen.composeparty.layouts.SampleStaggeredGridLayout
 import de.nilsdruyen.composeparty.layouts.ScaffoldTabSample
@@ -66,6 +67,7 @@ import de.nilsdruyen.composeparty.utils.ItemList
 class MainActivity : ComponentActivity() {
 
     private val demoItems = mapOf<String, @Composable () -> Unit>(
+        "PhysicalSample" to { PhysicalSample() },
         "VideoSample" to { VideoSample() },
         "ScratchCard" to { ScratchCardSample() },
         "DragAndDropSample" to { DragAndDropSample() },
@@ -134,10 +136,9 @@ class MainActivity : ComponentActivity() {
 //            splashScreen.setKeepOnScreenCondition { true }
 //        }
         installSplashScreen()
+        enableEdgeToEdge()
 
         super.onCreate(savedInstanceState)
-
-        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
             ComposePartyTheme {
@@ -147,7 +148,7 @@ class MainActivity : ComponentActivity() {
                         .semantics { testTagsAsResourceId = true },
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    var screen by remember { mutableStateOf("ScratchCard") }
+                    var screen by remember { mutableStateOf("PhysicalSample") }
                     val changeScreen = { nextScreen: String -> screen = nextScreen }
 
                     BackHandler(screen.isNotEmpty()) {

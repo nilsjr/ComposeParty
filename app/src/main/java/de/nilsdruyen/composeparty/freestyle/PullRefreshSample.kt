@@ -14,14 +14,14 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.contentColorFor
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.PullRefreshState
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.pullRefreshIndicatorTransform
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -92,7 +92,7 @@ fun PawRefreshIndicator(
     refreshing: Boolean,
     state: PullRefreshState,
     modifier: Modifier = Modifier,
-    backgroundColor: Color = MaterialTheme.colors.surface,
+    backgroundColor: Color = MaterialTheme.colorScheme.surface,
     contentColor: Color = contentColorFor(backgroundColor),
 ) {
     val showElevation by remember(refreshing, state) {
@@ -105,7 +105,7 @@ fun PawRefreshIndicator(
             .pullRefreshIndicatorTransform(state, false),
         shape = CircleShape,
         color = backgroundColor,
-        elevation = if (showElevation) 8.dp else 0.dp,
+        shadowElevation = if (showElevation) 8.dp else 0.dp,
     ) {
         Crossfade(
             targetState = refreshing,

@@ -94,9 +94,8 @@ dependencies {
 
     implementation(libs.graphics.glm)
 
-    implementation("nl.dionsegijn:konfetti-compose:2.0.3")
     implementation("io.github.klassenkonstantin:physics-layout:0.4.1")
 
-    implementation("androidx.media3:media3-exoplayer:1.0.1")
-    implementation("androidx.media3:media3-ui:1.0.1")
+    implementation("androidx.media3:media3-exoplayer:1.2.0")
+    implementation("androidx.media3:media3-ui:1.2.0")
 }
