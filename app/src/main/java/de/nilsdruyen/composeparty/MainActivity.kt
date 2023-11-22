@@ -34,22 +34,7 @@ import de.nilsdruyen.composeparty.buttons.TextButtonSample
 import de.nilsdruyen.composeparty.cards.CardTiltSample
 import de.nilsdruyen.composeparty.cards.PeopleCardSample
 import de.nilsdruyen.composeparty.cards.TeaserSample
-import de.nilsdruyen.composeparty.freestyle.CanvasSample
-import de.nilsdruyen.composeparty.freestyle.ComposeLogo
-import de.nilsdruyen.composeparty.freestyle.DashedLine
-import de.nilsdruyen.composeparty.freestyle.EqualizerSample
-import de.nilsdruyen.composeparty.freestyle.FireAnimationShaderSample
-import de.nilsdruyen.composeparty.freestyle.FlingAnimation
-import de.nilsdruyen.composeparty.freestyle.HeartRate
-import de.nilsdruyen.composeparty.freestyle.MeshSample
-import de.nilsdruyen.composeparty.freestyle.ProgressSample
-import de.nilsdruyen.composeparty.freestyle.PullRefreshSample
-import de.nilsdruyen.composeparty.freestyle.ScratchCardSample
-import de.nilsdruyen.composeparty.freestyle.SensorSample
-import de.nilsdruyen.composeparty.freestyle.ShaderSample
-import de.nilsdruyen.composeparty.freestyle.SnowFallSample
-import de.nilsdruyen.composeparty.freestyle.SpringAnimation
-import de.nilsdruyen.composeparty.freestyle.SquareFun
+import de.nilsdruyen.composeparty.freestyle.*
 import de.nilsdruyen.composeparty.freestyle.dragdrop.DragAndDropSample
 import de.nilsdruyen.composeparty.isles.IsleExample
 import de.nilsdruyen.composeparty.layouts.CollapsingToolbarLayoutExample
@@ -81,6 +66,7 @@ import de.nilsdruyen.composeparty.utils.ItemList
 class MainActivity : ComponentActivity() {
 
     private val demoItems = mapOf<String, @Composable () -> Unit>(
+        "VideoSample" to { VideoSample() },
         "ScratchCard" to { ScratchCardSample() },
         "DragAndDropSample" to { DragAndDropSample() },
         "CascadingText" to { CascadingText() },
