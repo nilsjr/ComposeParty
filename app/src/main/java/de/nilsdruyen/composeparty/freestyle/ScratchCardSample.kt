@@ -7,21 +7,19 @@ import android.os.Handler
 import android.os.Looper
 import android.view.PixelCopy
 import android.view.View
-import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.State
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateListOf
@@ -30,38 +28,31 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ImageShader
-import androidx.compose.ui.graphics.ShaderBrush
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.StrokeJoin
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.graphics.drawable.toBitmap
 import coil.compose.AsyncImage
-import coil.compose.AsyncImagePainter
-import coil.compose.rememberAsyncImagePainter
-import coil.request.ImageRequest
-import coil.size.Size
 import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
 import timber.log.Timber
 
-val url = "https://picsum.photos/id/31/1036/2021"
+const val url = "https://picsum.photos/id/31/1036/2021"
+
+enum class MotionEvent {
+    Idle, Down, Move, Up
+}
 
 @Composable
 fun ScratchCardSample() {
-//    var pointerOffset by remember { mutableStateOf(Offset.Zero) }
-//    var pressed by remember { mutableStateOf(false) }
-//    val radius by animateDpAsState(
-//        targetValue = if (pressed) 120.dp else 0.dp,
-//        label = "radiusAnimation"
-//    )
-//    val position by animateIntAsState(targetValue = 0)
+    var showCanvas by remember { mutableStateOf(true) }
 
     Box(
         modifier = Modifier
@@ -70,6 +61,162 @@ fun ScratchCardSample() {
             .background(Color.Black),
         contentAlignment = Alignment.Center,
     ) {
+        AsyncImage(
+            model = url,
+            contentDescription = null,
+        )
+        AnimatedVisibility(
+            visible = showCanvas,
+            exit = fadeOut(tween(3000))
+        ) {
+            Overlay {
+                showCanvas = false
+            }
+        }
+    }
+}
+
+@Composable
+fun Overlay(hideCanvas: () -> Unit) {
+    val currentView = LocalView.current
+    var captureIt by remember { mutableStateOf(false) }
+    var capturedBitmap by remember { mutableStateOf<Bitmap?>(null) }
+    var percentage by remember { mutableFloatStateOf(1f) }
+    val paths = remember { mutableStateListOf<Path>() }
+    var currentPath by remember { mutableStateOf<Path?>(null) }
+    var currentPosition by remember { mutableStateOf(Offset.Unspecified) }
+    var previousPosition by remember { mutableStateOf(Offset.Unspecified) }
+    var motionEvent by remember { mutableStateOf(MotionEvent.Idle) }
+
+    LaunchedEffect(motionEvent) {
+        Timber.d("event: $motionEvent")
+    }
+
+    LaunchedEffect(percentage) {
+        if (percentage <= .5f) hideCanvas()
+    }
+
+    LaunchedEffect(capturedBitmap) {
+        capturedBitmap?.let {
+            percentage = percentTransparent(it, 50)
+            Timber.d("\uD83D\uDD25 OH SHIT $percentage")
+            capturedBitmap = null
+        }
+    }
+
+    LaunchedEffect(captureIt) {
+        if (captureIt) {
+            captureIt = false
+            currentView.capture(
+                onBitmapReady = { bitmap: Bitmap -> capturedBitmap = bitmap },
+                onBitmapError = {}
+            )
+        }
+    }
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        Canvas(
+            modifier = Modifier
+                .fillMaxSize()
+                .pointerInput(Unit) {
+                    detectDragGestures(
+                        onDragStart = {
+                            motionEvent = MotionEvent.Down
+                            currentPosition = it
+                            previousPosition = it
+                            currentPath = Path().apply {
+                                moveTo(currentPosition.x, currentPosition.y)
+                            }
+                        },
+                        onDrag = { change, _ ->
+                            motionEvent = MotionEvent.Move
+                            currentPosition = change.position
+                            change.consume()
+                        },
+                        onDragEnd = {
+                            motionEvent = MotionEvent.Up
+                            captureIt = true
+                        },
+                    )
+                }
+        ) {
+            when (motionEvent) {
+                MotionEvent.Idle -> Unit
+                MotionEvent.Down -> {
+                    previousPosition = currentPosition
+                }
+
+                MotionEvent.Move -> {
+                    if (currentPosition == Offset.Unspecified) {
+                        currentPosition = Offset(200f, 200f)
+                    }
+                    if (previousPosition != Offset.Unspecified) {
+                        currentPath?.quadraticBezierTo(
+                            previousPosition.x,
+                            previousPosition.y,
+                            (previousPosition.x + currentPosition.x) / 2,
+                            (previousPosition.y + currentPosition.y) / 2
+                        )
+                    }
+                    previousPosition = currentPosition
+                }
+
+                MotionEvent.Up -> {
+                    currentPath?.lineTo(currentPosition.x, currentPosition.y)
+                    currentPath?.let { paths.add(it) }
+                    currentPath = null
+
+                    currentPosition = Offset.Unspecified
+                    previousPosition = currentPosition
+
+                    motionEvent = MotionEvent.Idle
+                }
+            }
+
+            with(drawContext.canvas.nativeCanvas) {
+                val checkPoint = saveLayer(null, null)
+                drawRect(
+                    color = Color.Black,
+                    size = drawContext.size,
+                )
+                paths.forEach {
+                    drawPath(
+                        color = Color.Transparent,
+                        path = it,
+                        style = Stroke(
+                            width = 120f,
+                            cap = StrokeCap.Round,
+                            join = StrokeJoin.Round,
+                        ),
+                        blendMode = BlendMode.Clear
+                    )
+                }
+                currentPath?.let {
+                    drawPath(
+                        color = Color.Transparent,
+                        path = it,
+                        style = Stroke(
+                            width = 120f,
+                            cap = StrokeCap.Round,
+                            join = StrokeJoin.Round,
+                        ),
+                        blendMode = BlendMode.Clear
+                    )
+                }
+                restoreToCount(checkPoint)
+            }
+        }
+        Text(
+            text = "$percentage %",
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .padding(top = 32.dp),
+            color = Color.White,
+        )
+
+    }
+}
+
 //        BoxWithConstraints(
 //            Modifier
 //                .fillMaxSize()
@@ -142,135 +289,125 @@ fun ScratchCardSample() {
 ////            )
 //        }
 
-        AsyncImage(
-            model = url,
-            contentDescription = null,
-            modifier = Modifier.fillMaxSize(),
-        )
-        DrawMe()
-    }
-
-}
-
-data class Line(val start: Offset, val end: Offset)
-
-@Composable
-fun DrawMe() {
-    val currentView = LocalView.current
-    var captureIt by remember { mutableStateOf(false) }
-    var capturedBitmap by remember { mutableStateOf<Bitmap?>(null) }
-    var percentage by remember { mutableFloatStateOf(1f) }
-    var showCanvas by remember { mutableStateOf(true) }
-    val fadeOut by remember(percentage) { derivedStateOf { percentage <= 0.5f } }
-    val alpha = animateFloatAsState(
-        targetValue = if (fadeOut) 0f else 1f,
-        animationSpec = tween(durationMillis = 2000),
-        label = "animatedAlpha",
-    ) {
-        showCanvas = false
-    }
-
-    LaunchedEffect(capturedBitmap) {
-        capturedBitmap?.let {
-            percentage = percentTransparent(it, 200)
-            Timber.d("OH SHIT $percentage")
-            capturedBitmap = null
-        }
-    }
-
-    LaunchedEffect(captureIt) {
-        if (captureIt) {
-            captureIt = false
-            currentView.capture(
-                onBitmapReady = { bitmap: Bitmap -> capturedBitmap = bitmap },
-                onBitmapError = {}
-            )
-        }
-    }
-
-    Box(
-        Modifier
-            .fillMaxSize()
-            .background(Color.Blue.copy(alpha = .7f))
-    ) {
-//        if (showCanvas) {
-        RubbMe(
-            modifier = Modifier
-                .fillMaxSize()
-                .alpha(.6f),
-            alpha = alpha,
-        ) { captureIt = true }
+//data class Line(val start: Offset, val end: Offset)
+//
+//@Composable
+//fun DrawMe() {
+//    val currentView = LocalView.current
+//    var captureIt by remember { mutableStateOf(false) }
+//    var capturedBitmap by remember { mutableStateOf<Bitmap?>(null) }
+//    var percentage by remember { mutableFloatStateOf(1f) }
+//    var showCanvas by remember { mutableStateOf(true) }
+//    val fadeOut by remember(percentage) { derivedStateOf { percentage <= 0.5f } }
+//    val alpha = animateFloatAsState(
+//        targetValue = if (fadeOut) 0f else 1f,
+//        animationSpec = tween(durationMillis = 2000),
+//        label = "animatedAlpha",
+//    ) {
+//        showCanvas = false
+//    }
+//
+//    LaunchedEffect(capturedBitmap) {
+//        capturedBitmap?.let {
+//            percentage = percentTransparent(it, 200)
+//            Timber.d("OH SHIT $percentage")
+//            capturedBitmap = null
 //        }
-        Text(
-            text = "$percentage %",
-            modifier = Modifier
-                .align(Alignment.TopCenter)
-                .padding(top = 32.dp),
-            color = Color.White,
-        )
-    }
-}
-
-@Composable
-fun RubbMe(
-    modifier: Modifier,
-    alpha: State<Float>,
-    capture: () -> Unit,
-) {
-    val lines = remember { mutableStateListOf<Line>() }
-    val imagePainter = rememberAsyncImagePainter(
-        model = ImageRequest.Builder(LocalContext.current)
-            .data(url)
-            .size(Size.ORIGINAL)
-            .build()
-    )
-    val state = imagePainter.state
-    if (state is AsyncImagePainter.State.Success) {
-        val overlayImageBitmap =
-            state.result.drawable
-                .toBitmap()
-                .asImageBitmap()
-        val imageBrush = ShaderBrush(ImageShader(overlayImageBitmap))
-
-        Canvas(
-            modifier = modifier
-                .fillMaxSize()
-                .background(Color.Red)
-                .pointerInput("drawing") {
-                    detectDragGestures(
-                        onDragEnd = {
-                            capture()
-                        }
-                    ) { change, dragAmount ->
-                        change.consume()
-
-                        val line = Line(
-                            start = change.position - dragAmount,
-                            end = change.position
-                        )
-                        lines.add(line)
-                    }
-                }
-        ) {
-            drawImage(overlayImageBitmap)
-            drawRect(
-                color = Color.Black,
-                size = this.size,
-                alpha = alpha.value,
-            )
-            lines.forEach {
-                drawLine(
-                    brush = imageBrush,
-                    start = it.start,
-                    end = it.end,
-                    strokeWidth = 120f,
-                    cap = StrokeCap.Round,
-                    alpha = alpha.value,
-                )
-            }
-        }
-    }
-}
+//    }
+//
+//    LaunchedEffect(captureIt) {
+//        if (captureIt) {
+//            captureIt = false
+//            currentView.capture(
+//                onBitmapReady = { bitmap: Bitmap -> capturedBitmap = bitmap },
+//                onBitmapError = {}
+//            )
+//        }
+//    }
+//
+//    Box(
+//        Modifier
+//            .fillMaxSize()
+//            .background(Color.Blue.copy(alpha = .7f))
+//    ) {
+////        if (showCanvas) {
+//        RubbMe(
+//            modifier = Modifier
+//                .fillMaxSize()
+//                .alpha(.6f),
+//            alpha = alpha,
+//        ) { captureIt = true }
+////        }
+//        Text(
+//            text = "$percentage %",
+//            modifier = Modifier
+//                .align(Alignment.TopCenter)
+//                .padding(top = 32.dp),
+//            color = Color.White,
+//        )
+//    }
+//}
+//
+//@Composable
+//fun RubbMe(
+//    modifier: Modifier,
+//    alpha: State<Float>,
+//    capture: () -> Unit,
+//) {
+//    val lines = remember { mutableStateListOf<Line>() }
+//    val imagePainter = rememberAsyncImagePainter(
+//        model = ImageRequest.Builder(LocalContext.current)
+//            .data(url)
+//            .size(Size.ORIGINAL)
+//            .build()
+//    )
+//    val state = imagePainter.state
+//    if (state is AsyncImagePainter.State.Success) {
+//        val overlayImageBitmap =
+//            state.result.drawable
+//                .toBitmap()
+//                .asImageBitmap()
+//        val imageBrush = ShaderBrush(ImageShader(overlayImageBitmap))
+//
+//        Canvas(
+//            modifier = modifier
+//                .fillMaxSize()
+//                .background(Color.Red)
+//                .pointerInput("drawing") {
+//                    detectDragGestures(
+//                        onDragEnd = {
+//                            capture()
+//                        }
+//                    ) { change, dragAmount ->
+//                        change.consume()
+//
+//                        val line = Line(
+//                            start = change.position - dragAmount,
+//                            end = change.position
+//                        )
+//                        lines.add(line)
+//                    }
+//                }
+//        ) {
+//            drawImage(overlayImageBitmap)
+//            drawRect(
+//                color = Color.Black,
+//                size = this.size,
+//                alpha = alpha.value,
+//            )
+//            lines.forEach {
+//                drawLine(
+//                    brush = imageBrush,
+//                    start = it.start,
+//                    end = it.end,
+//                    strokeWidth = 120f,
+//                    cap = StrokeCap.Round,
+//                    alpha = alpha.value,
+//                )
+//            }
+//        }
+//    }
+//}
 
 //@Composable
 //private fun MyComposable() {
@@ -492,211 +629,6 @@ fun RubbMe(
 //    )
 //}
 
-
-//class PathProperties(
-//    var strokeWidth: Float = 20f,
-//    var color: Color = Color.Black,
-//    var alpha: Float = 1f,
-//    var strokeCap: StrokeCap = StrokeCap.Round,
-//    var strokeJoin: StrokeJoin = StrokeJoin.Round,
-//) {
-//
-//    fun copy(
-//        strokeWidth: Float = this.strokeWidth,
-//        color: Color = this.color,
-//        alpha: Float = this.alpha,
-//        strokeCap: StrokeCap = this.strokeCap,
-//        strokeJoin: StrokeJoin = this.strokeJoin,
-//    ) = PathProperties(
-//        strokeWidth, color, alpha, strokeCap, strokeJoin,
-//    )
-//}
-//
-//enum class MotionEvent {
-//    Idle, Down, Move, Up
-//}
-//
-//enum class DrawMode {
-//    Draw, Touch, Erase
-//}
-//
-//@Composable
-//fun DrawingApp() {
-//
-//    /**
-//     * Paths that are added, this is required to have paths with different options and paths
-//     *  ith erase to keep over each other
-//     */
-//    val paths = remember { mutableStateListOf<Pair<androidx.compose.ui.graphics.Path, PathProperties>>() }
-//
-//    /**
-//     * Paths that are undone via button. These paths are restored if user pushes
-//     * redo button if there is no new path drawn.
-//     *
-//     * If new path is drawn after this list is cleared to not break paths after undoing previous
-//     * ones.
-//     */
-//    val pathsUndone = remember { mutableStateListOf<Pair<androidx.compose.ui.graphics.Path, PathProperties>>() }
-//
-//    /**
-//     * Canvas touch state. [MotionEvent.Idle] by default, [MotionEvent.Down] at first contact,
-//     * [MotionEvent.Move] while dragging and [MotionEvent.Up] when first pointer is up
-//     */
-//    var motionEvent by remember { mutableStateOf(MotionEvent.Idle) }
-//
-//    /**
-//     * Current position of the pointer that is pressed or being moved
-//     */
-//    var currentPosition by remember { mutableStateOf(Offset.Unspecified) }
-//
-//    /**
-//     * Previous motion event before next touch is saved into this current position.
-//     */
-//    var previousPosition by remember { mutableStateOf(Offset.Unspecified) }
-//
-//    /**
-//     * Draw mode, erase mode or touch mode to
-//     */
-//    var drawMode by remember { mutableStateOf(DrawMode.Draw) }
-//
-//    /**
-//     * Path that is being drawn between [MotionEvent.Down] and [MotionEvent.Up]. When
-//     * pointer is up this path is saved to **paths** and new instance is created
-//     */
-//    var currentPath by remember { mutableStateOf(Path()) }
-//
-//    /**
-//     * Properties of path that is currently being drawn between
-//     * [MotionEvent.Down] and [MotionEvent.Up].
-//     */
-//    var currentPathProperty by remember { mutableStateOf(PathProperties()) }
-//
-//    Column(
-//        modifier = Modifier.fillMaxSize()
-//    ) {
-//        Canvas(
-//            modifier = Modifier
-//                .fillMaxSize()
-//                .background(Color.White)
-//                .padding(8.dp)
-//                .pointerInput(Unit) {
-//                    detectDragGestures(
-//                        onDragStart = { offset ->
-//                            motionEvent = MotionEvent.Down
-//                            currentPosition = offset
-//                            previousPosition = offset
-//                        },
-//                        onDrag = { pointerInputChange, offset ->
-//                            motionEvent = MotionEvent.Move
-//                            currentPosition = pointerInputChange.position
-//
-//                            if (drawMode == DrawMode.Touch) {
-//                                val change = pointerInputChange.positionChange()
-//                                Timber.d("DRAG: $change")
-//                                paths.forEach { entry ->
-//                                    val path: androidx.compose.ui.graphics.Path = entry.first
-//                                    path.translate(change)
-//                                }
-//                                currentPath.translate(change)
-//                            }
-//                            pointerInputChange.consume()
-//                        },
-//                        onDragEnd = {
-//                            motionEvent = MotionEvent.Up
-//                        }
-//                    )
-//                }) {
-//            when (motionEvent) {
-//                MotionEvent.Down -> {
-//                    if (drawMode != DrawMode.Touch) {
-//                        currentPath.moveTo(currentPosition.x, currentPosition.y)
-//                    }
-//                    previousPosition = currentPosition
-//                }
-//
-//                MotionEvent.Move -> {
-//                    if (drawMode != DrawMode.Touch) {
-//                        if (previousPosition != Offset.Unspecified) {
-//                            currentPath.quadraticBezierTo(
-//                                previousPosition.x,
-//                                previousPosition.y,
-//                                (previousPosition.x + currentPosition.x) / 2,
-//                                (previousPosition.y + currentPosition.y) / 2
-//                            )
-//                        }
-//                    }
-//                    previousPosition = currentPosition
-//                }
-//
-//                MotionEvent.Up -> {
-//                    if (drawMode != DrawMode.Touch) {
-//                        currentPath.lineTo(currentPosition.x, currentPosition.y)
-//
-//                        // Pointer is up save current path
-////                        paths[currentPath] = currentPathProperty
-//                        paths.add(Pair(currentPath, currentPathProperty))
-//
-//                        // Since paths are keys for map, use new one for each key
-//                        // and have separate path for each down-move-up gesture cycle
-//                        currentPath = Path()
-//
-//                        // Create new instance of path properties to have new path and properties
-//                        // only for the one currently being drawn
-//                        currentPathProperty = PathProperties(
-//                            strokeWidth = currentPathProperty.strokeWidth,
-//                            color = currentPathProperty.color,
-//                            strokeCap = currentPathProperty.strokeCap,
-//                            strokeJoin = currentPathProperty.strokeJoin,
-//                        )
-//                    }
-//
-//                    // Since new path is drawn no need to store paths to undone
-//                    pathsUndone.clear()
-//
-//                    // If we leave this state at MotionEvent.Up it causes current path to draw
-//                    // line from (0,0) if this composable recomposes when draw mode is changed
-//                    currentPosition = Offset.Unspecified
-//                    previousPosition = currentPosition
-//                    motionEvent = MotionEvent.Idle
-//                }
-//
-//                else -> Unit
-//            }
-//
-//            with(drawContext.canvas.nativeCanvas) {
-//                val checkPoint = saveLayer(null, null)
-//
-//                paths.forEach {
-//                    val path = it.first
-//                    val property = it.second
-//
-//                    drawPath(
-//                        color = property.color,
-//                        path = path,
-//                        style = Stroke(
-//                            width = property.strokeWidth,
-//                            cap = property.strokeCap,
-//                            join = property.strokeJoin
-//                        )
-//                    )
-//                }
-//
-//                if (motionEvent != MotionEvent.Idle) {
-//                    drawPath(
-//                        color = currentPathProperty.color,
-//                        path = currentPath,
-//                        style = Stroke(
-//                            width = currentPathProperty.strokeWidth,
-//                            cap = currentPathProperty.strokeCap,
-//                            join = currentPathProperty.strokeJoin
-//                        )
-//                    )
-//                }
-//                restoreToCount(checkPoint)
-//            }
-//        }
-//    }
-//}
 
 @Preview
 @Composable
