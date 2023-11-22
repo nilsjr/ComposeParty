@@ -37,6 +37,7 @@ import de.nilsdruyen.composeparty.cards.TeaserSample
 import de.nilsdruyen.composeparty.freestyle.*
 import de.nilsdruyen.composeparty.freestyle.dragdrop.DragAndDropSample
 import de.nilsdruyen.composeparty.isles.IsleExample
+import de.nilsdruyen.composeparty.layouts.AdventCalendarSample
 import de.nilsdruyen.composeparty.layouts.CollapsingToolbarLayoutExample
 import de.nilsdruyen.composeparty.layouts.ConstraintAnimation
 import de.nilsdruyen.composeparty.layouts.DropDownLayout
@@ -67,6 +68,7 @@ import de.nilsdruyen.composeparty.utils.ItemList
 class MainActivity : ComponentActivity() {
 
     private val demoItems = mapOf<String, @Composable () -> Unit>(
+        "AdventCalendarSample" to { AdventCalendarSample() },
         "PhysicalSample" to { PhysicalSample() },
         "VideoSample" to { VideoSample() },
         "ScratchCard" to { ScratchCardSample() },
@@ -148,7 +150,7 @@ class MainActivity : ComponentActivity() {
                         .semantics { testTagsAsResourceId = true },
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    var screen by remember { mutableStateOf("PhysicalSample") }
+                    var screen by remember { mutableStateOf("AdventCalendarSample") }
                     val changeScreen = { nextScreen: String -> screen = nextScreen }
 
                     BackHandler(screen.isNotEmpty()) {
