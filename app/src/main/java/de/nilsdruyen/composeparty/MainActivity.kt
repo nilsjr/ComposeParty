@@ -135,10 +135,6 @@ class MainActivity : ComponentActivity() {
 
     @OptIn(ExperimentalComposeUiApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-//            val splashScreen = installSplashScreen()
-//            splashScreen.setKeepOnScreenCondition { true }
-//        }
         installSplashScreen()
         enableEdgeToEdge()
 
