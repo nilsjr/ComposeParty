@@ -1,6 +1,5 @@
 package de.nilsdruyen.composeparty.freestyle
 
-import android.view.MotionEvent
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.VectorConverter
@@ -8,14 +7,17 @@ import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
-import androidx.compose.foundation.gestures.forEachGesture
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,22 +28,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.pointer.PointerEvent
-import androidx.compose.ui.input.pointer.PointerInputChange
-import androidx.compose.ui.input.pointer.consumePositionChange
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.input.pointer.pointerInteropFilter
-import androidx.compose.ui.input.pointer.positionChange
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInParent
-import androidx.compose.ui.layout.positionInRoot
-import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.round
 import de.nilsdruyen.composeparty.R
+import de.nilsdruyen.composeparty.freestyle.explodable.Explodable
+import de.nilsdruyen.composeparty.freestyle.explodable.ExplosionAnimationSpec
+import de.nilsdruyen.composeparty.freestyle.explodable.rememberExplosionController
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -93,6 +91,31 @@ fun SpringAnimation() {
         val imageSize = remember { mutableStateOf(Offset.Zero) }
         val imagePosition = remember { mutableStateOf(Offset.Zero) }
         val offsetDiff = remember { mutableStateOf(Offset.Zero) }
+
+        val explosionController = rememberExplosionController()
+
+        Explodable(
+            controller = explosionController,
+            modifier = Modifier
+                .align(Alignment.CenterStart)
+                .padding(8.dp),
+            animationSpec = ExplosionAnimationSpec(
+                shakeDurationMs = 3000,
+                explosionPower = 5f,
+                explosionDurationMs = 1000,
+            ),
+        ) {
+            Icon(
+                imageVector = Icons.Filled.Add,
+                contentDescription = null,
+                modifier = Modifier
+                    .size(48.dp)
+                    .background(Color.Yellow)
+                    .clickable {
+                        explosionController.explode()
+                    }
+            )
+        }
 
         Image(
             painter = painterResource(id = R.drawable.img_fn_logo),

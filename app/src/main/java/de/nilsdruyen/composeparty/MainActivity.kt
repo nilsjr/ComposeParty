@@ -6,6 +6,7 @@ import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.MaterialTheme
@@ -150,6 +151,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     var screen by remember { mutableStateOf("AdventCalendarSample") }
                     val changeScreen = { nextScreen: String -> screen = nextScreen }
+                    val scrollState = rememberScrollState()
 
                     BackHandler(screen.isNotEmpty()) {
                         changeScreen("")
@@ -160,6 +162,7 @@ class MainActivity : ComponentActivity() {
                             demoItems[currentScreen]?.invoke()
                         } else {
                             SampleList(
+                                scrollState = scrollState,
                                 items = demoItems.map { it.key },
                                 changeScreen = changeScreen,
                             )
@@ -172,8 +175,11 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-private fun SampleList(items: List<String>, changeScreen: (String) -> Unit) {
-    val scrollState = rememberScrollState()
+private fun SampleList(
+    scrollState: ScrollState,
+    items: List<String>,
+    changeScreen: (String) -> Unit,
+) {
     ItemList(items, scrollState) { path ->
         changeScreen(path)
     }
