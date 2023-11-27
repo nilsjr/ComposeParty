@@ -68,7 +68,7 @@ dependencies {
     implementation(libs.androidx.compose.constraint)
     implementation(libs.androidx.splashscreen)
 
-    implementation(platform("dev.chrisbanes.compose:compose-bom:2023.12.00-alpha01"))
+    implementation(platform("dev.chrisbanes.compose:compose-bom:2023.12.00-alpha02"))
     // Use whichever Compose artifacts you need without a version number
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.runtime:runtime")
@@ -98,6 +98,6 @@ dependencies {
     implementation("androidx.media3:media3-ui:1.2.0")
 
     implementation("io.github.klassenkonstantin:physics-layout:0.4.1")
-    implementation("net.engawapg.lib:zoomable:1.5.2")
+    implementation("net.engawapg.lib:zoomable:1.6.0-beta1")
     implementation("dev.shreyaspatil:capturable:1.0.3")
 }
