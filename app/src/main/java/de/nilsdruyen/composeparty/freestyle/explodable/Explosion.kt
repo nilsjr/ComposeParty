@@ -51,14 +51,6 @@ internal fun Explosion(progress: Float, bitmap: ImageBitmap, bound: Rect) {
     })
 }
 
-private fun DrawScope.drawDebugRect(bound: Rect) {
-    drawRect(
-        color = Color.Red,
-        topLeft = Offset(bound.left, bound.top),
-        size = Size(bound.right - bound.left, bound.bottom - bound.top)
-    )
-}
-
 class Particle(
     val color: Color,
     val startXPosition: Int,

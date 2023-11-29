@@ -10,7 +10,6 @@ import androidx.compose.ui.unit.Dp
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
-import kotlin.random.Random
 
 @Composable
 fun rememberExplosionController() = remember { ExplosionController() }
@@ -76,5 +75,6 @@ fun MutableRect.scale(factor: Float) {
 
 private val random = java.util.Random()
 fun Float.randomTillZero() = this * random.nextFloat()
-fun randomInRange(min:Float,max:Float) = min + (max - min).randomTillZero()
-fun randomBoolean(trueProbabilityPercentage: Int) = random.nextFloat() < trueProbabilityPercentage/100f
+fun randomInRange(min: Float, max: Float) = min + (max - min).randomTillZero()
+fun randomBoolean(trueProbabilityPercentage: Int) =
+    random.nextFloat() < trueProbabilityPercentage / 100f

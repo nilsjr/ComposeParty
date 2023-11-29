@@ -68,6 +68,8 @@ dependencies {
     implementation(libs.androidx.compose.constraint)
     implementation(libs.androidx.splashscreen)
 
+    implementation(libs.timber)
+
     implementation(platform("dev.chrisbanes.compose:compose-bom:2023.12.00-alpha02"))
     // Use whichever Compose artifacts you need without a version number
     implementation("androidx.compose.ui:ui")
@@ -88,10 +90,7 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.lottie.compose)
     implementation(libs.konfetti)
-
-    implementation(libs.timber)
     implementation(libs.skydoves.orbital)
-
     implementation(libs.graphics.glm)
 
     implementation("androidx.media3:media3-exoplayer:1.2.0")

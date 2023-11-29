@@ -149,7 +149,7 @@ class MainActivity : ComponentActivity() {
                         .semantics { testTagsAsResourceId = true },
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    var screen by remember { mutableStateOf("AdventCalendarSample") }
+                    var screen by remember { mutableStateOf("") }
                     val changeScreen = { nextScreen: String -> screen = nextScreen }
                     val scrollState = rememberScrollState()
 

@@ -70,15 +70,19 @@ fun Explodable(
             }
         }
 
+        // TODO: replace with own impl
         val captureController = rememberCaptureController()
-        Capturable(controller = captureController, onCaptured = { bitmap, error ->
-            bitmap?.let {
-                explosionViewBitmap = it
+        Capturable(
+            controller = captureController,
+            onCaptured = { bitmap, error ->
+                bitmap?.let {
+                    explosionViewBitmap = it
+                }
+                error?.let {
+                    Timber.e("ExplodingComposable", "Failed to extract colors from content")
+                }
             }
-            error?.let {
-                Timber.e("ExplodingComposable", "Failed to extract colors from content")
-            }
-        }) {
+        ) {
             val contentScaleAndAlpha = when {
                 currentPositionMs < shakeDurationMs -> 1f
                 currentPositionMs > (shakeDurationMs + SHRINK_DURATION_MS) -> 0f
@@ -90,27 +94,35 @@ fun Explodable(
                 )
             }
             var contentSize by remember { mutableStateOf(IntSize.Zero) }
-            Box(modifier = Modifier.wrapContentSize().onGloballyPositioned { coordinates ->
-                contentSize = coordinates.size
-                explosionBound = coordinates.boundsInWindow().mutate {
-                    with(coordinates.positionInWindow()) {
-                        offset(-x, -y)
+            Box(modifier = Modifier
+                .wrapContentSize()
+                .onGloballyPositioned { coordinates ->
+                    contentSize = coordinates.size
+                    explosionBound = coordinates
+                        .boundsInWindow()
+                        .mutate {
+                            with(coordinates.positionInWindow()) {
+                                offset(-x, -y)
+                            }
+                            scale(explosionPower)
+                        }
+                        .toRect()
+                    if (explosionViewBitmap == null) {
+                        captureController.capture()
                     }
-                    scale(explosionPower)
-                }.toRect()
-                if (explosionViewBitmap == null) {
-                    captureController.capture()
                 }
-            }.scale(contentScaleAndAlpha).alpha(contentScaleAndAlpha).let {
-                if (currentPositionMs > 0 && currentPositionMs < shakeDurationMs) {
-                    with(remember { Random() }) {
-                        it.offset(
-                            x = Dp((nextFloat() - 0.5f) * contentSize.width * 0.05f),
-                            y = Dp((nextFloat() - 0.5f) * contentSize.height * 0.05f)
-                        )
-                    }
-                } else it
-            }) { content() }
+                .scale(contentScaleAndAlpha)
+                .alpha(contentScaleAndAlpha)
+                .let {
+                    if (currentPositionMs > 0 && currentPositionMs < shakeDurationMs) {
+                        with(remember { Random() }) {
+                            it.offset(
+                                x = Dp((nextFloat() - 0.5f) * contentSize.width * 0.05f),
+                                y = Dp((nextFloat() - 0.5f) * contentSize.height * 0.05f)
+                            )
+                        }
+                    } else it
+                }) { content() }
         }
     }
 
@@ -137,6 +149,7 @@ fun Explodable(
                         }
                     }
                 }
+
                 ExplosionRequest.RESET -> {
                     animatedProgress.snapTo(0f)
                 }
