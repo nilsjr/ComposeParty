@@ -44,7 +44,7 @@ import coil.compose.AsyncImage
 import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
 import timber.log.Timber
 
-const val url = "https://picsum.photos/id/31/1036/2021"
+const val imageUrl = "https://picsum.photos/id/31/1036/2021"
 
 enum class MotionEvent {
     Idle, Down, Move, Up
@@ -61,7 +61,7 @@ fun ScratchCardSample() {
             .background(Color.Black),
         contentAlignment = Alignment.Center,
     ) {
-        AsyncImage(model = url, contentDescription = null)
+        AsyncImage(model = imageUrl, contentDescription = null)
         AnimatedVisibility(
             visible = showCanvas,
             exit = fadeOut(tween(3000))

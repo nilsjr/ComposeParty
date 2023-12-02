@@ -70,6 +70,8 @@ import de.nilsdruyen.composeparty.utils.ItemList
 class MainActivity : ComponentActivity() {
 
     private val demoItems = mapOf<String, @Composable () -> Unit>(
+        "RevealImageSample" to { RevealImageSample() },
+        "ShakeSample" to { ShakeSample() },
         "ZoomImageSample" to { ZoomImageSample() },
         "AdventCalendarSample" to { AdventCalendarSample() },
         "PhysicalSample" to { PhysicalSample() },
