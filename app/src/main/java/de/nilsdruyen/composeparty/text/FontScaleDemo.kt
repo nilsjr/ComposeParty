@@ -44,9 +44,7 @@ fun FontScaleDemo() {
             .systemBarsPadding()
     ) {
         Row(Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
-            Text(
-                "Font Scale: ${density.fontScale}",
-            )
+            Text("Font Scale: ${density.fontScale}")
             Spacer(modifier = Modifier.width(16.dp))
             IconButton(onClick = {
                 context.startActivity(Intent(Settings.ACTION_SETTINGS))
