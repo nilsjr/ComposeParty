@@ -33,6 +33,7 @@ fun VideoSample() {
 fun VideoBackground(modifier: Modifier) {
     val context = LocalContext.current
 
+    val drawable = remember { context.getDrawable(R.drawable.bg_forest) }
     val exoPlayer = remember {
         ExoPlayer.Builder(context)
             .build()
@@ -47,15 +48,11 @@ fun VideoBackground(modifier: Modifier) {
 
                 setMediaSource(source)
                 prepare()
+
+                playWhenReady = true
+                videoScalingMode = C.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING
+                repeatMode = Player.REPEAT_MODE_ONE
             }
-    }
-
-    exoPlayer.playWhenReady = true
-    exoPlayer.videoScalingMode = C.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING
-    exoPlayer.repeatMode = Player.REPEAT_MODE_ONE
-
-    val drawable = remember {
-        context.getDrawable(R.drawable.bg_forest)
     }
 
     DisposableEffect(exoPlayer) {
@@ -63,17 +60,17 @@ fun VideoBackground(modifier: Modifier) {
     }
 
     AndroidView(
+        modifier = modifier,
         factory = {
             PlayerView(context).apply {
-                hideController()
-                useController = false
-                resizeMode = AspectRatioFrameLayout.RESIZE_MODE_ZOOM
+                useController = true
+//                hideController()
+//                resizeMode = AspectRatioFrameLayout.RESIZE_MODE_ZOOM
 
                 player = exoPlayer
                 layoutParams = FrameLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT)
                 defaultArtwork = drawable
             }
         },
-        modifier = modifier
     )
 }
