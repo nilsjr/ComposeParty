@@ -19,4 +19,4 @@ graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
 lottie-compose = "com.airbnb.android:lottie-compose:6.2.0"
 skydoves-orbital = "com.github.skydoves:orbital:0.3.3"
 timber = "com.jakewharton.timber:timber:5.0.1"
-konfetti = "nl.dionsegijn:konfetti-compose:2.0.3"
+konfetti = "nl.dionsegijn:konfetti-compose:2.0.4"
