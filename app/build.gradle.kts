@@ -97,6 +97,6 @@ dependencies {
     implementation("androidx.media3:media3-ui:1.2.0")
 
     implementation("io.github.klassenkonstantin:physics-layout:0.4.1")
-    implementation("net.engawapg.lib:zoomable:1.6.0-beta3")
+    implementation("net.engawapg.lib:zoomable:1.6.0-beta4")
     implementation("dev.shreyaspatil:capturable:1.0.3")
 }
