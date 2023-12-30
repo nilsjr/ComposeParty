@@ -1,14 +1,14 @@
 [versions]
 accompanist = "0.33.2-alpha"
-composeCompiler = "1.5.6"
+composeCompiler = "1.5.7"
 composeConstraintLayout = "1.1.0-alpha13"
 glm = "0.9.9.1-5"
 
 [libraries]
-accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 accompanist-flowlayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanist" }
 accompanist-placeholder = { module = "com.google.accompanist:accompanist-placeholder", version.ref = "accompanist" }
 accompanist-placeholder-material = { module = "com.google.accompanist:accompanist-placeholder-material3", version.ref = "accompanist" }
+accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 androidx-compose-activity = "androidx.activity:activity-compose:1.8.2"
 androidx-compose-constraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.13.0-alpha02" }
@@ -16,7 +16,7 @@ androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", vers
 androidx-splashscreen = "androidx.core:core-splashscreen:1.1.0-alpha02"
 coil-compose = "io.coil-kt:coil-compose:2.5.0"
 graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
-lottie-compose = "com.airbnb.android:lottie-compose:6.2.0"
+konfetti = "nl.dionsegijn:konfetti-compose:2.1.0-beta01"
+lottie-compose = "com.airbnb.android:lottie-compose:6.3.0"
 skydoves-orbital = "com.github.skydoves:orbital:0.3.3"
 timber = "com.jakewharton.timber:timber:5.0.1"
-konfetti = "nl.dionsegijn:konfetti-compose:2.0.4"
