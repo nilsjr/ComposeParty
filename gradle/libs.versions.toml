@@ -1,6 +1,7 @@
 [versions]
 accompanist = "0.33.2-alpha"
-composeCompiler = "1.5.7"
+androidx-media = "1.2.0"
+composeCompiler = "1.5.8-dev-k2.0.0-Beta2-99ed868a0f8"
 composeConstraintLayout = "1.1.0-alpha13"
 glm = "0.9.9.1-5"
 
@@ -13,10 +14,15 @@ androidx-compose-activity = "androidx.activity:activity-compose:1.8.2"
 androidx-compose-constraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.13.0-alpha02" }
 androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.7.0-rc02" }
+androidx-media-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "androidx-media" }
+androidx-media-ui = { module = "androidx.media3:media3-ui", version.ref = "androidx-media" }
 androidx-splashscreen = "androidx.core:core-splashscreen:1.1.0-alpha02"
+captureable = "dev.shreyaspatil:capturable:1.0.3"
 coil-compose = "io.coil-kt:coil-compose:2.5.0"
 graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
 konfetti = "nl.dionsegijn:konfetti-compose:2.1.0-beta01"
 lottie-compose = "com.airbnb.android:lottie-compose:6.3.0"
+physics-layout = "io.github.klassenkonstantin:physics-layout:0.4.1"
 skydoves-orbital = "com.github.skydoves:orbital:0.3.3"
 timber = "com.jakewharton.timber:timber:5.0.1"
+zoomable = "net.engawapg.lib:zoomable:1.6.0-beta4"
