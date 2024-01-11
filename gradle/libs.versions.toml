@@ -12,8 +12,8 @@ accompanist-placeholder-material = { module = "com.google.accompanist:accompanis
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 androidx-compose-activity = "androidx.activity:activity-compose:1.8.2"
 androidx-compose-constraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
-androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.13.0-alpha02" }
-androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.7.0-rc02" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.13.0-alpha03" }
+androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.7.0" }
 androidx-media-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "androidx-media" }
 androidx-media-ui = { module = "androidx.media3:media3-ui", version.ref = "androidx-media" }
 androidx-splashscreen = "androidx.core:core-splashscreen:1.1.0-alpha02"
