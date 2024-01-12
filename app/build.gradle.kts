@@ -6,12 +6,11 @@ plugins {
 android {
     namespace = "de.nilsdruyen.composeparty"
     compileSdk = 34
-    compileSdkPreview = "UpsideDownCake"
 
     defaultConfig {
         applicationId = "de.nilsdruyen.composeparty"
         minSdk = 26
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
     }
@@ -55,7 +54,7 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
             excludes += "META-INF/INDEX.LIST"
-            excludes += "META-INF/linux/x64/org/lwjgl/stb/liblwjgl_stb.so.sha1"
+            excludes += "META-INF/linux/x64/org/lwjgl/**"
         }
     }
 }
@@ -70,7 +69,7 @@ dependencies {
 
     implementation(libs.timber)
 
-    implementation(platform("dev.chrisbanes.compose:compose-bom:2023.12.00-alpha04"))
+    implementation(platform("dev.chrisbanes.compose:compose-bom:2024.01.00-alpha01"))
     // Use whichever Compose artifacts you need without a version number
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.runtime:runtime")
