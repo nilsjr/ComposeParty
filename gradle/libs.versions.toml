@@ -1,6 +1,6 @@
 [versions]
 accompanist = "0.33.2-alpha"
-androidx-media = "1.2.0"
+androidx-media = "1.2.1"
 composeCompiler = "1.5.8-dev-k2.0.0-Beta2-99ed868a0f8"
 composeConstraintLayout = "1.1.0-alpha13"
 glm = "0.9.9.1-11"
