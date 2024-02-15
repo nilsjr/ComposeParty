@@ -1,6 +1,6 @@
 package de.nilsdruyen.composeparty.layouts
 
-import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -17,15 +17,20 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.pulltorefresh.PullToRefreshContainer
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScaffoldTabSample() {
     // Tabs for pager
@@ -42,8 +47,19 @@ fun ScaffoldTabSample() {
     val scrollBehavior =
         TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
+    val refreshState = rememberPullToRefreshState()
+
+    LaunchedEffect(refreshState.isRefreshing) {
+        if (refreshState.isRefreshing) {
+            delay(2_000)
+            refreshState.endRefresh()
+        }
+    }
+
     Scaffold(
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        modifier = Modifier
+            .nestedScroll(refreshState.nestedScrollConnection)
+            .nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             TopAppBar(
                 scrollBehavior = scrollBehavior,
@@ -54,29 +70,39 @@ fun ScaffoldTabSample() {
                     scrolledContainerColor = MaterialTheme.colorScheme.surface
                 ),
             )
-        }
+        },
     ) { innerPadding ->
-        Column(Modifier.padding(innerPadding)) {
-            TabRow(selectedTabIndex = pagerState.currentPage) {
-                tabData.forEachIndexed { index, s ->
-                    Tab(
-                        selected = pagerState.currentPage == index,
-                        onClick = {
-                            coroutineScope.launch {
-                                pagerState.animateScrollToPage(index)
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
+            Column(Modifier) {
+                TabRow(selectedTabIndex = pagerState.currentPage) {
+                    tabData.forEachIndexed { index, s ->
+                        Tab(
+                            selected = pagerState.currentPage == index,
+                            onClick = {
+                                coroutineScope.launch {
+                                    pagerState.animateScrollToPage(index)
+                                }
                             }
+                        ) {
+                            Text(s, Modifier.padding(8.dp))
                         }
-                    ) {
-                        Text(s, Modifier.padding(8.dp))
+                    }
+                }
+                HorizontalPager(state = pagerState) {
+                    when (it) {
+                        0 -> ContentList()
+                        1 -> ContentList()
                     }
                 }
             }
-            HorizontalPager(state = pagerState) {
-                when (it) {
-                    0 -> ContentList()
-                    1 -> ContentList()
-                }
-            }
+            PullToRefreshContainer(
+                modifier = Modifier.align(Alignment.TopCenter),
+                state = refreshState,
+            )
         }
     }
 }

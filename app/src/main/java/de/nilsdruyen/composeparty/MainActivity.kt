@@ -39,6 +39,7 @@ import de.nilsdruyen.composeparty.freestyle.*
 import de.nilsdruyen.composeparty.freestyle.dragdrop.DragAndDropSample
 import de.nilsdruyen.composeparty.isles.IsleExample
 import de.nilsdruyen.composeparty.layouts.AdventCalendarSample
+import de.nilsdruyen.composeparty.layouts.AppBarSample
 import de.nilsdruyen.composeparty.layouts.BottomSheetDemo
 import de.nilsdruyen.composeparty.layouts.CollapsingToolbarLayoutExample
 import de.nilsdruyen.composeparty.layouts.ConstraintAnimation
@@ -71,6 +72,7 @@ import de.nilsdruyen.composeparty.utils.ItemList
 class MainActivity : ComponentActivity() {
 
     private val demoItems = mapOf<String, @Composable () -> Unit>(
+        "AppBarSample" to { AppBarSample() },
         "BottomSheetDemo" to { BottomSheetDemo() },
         "RevealImageSample" to { RevealImageSample() },
         "ShakeSample" to { ShakeSample() },
