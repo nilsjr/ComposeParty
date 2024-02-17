@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -67,6 +68,7 @@ fun LargeContent(modifier: Modifier) {
     Column(modifier = modifier) {
         repeat(30) {
             Content(input = it.toString())
+            HorizontalDivider()
         }
     }
 }
