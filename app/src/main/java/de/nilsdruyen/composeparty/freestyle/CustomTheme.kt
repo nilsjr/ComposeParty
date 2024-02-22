@@ -41,10 +41,10 @@ import de.nilsdruyen.composeparty.ui.theme.Typography
 @Composable
 fun CustomTheme(modifier: Modifier = Modifier) {
     val shape = CustomShape(
-        CornerSize(8.dp),
+        CornerSize(32.dp),
     )
     val mediumShape = CustomShape(
-        CornerSize(16.dp),
+        CornerSize(12.dp),
     )
 
     MaterialTheme(
@@ -152,8 +152,8 @@ private class CustomShape(
     ): Outline = if (topStart + topEnd + bottomStart + bottomEnd == 0.0f) {
         Outline.Rectangle(size.toRect())
     } else {
-        val s = 32f
-        val d = 12f
+        val s = 22f
+        val d = 8f
         val w = size.width
         val h = size.height
         Outline.Generic(
