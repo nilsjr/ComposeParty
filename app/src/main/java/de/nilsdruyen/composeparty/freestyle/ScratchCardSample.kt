@@ -171,7 +171,7 @@ fun Overlay(imageSize: Size, hideCanvas: () -> Unit) {
                         currentPosition = Offset(200f, 200f)
                     }
                     if (previousPosition != Offset.Unspecified) {
-                        currentPath?.quadraticBezierTo(
+                        currentPath?.quadraticTo(
                             previousPosition.x,
                             previousPosition.y,
                             (previousPosition.x + currentPosition.x) / 2,

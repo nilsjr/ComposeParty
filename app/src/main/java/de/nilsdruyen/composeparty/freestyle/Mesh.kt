@@ -7,13 +7,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import de.nilsdruyen.composeparty.effects.EdgeToEdgeStyleDisposableEffect
 import de.nilsdruyen.composeparty.utils.animationTimeMillis
 import kotlin.math.cos
 import kotlin.math.floor
@@ -56,15 +55,9 @@ fun DynamicPointMesh(modifier: Modifier) {
             .toTypedArray()
     }
 
-    val systemUiController = rememberSystemUiController()
     val isInDarkTheme = isSystemInDarkTheme()
 
-    SideEffect {
-        systemUiController.setStatusBarColor(
-            color = Color.Transparent,
-            darkIcons = !isInDarkTheme
-        )
-    }
+    EdgeToEdgeStyleDisposableEffect(isInDarkTheme)
 
     Canvas(
         modifier = modifier

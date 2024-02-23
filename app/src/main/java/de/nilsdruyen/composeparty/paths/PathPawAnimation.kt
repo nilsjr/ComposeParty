@@ -80,10 +80,10 @@ fun PathPawAnimation() {
             val path = Path()
 
             path.moveTo(0f, size.height / 2)
-            path.relativeQuadraticBezierTo(x, y, advance, 0.0f)
-            path.relativeQuadraticBezierTo(x, -y, advance, 0.0f)
-            path.relativeQuadraticBezierTo(x, y, advance, 0.0f)
-            path.relativeQuadraticBezierTo(x, -y, advance, 0.0f)
+            path.relativeQuadraticTo(x, y, advance, 0.0f)
+            path.relativeQuadraticTo(x, -y, advance, 0.0f)
+            path.relativeQuadraticTo(x, y, advance, 0.0f)
+            path.relativeQuadraticTo(x, -y, advance, 0.0f)
 
             val position = FloatArray(2)
             val tangent = FloatArray(2)

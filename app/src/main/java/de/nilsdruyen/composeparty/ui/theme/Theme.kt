@@ -8,10 +8,8 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import de.nilsdruyen.composeparty.effects.EdgeToEdgeStyleDisposableEffect
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -52,11 +50,7 @@ fun ComposePartyTheme(
         else -> LightColorScheme
     }
 
-    val systemUiController = rememberSystemUiController()
-
-    SideEffect {
-        systemUiController.setSystemBarsColor(Color.Transparent, darkIcons = !darkTheme)
-    }
+    EdgeToEdgeStyleDisposableEffect(darkSystemBarStyle = darkTheme)
 
     MaterialTheme(
         colorScheme = colorScheme,

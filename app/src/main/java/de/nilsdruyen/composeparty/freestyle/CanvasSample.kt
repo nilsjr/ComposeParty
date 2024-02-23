@@ -59,21 +59,21 @@ fun RotateText() {
             moveTo(0f, 0f)
             lineTo(size.width, 0f)
             lineTo(size.width, statusBarInsets.calculateBottomPadding().toPx())
-            quadraticBezierTo(
+            quadraticTo(
                 x1 = size.width,
                 y1 = additionalPadding,
                 x2 = size.width - cornerValue,
                 y2 = additionalPadding
             )
             lineTo(widthVertical + cornerValue, additionalPadding)
-            quadraticBezierTo(
+            quadraticTo(
                 x1 = widthVertical,
                 y1 = additionalPadding,
                 x2 = widthVertical,
                 y2 = additionalPadding + cornerValue
             )
             lineTo(widthVertical, size.height - cornerValue)
-            quadraticBezierTo(
+            quadraticTo(
                 x1 = widthVertical,
                 y1 = size.height,
                 x2 = widthVertical - cornerValue,

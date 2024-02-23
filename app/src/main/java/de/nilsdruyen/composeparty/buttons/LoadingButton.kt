@@ -1,13 +1,12 @@
 package de.nilsdruyen.composeparty.buttons
 
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.SizeTransform
 import androidx.compose.animation.core.keyframes
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.with
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -55,7 +54,6 @@ fun LoadingButtonDemo() {
     }
 }
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun LoadingButton(modifier: Modifier = Modifier, isIdle: Boolean = true, onClick: () -> Unit) {
     Button(
@@ -67,7 +65,7 @@ fun LoadingButton(modifier: Modifier = Modifier, isIdle: Boolean = true, onClick
         AnimatedContent(
             targetState = isIdle,
             transitionSpec = {
-                fadeIn(animationSpec = tween(150, 150)) with
+                fadeIn(animationSpec = tween(150, 150)) togetherWith
                         fadeOut(animationSpec = tween(150)) using
                         SizeTransform { initialSize, targetSize ->
                             if (targetState) {

@@ -82,8 +82,6 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
 
-    implementation(libs.accompanist.systemuicontroller)
-    implementation(libs.accompanist.flowlayout)
     implementation(libs.accompanist.placeholder.material)
 
     implementation(libs.coil.compose)

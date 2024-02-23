@@ -16,28 +16,19 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import de.nilsdruyen.composeparty.effects.EdgeToEdgeStyleDisposableEffect
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScrollableScaffold() {
     val barState = rememberTopAppBarState()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(barState)
-
-    val systemUiController = rememberSystemUiController()
     val isInDarkTheme = isSystemInDarkTheme()
 
-    SideEffect {
-        systemUiController.setStatusBarColor(
-            color = Color.Transparent,
-            darkIcons = !isInDarkTheme
-        )
-    }
+    EdgeToEdgeStyleDisposableEffect(darkSystemBarStyle = isInDarkTheme)
 
     Scaffold(
         modifier = Modifier

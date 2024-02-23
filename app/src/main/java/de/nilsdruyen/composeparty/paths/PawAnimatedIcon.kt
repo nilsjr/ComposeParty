@@ -159,7 +159,7 @@ fun PawAnimatedIcon(modifier: Modifier = Modifier, color: Color = Color.White) {
             animation = keyframes {
                 durationMillis = duration
                 0.0f at 0
-                1f at 300 with FastOutSlowInEasing
+                1f at 300 using FastOutSlowInEasing
             },
             repeatMode = repeatMode
         )
@@ -171,7 +171,7 @@ fun PawAnimatedIcon(modifier: Modifier = Modifier, color: Color = Color.White) {
             animation = keyframes {
                 durationMillis = duration
                 0.0f at 200
-                1f at 500 with FastOutSlowInEasing
+                1f at 500 using FastOutSlowInEasing
             },
             repeatMode = repeatMode
         )
@@ -183,7 +183,7 @@ fun PawAnimatedIcon(modifier: Modifier = Modifier, color: Color = Color.White) {
             animation = keyframes {
                 durationMillis = duration
                 0.0f at 400
-                1f at 700 with FastOutSlowInEasing
+                1f at 700 using FastOutSlowInEasing
             },
             repeatMode = repeatMode
         )
@@ -195,7 +195,7 @@ fun PawAnimatedIcon(modifier: Modifier = Modifier, color: Color = Color.White) {
             animation = keyframes {
                 durationMillis = duration
                 0.0f at 600
-                1f at 900 with FastOutSlowInEasing
+                1f at 900 using FastOutSlowInEasing
             },
             repeatMode = repeatMode
         )
