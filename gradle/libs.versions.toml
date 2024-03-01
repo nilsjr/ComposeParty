@@ -14,7 +14,7 @@ androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", vers
 androidx-media-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "androidx-media" }
 androidx-media-ui = { module = "androidx.media3:media3-ui", version.ref = "androidx-media" }
 androidx-splashscreen = "androidx.core:core-splashscreen:1.1.0-alpha02"
-captureable = "dev.shreyaspatil:capturable:2.0.0"
+captureable = "dev.shreyaspatil:capturable:2.1.0"
 coil-compose = "io.coil-kt:coil-compose:2.6.0"
 graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
 konfetti = "nl.dionsegijn:konfetti-compose:2.1.0-beta01"
