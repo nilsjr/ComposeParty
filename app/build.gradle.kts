@@ -87,6 +87,8 @@ dependencies {
 
     implementation(libs.accompanist.placeholder.material)
 
+    implementation("dev.chrisbanes.haze:haze:0.6.2")
+    implementation("dev.chrisbanes.haze:haze-materials:0.6.2")
     implementation(libs.coil.compose)
     implementation(libs.lottie.compose)
     implementation(libs.konfetti)
