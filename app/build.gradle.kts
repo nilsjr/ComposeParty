@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -33,13 +36,13 @@ android {
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).all {
         compilerOptions {
             progressiveMode.set(true)
-        }
-        kotlinOptions {
-            jvmTarget = "17"
-            languageVersion = "2.0"
-            freeCompilerArgs = listOf(
-                "-opt-in=kotlin.RequiresOptIn",
-                "-Xcontext-receivers",
+            jvmTarget.set(JvmTarget.JVM_17)
+            languageVersion.set(KotlinVersion.KOTLIN_2_0)
+            freeCompilerArgs.addAll(
+                listOf(
+                    "-opt-in=kotlin.RequiresOptIn",
+                    "-Xcontext-receivers",
+                )
             )
         }
     }
@@ -69,7 +72,7 @@ dependencies {
 
     implementation(libs.timber)
 
-    implementation(platform("dev.chrisbanes.compose:compose-bom:2024.03.00-alpha02"))
+    implementation(platform("dev.chrisbanes.compose:compose-bom:2024.04.00-alpha01"))
     // Use whichever Compose artifacts you need without a version number
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.runtime:runtime")
