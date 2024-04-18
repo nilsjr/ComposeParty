@@ -35,7 +35,25 @@ import de.nilsdruyen.composeparty.buttons.TextButtonSample
 import de.nilsdruyen.composeparty.cards.CardTiltSample
 import de.nilsdruyen.composeparty.cards.PeopleCardSample
 import de.nilsdruyen.composeparty.cards.TeaserSample
-import de.nilsdruyen.composeparty.freestyle.*
+import de.nilsdruyen.composeparty.freestyle.CanvasSample
+import de.nilsdruyen.composeparty.freestyle.ComposeLogo
+import de.nilsdruyen.composeparty.freestyle.DashedLine
+import de.nilsdruyen.composeparty.freestyle.EqualizerSample
+import de.nilsdruyen.composeparty.freestyle.FireAnimationShaderSample
+import de.nilsdruyen.composeparty.freestyle.FlingAnimation
+import de.nilsdruyen.composeparty.freestyle.HeartRate
+import de.nilsdruyen.composeparty.freestyle.MeshSample
+import de.nilsdruyen.composeparty.freestyle.ProgressSample
+import de.nilsdruyen.composeparty.freestyle.PullRefreshSample
+import de.nilsdruyen.composeparty.freestyle.RevealImageSample
+import de.nilsdruyen.composeparty.freestyle.ScratchCardSample
+import de.nilsdruyen.composeparty.freestyle.SensorSample
+import de.nilsdruyen.composeparty.freestyle.ShaderSample
+import de.nilsdruyen.composeparty.freestyle.ShakeSample
+import de.nilsdruyen.composeparty.freestyle.SnowFallSample
+import de.nilsdruyen.composeparty.freestyle.SpringAnimation
+import de.nilsdruyen.composeparty.freestyle.SquareFun
+import de.nilsdruyen.composeparty.freestyle.VideoSample
 import de.nilsdruyen.composeparty.freestyle.dragdrop.DragAndDropSample
 import de.nilsdruyen.composeparty.isles.IsleExample
 import de.nilsdruyen.composeparty.layouts.AdventCalendarSample
@@ -51,6 +69,8 @@ import de.nilsdruyen.composeparty.layouts.PhysicalSample
 import de.nilsdruyen.composeparty.layouts.PlaceholderSample
 import de.nilsdruyen.composeparty.layouts.SampleStaggeredGridLayout
 import de.nilsdruyen.composeparty.layouts.ScaffoldTabSample
+import de.nilsdruyen.composeparty.layouts.SharedElement
+import de.nilsdruyen.composeparty.layouts.TooltipLayoutSample
 import de.nilsdruyen.composeparty.layouts.ZoomImageSample
 import de.nilsdruyen.composeparty.material.ScrollableScaffold
 import de.nilsdruyen.composeparty.math.GravitySample
@@ -72,6 +92,8 @@ import de.nilsdruyen.composeparty.utils.ItemList
 class MainActivity : ComponentActivity() {
 
     private val demoItems = mapOf<String, @Composable () -> Unit>(
+        "SharedElement" to { SharedElement() },
+        "TooltipLayoutSample" to { TooltipLayoutSample() },
         "AppBarSample" to { AppBarSample() },
         "BottomSheetDemo" to { BottomSheetDemo() },
         "RevealImageSample" to { RevealImageSample() },

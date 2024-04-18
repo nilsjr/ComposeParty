@@ -1,6 +1,6 @@
 plugins {
     id("com.android.application") version "8.5.0-alpha05" apply false
-    kotlin("android") version "2.0.0-Beta5" apply false
+    kotlin("android") version "2.0.0-RC1" apply false
     id("com.github.ben-manes.versions") version "0.51.0"
 }
 

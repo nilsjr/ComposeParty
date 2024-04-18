@@ -11,15 +11,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.NonRestartableComposable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalInspectionMode
 
 @Composable
 @NonRestartableComposable
 fun EdgeToEdgeStyleDisposableEffect(darkSystemBarStyle: Boolean) {
-    val activity = LocalContext.current.findActivity() as ComponentActivity
-    DisposableEffect(darkSystemBarStyle) {
-        activity.setEdgeToEdgeStyle(darkSystemBarStyle)
-        onDispose {
-            activity.setEdgeToEdgeStyle(!darkSystemBarStyle)
+    if (!LocalInspectionMode.current) {
+        val activity = LocalContext.current.findActivity() as ComponentActivity
+        DisposableEffect(darkSystemBarStyle) {
+            activity.setEdgeToEdgeStyle(darkSystemBarStyle)
+            onDispose {
+                activity.setEdgeToEdgeStyle(!darkSystemBarStyle)
+            }
         }
     }
 }
