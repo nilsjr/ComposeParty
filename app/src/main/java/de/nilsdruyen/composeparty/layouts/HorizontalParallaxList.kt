@@ -40,13 +40,9 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import de.nilsdruyen.composeparty.R
+import de.nilsdruyen.composeparty.data.images
 import timber.log.Timber
 import kotlin.math.roundToInt
-
-val images = List(10) {
-    val id = it + 15
-    "https://picsum.photos/id/$id/600/400"
-}
 
 @Composable
 fun HorizontalParallaxList() {

@@ -69,7 +69,7 @@ import de.nilsdruyen.composeparty.layouts.PhysicalSample
 import de.nilsdruyen.composeparty.layouts.PlaceholderSample
 import de.nilsdruyen.composeparty.layouts.SampleStaggeredGridLayout
 import de.nilsdruyen.composeparty.layouts.ScaffoldTabSample
-import de.nilsdruyen.composeparty.layouts.SharedElement
+import de.nilsdruyen.composeparty.layouts.SharedElementSample
 import de.nilsdruyen.composeparty.layouts.TooltipLayoutSample
 import de.nilsdruyen.composeparty.layouts.ZoomImageSample
 import de.nilsdruyen.composeparty.material.ScrollableScaffold
@@ -92,7 +92,7 @@ import de.nilsdruyen.composeparty.utils.ItemList
 class MainActivity : ComponentActivity() {
 
     private val demoItems = mapOf<String, @Composable () -> Unit>(
-        "SharedElement" to { SharedElement() },
+        "SharedElement" to { SharedElementSample() },
         "TooltipLayoutSample" to { TooltipLayoutSample() },
         "AppBarSample" to { AppBarSample() },
         "BottomSheetDemo" to { BottomSheetDemo() },
