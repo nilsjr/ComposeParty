@@ -1,6 +1,5 @@
 package de.nilsdruyen.composeparty.layouts
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -17,17 +16,18 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.pulltorefresh.PullToRefreshContainer
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -47,18 +47,11 @@ fun ScaffoldTabSample() {
     val scrollBehavior =
         TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
+    var isRefreshing by remember { mutableStateOf(false) }
     val refreshState = rememberPullToRefreshState()
-
-    LaunchedEffect(refreshState.isRefreshing) {
-        if (refreshState.isRefreshing) {
-            delay(2_000)
-            refreshState.endRefresh()
-        }
-    }
 
     Scaffold(
         modifier = Modifier
-            .nestedScroll(refreshState.nestedScrollConnection)
             .nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             TopAppBar(
@@ -72,7 +65,10 @@ fun ScaffoldTabSample() {
             )
         },
     ) { innerPadding ->
-        Box(
+        PullToRefreshBox(
+            isRefreshing = isRefreshing,
+            onRefresh = { isRefreshing = true },
+            state = refreshState,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
@@ -99,10 +95,6 @@ fun ScaffoldTabSample() {
                     }
                 }
             }
-            PullToRefreshContainer(
-                modifier = Modifier.align(Alignment.TopCenter),
-                state = refreshState,
-            )
         }
     }
 }

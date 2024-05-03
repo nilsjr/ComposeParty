@@ -72,7 +72,7 @@ dependencies {
 
     implementation(libs.timber)
 
-    implementation(platform("dev.chrisbanes.compose:compose-bom:2024.04.00-alpha02"))
+    implementation(platform("dev.chrisbanes.compose:compose-bom:2024.05.00-alpha01"))
     // Use whichever Compose artifacts you need without a version number
     implementation("androidx.compose.runtime:runtime")
     implementation("androidx.compose.foundation:foundation")
@@ -86,8 +86,8 @@ dependencies {
 
     implementation(libs.accompanist.placeholder.material)
 
-    implementation("dev.chrisbanes.haze:haze:0.7.0")
-    implementation("dev.chrisbanes.haze:haze-materials:0.7.0")
+    implementation("dev.chrisbanes.haze:haze:0.7.1")
+    implementation("dev.chrisbanes.haze:haze-materials:0.7.1")
     implementation(libs.coil.compose)
     implementation(libs.lottie.compose)
     implementation(libs.konfetti)
