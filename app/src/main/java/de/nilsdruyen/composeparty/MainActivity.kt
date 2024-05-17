@@ -70,7 +70,6 @@ import de.nilsdruyen.composeparty.layouts.PlaceholderSample
 import de.nilsdruyen.composeparty.layouts.SampleStaggeredGridLayout
 import de.nilsdruyen.composeparty.layouts.ScaffoldTabSample
 import de.nilsdruyen.composeparty.layouts.SharedElementSample
-import de.nilsdruyen.composeparty.layouts.TooltipLayoutSample
 import de.nilsdruyen.composeparty.layouts.ZoomImageSample
 import de.nilsdruyen.composeparty.material.ScrollableScaffold
 import de.nilsdruyen.composeparty.math.GravitySample
@@ -81,6 +80,7 @@ import de.nilsdruyen.composeparty.swipe.SwipeDemo
 import de.nilsdruyen.composeparty.text.AutoSizeTextSample
 import de.nilsdruyen.composeparty.text.CascadingText
 import de.nilsdruyen.composeparty.text.FontScaleDemo
+import de.nilsdruyen.composeparty.text.LineBreakSample
 import de.nilsdruyen.composeparty.text.TextAnimationSample
 import de.nilsdruyen.composeparty.text.TextBrushing
 import de.nilsdruyen.composeparty.text.TextFieldColors
@@ -92,8 +92,8 @@ import de.nilsdruyen.composeparty.utils.ItemList
 class MainActivity : ComponentActivity() {
 
     private val demoItems = mapOf<String, @Composable () -> Unit>(
+        "LineBreakSample" to { LineBreakSample() },
         "SharedElement" to { SharedElementSample() },
-        "TooltipLayoutSample" to { TooltipLayoutSample() },
         "AppBarSample" to { AppBarSample() },
         "BottomSheetDemo" to { BottomSheetDemo() },
         "RevealImageSample" to { RevealImageSample() },

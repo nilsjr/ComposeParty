@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 plugins {
     id("com.android.application")
     kotlin("android")
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -30,13 +31,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).all {
         compilerOptions {
             progressiveMode.set(true)
-            jvmTarget.set(JvmTarget.JVM_17)
+            jvmTarget.set(JvmTarget.JVM_21)
             languageVersion.set(KotlinVersion.KOTLIN_2_0)
             freeCompilerArgs.addAll(
                 listOf(
@@ -49,9 +50,6 @@ android {
     buildFeatures {
         compose = true
         buildConfig = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
     packaging {
         resources {
@@ -72,7 +70,7 @@ dependencies {
 
     implementation(libs.timber)
 
-    implementation(platform("dev.chrisbanes.compose:compose-bom:2024.05.00-alpha01"))
+    implementation(platform("dev.chrisbanes.compose:compose-bom:2024.05.00-alpha02"))
     // Use whichever Compose artifacts you need without a version number
     implementation("androidx.compose.runtime:runtime")
     implementation("androidx.compose.foundation:foundation")

@@ -66,7 +66,7 @@ fun HorizontalListHeightSample() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(IntrinsicSize.Max)
+                .height(IntrinsicSize.Min)
                 .horizontalScroll(rememberScrollState()),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
@@ -75,8 +75,8 @@ fun HorizontalListHeightSample() {
                     value = it,
                     Modifier
                         .fillMaxWidth()
-//                        .width(IntrinsicSize.Max)
                         .fillMaxHeight()
+//                        .width(IntrinsicSize.Max)
                 )
             }
         }

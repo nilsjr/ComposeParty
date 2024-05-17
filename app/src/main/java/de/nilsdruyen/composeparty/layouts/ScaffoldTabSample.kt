@@ -17,9 +17,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
-import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -48,10 +48,17 @@ fun ScaffoldTabSample() {
         TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
     var isRefreshing by remember { mutableStateOf(false) }
-    val refreshState = rememberPullToRefreshState()
+
+    LaunchedEffect(isRefreshing) {
+        if (isRefreshing) {
+            delay(2_000)
+            isRefreshing = false
+        }
+    }
 
     Scaffold(
         modifier = Modifier
+            .fillMaxSize()
             .nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             TopAppBar(
@@ -66,12 +73,11 @@ fun ScaffoldTabSample() {
         },
     ) { innerPadding ->
         PullToRefreshBox(
-            isRefreshing = isRefreshing,
-            onRefresh = { isRefreshing = true },
-            state = refreshState,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
+                .padding(innerPadding),
+            isRefreshing = isRefreshing,
+            onRefresh = { isRefreshing = true },
         ) {
             Column(Modifier) {
                 TabRow(selectedTabIndex = pagerState.currentPage) {
@@ -95,6 +101,7 @@ fun ScaffoldTabSample() {
                     }
                 }
             }
+
         }
     }
 }
