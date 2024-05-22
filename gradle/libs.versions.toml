@@ -1,8 +1,10 @@
 [versions]
 accompanist = "0.35.1-alpha"
+androidPlugin = "8.6.0-alpha02"
 androidx-media = "1.4.0-alpha01"
 composeConstraintLayout = "1.1.0-alpha13"
 glm = "0.9.9.1-11"
+gradleVersions = "0.51.0"
 kotlin = "2.0.0"
 
 [libraries]
@@ -25,4 +27,7 @@ timber = "com.jakewharton.timber:timber:5.0.1"
 zoomable = "net.engawapg.lib:zoomable:2.0.0-beta01"
 
 [plugins]
+android-application = { id = "com.android.application", version.ref = "androidPlugin" }
+ben-manes-versions = { id = "com.github.ben-manes.versions", version.ref = "gradleVersions" }
+kotlin-androidGradle = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
