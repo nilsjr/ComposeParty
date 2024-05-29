@@ -46,13 +46,23 @@ fun SharedElementSample(modifier: Modifier = Modifier) {
     }
 
     SharedTransitionLayout(modifier) {
-        AnimatedContent(targetState = state, transitionSpec = {
-            if (initialState is Screen.Grid) {
-                slideInHorizontally { -it } + fadeIn() togetherWith scaleOut(tween(), .7f) + fadeOut()
-            } else {
-                scaleIn(spring(), .7f) + fadeIn() togetherWith slideOutHorizontally { -it } + fadeOut()
-            }
-        }, label = "") { screen ->
+        AnimatedContent(
+            targetState = state,
+            transitionSpec = {
+                if (initialState is Screen.Grid) {
+                    slideInHorizontally { -it } + fadeIn() togetherWith scaleOut(
+                        tween(),
+                        .7f
+                    ) + fadeOut()
+                } else {
+                    scaleIn(
+                        spring(),
+                        .7f
+                    ) + fadeIn() togetherWith slideOutHorizontally { -it } + fadeOut()
+                }
+            },
+            label = ""
+        ) { screen ->
             when (screen) {
                 is Screen.Detail -> Detail(
                     image = screen.item,

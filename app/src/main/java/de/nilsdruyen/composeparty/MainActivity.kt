@@ -56,6 +56,7 @@ import de.nilsdruyen.composeparty.freestyle.SquareFun
 import de.nilsdruyen.composeparty.freestyle.VideoSample
 import de.nilsdruyen.composeparty.freestyle.dragdrop.DragAndDropSample
 import de.nilsdruyen.composeparty.isles.IsleExample
+import de.nilsdruyen.composeparty.layouts.AccordionSample
 import de.nilsdruyen.composeparty.layouts.AdventCalendarSample
 import de.nilsdruyen.composeparty.layouts.AppBarSample
 import de.nilsdruyen.composeparty.layouts.BottomSheetDemo
@@ -92,6 +93,7 @@ import de.nilsdruyen.composeparty.utils.ItemList
 class MainActivity : ComponentActivity() {
 
     private val demoItems = mapOf<String, @Composable () -> Unit>(
+        "AccordionSample" to { AccordionSample() },
         "LineBreakSample" to { LineBreakSample() },
         "SharedElement" to { SharedElementSample() },
         "AppBarSample" to { AppBarSample() },
