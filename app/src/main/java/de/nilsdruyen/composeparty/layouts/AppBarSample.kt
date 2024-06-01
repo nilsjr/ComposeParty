@@ -22,6 +22,7 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SearchBar
+import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
@@ -131,16 +132,24 @@ fun AppBarSample(modifier: Modifier = Modifier) {
                     .verticalScroll(rememberScrollState())
             )
             SearchBar(
-                query = input,
-                onQueryChange = { input = it },
-                placeholder = {
-                    Text("Suche")
+                inputField = {
+                    SearchBarDefaults.InputField(
+                        query = input,
+                        onQueryChange = { input = it },
+                        onSearch = {
+                            active = true
+                        },
+                        expanded = true,
+                        onExpandedChange = {
+
+                        },
+                        placeholder = {
+                            Text("Suche")
+                        },
+                    )
                 },
-                onSearch = {
-                    active = true
-                },
-                active = active,
-                onActiveChange = {
+                expanded = true,
+                onExpandedChange = {
 
                 },
                 modifier = Modifier.align(Alignment.TopCenter)
