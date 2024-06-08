@@ -10,11 +10,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -48,9 +48,7 @@ fun DropDownLayout() {
             }
             DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
                 items.forEach {
-                    DropdownMenuItem(onClick = { selectedText = it }) {
-                        Text(it)
-                    }
+                    DropdownMenuItem(text = { Text(it) }, onClick = { selectedText = it })
                 }
             }
         }

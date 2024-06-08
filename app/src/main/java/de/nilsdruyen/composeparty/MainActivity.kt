@@ -44,7 +44,6 @@ import de.nilsdruyen.composeparty.freestyle.FlingAnimation
 import de.nilsdruyen.composeparty.freestyle.HeartRate
 import de.nilsdruyen.composeparty.freestyle.MeshSample
 import de.nilsdruyen.composeparty.freestyle.ProgressSample
-import de.nilsdruyen.composeparty.freestyle.PullRefreshSample
 import de.nilsdruyen.composeparty.freestyle.RevealImageSample
 import de.nilsdruyen.composeparty.freestyle.ScratchCardSample
 import de.nilsdruyen.composeparty.freestyle.SensorSample
@@ -74,6 +73,7 @@ import de.nilsdruyen.composeparty.layouts.SharedElementSample
 import de.nilsdruyen.composeparty.layouts.ZoomImageSample
 import de.nilsdruyen.composeparty.material.ScrollableScaffold
 import de.nilsdruyen.composeparty.math.GravitySample
+import de.nilsdruyen.composeparty.paths.FavoriteIconAnimationSample
 import de.nilsdruyen.composeparty.paths.PathPawAnimation
 import de.nilsdruyen.composeparty.paths.ScaleShapeSample
 import de.nilsdruyen.composeparty.paths.VectorDemo
@@ -93,6 +93,7 @@ import de.nilsdruyen.composeparty.utils.ItemList
 class MainActivity : ComponentActivity() {
 
     private val demoItems = mapOf<String, @Composable () -> Unit>(
+        "FavoriteIconAnimationSample" to { FavoriteIconAnimationSample() },
         "AccordionSample" to { AccordionSample() },
         "LineBreakSample" to { LineBreakSample() },
         "SharedElement" to { SharedElementSample() },
@@ -139,7 +140,6 @@ class MainActivity : ComponentActivity() {
         "Path Paw Anim" to { PathPawAnimation() },
         "PeopleCardSample" to { PeopleCardSample() },
         "Progress Sample" to { ProgressSample() },
-        "PullRefreshSample" to { PullRefreshSample() },
         "Row Animation" to { AnimatedRow() },
         "ScaleShapeSample" to { ScaleShapeSample() },
         "ScrollableScaffold" to { ScrollableScaffold() },
