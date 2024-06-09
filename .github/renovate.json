@@ -13,10 +13,16 @@
     {
       "matchPackagePatterns": [
         "^org.jetbrains.kotlin",
-        "^com.google.devtools.ksp",
-        "^androidx.compose.compiler"
+        "^com.google.devtools.ksp"
       ],
-      "groupName": "kotlin"
+      "groupName": "Kotlin & KSP"
+    },
+    {
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "automerge": true
     }
   ]
 }
