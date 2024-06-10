@@ -22,8 +22,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.IntOffset
+import de.nilsdruyen.composeparty.modifiers.pulsing
 import kotlinx.coroutines.delay
+import kotlin.math.roundToInt
 
 @Composable
 fun FavoriteIconAnimationSample(modifier: Modifier = Modifier) {
@@ -72,7 +74,21 @@ fun FavoriteIconAnimationSample(modifier: Modifier = Modifier) {
                 Icon(
                     imageVector = if (it) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                     contentDescription = null,
-                    modifier = Modifier.scale(scale).offset(y = position.dp)
+                    modifier = Modifier
+                        .scale(scale)
+                        .offset { IntOffset(0, position.roundToInt()) }
+                )
+            }
+        }
+        IconButton(
+            onClick = { isLoading = true },
+            modifier = Modifier
+        ) {
+            Crossfade(isFavorite, label = "crossFade") {
+                Icon(
+                    imageVector = if (it) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                    contentDescription = null,
+                    modifier = Modifier.pulsing(isLoading)
                 )
             }
         }
