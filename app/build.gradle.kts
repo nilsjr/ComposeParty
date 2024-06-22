@@ -84,7 +84,7 @@ dependencies {
 
     implementation(libs.accompanist.placeholder.material)
 
-    implementation("dev.chrisbanes.haze:haze:0.7.1")
+    implementation("dev.chrisbanes.haze:haze:0.7.2")
     implementation("dev.chrisbanes.haze:haze-materials:0.7.1")
     implementation(libs.coil.compose)
     implementation(libs.lottie.compose)
