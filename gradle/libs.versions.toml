@@ -1,11 +1,11 @@
 [versions]
 accompanist = "0.35.1-alpha"
 androidPlugin = "8.6.0-alpha08"
-androidx-media = "1.4.0-alpha02"
+androidx-media = "1.4.0-beta01"
 composeConstraintLayout = "1.1.0-alpha13"
 glm = "0.9.9.1-11"
 gradleVersions = "0.51.0"
-kotlin = "2.0.0"
+kotlin = "2.0.20-Beta1"
 
 [libraries]
 accompanist-placeholder-material = { module = "com.google.accompanist:accompanist-placeholder-material3", version.ref = "accompanist" }

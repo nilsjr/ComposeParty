@@ -70,7 +70,7 @@ dependencies {
 
     implementation(libs.timber)
 
-    implementation(platform("dev.chrisbanes.compose:compose-bom:2024.05.00-alpha03"))
+    implementation(platform("dev.chrisbanes.compose:compose-bom:2024.06.00-alpha01"))
     // Use whichever Compose artifacts you need without a version number
     implementation("androidx.compose.runtime:runtime")
     implementation("androidx.compose.foundation:foundation")
