@@ -60,7 +60,6 @@ android {
     }
 }
 
-//noinspection UseTomlInstead
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle)
@@ -70,13 +69,13 @@ dependencies {
 
     implementation(libs.timber)
 
+    //noinspection UseTomlInstead
     implementation(platform("dev.chrisbanes.compose:compose-bom:2024.06.00-alpha01"))
     // Use whichever Compose artifacts you need without a version number
     implementation("androidx.compose.runtime:runtime")
     implementation("androidx.compose.foundation:foundation")
     implementation("androidx.compose.animation:animation")
     implementation("androidx.compose.animation:animation-graphics")
-//    implementation("androidx.compose.material:material")
     implementation("androidx.compose.material:material-icons-extended")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.ui:ui-tooling-preview")

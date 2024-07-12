@@ -1,11 +1,12 @@
 [versions]
 accompanist = "0.35.1-alpha"
-androidPlugin = "8.6.0-alpha08"
-androidx-media = "1.4.0-beta01"
+androidPlugin = "8.6.0-beta01"
+androidx-media = "1.4.0-rc01"
 composeConstraintLayout = "1.1.0-alpha13"
 glm = "0.9.9.1-11"
 gradleVersions = "0.51.0"
-kotlin = "2.0.20-Beta1"
+haze = "0.7.3"
+kotlin = "2.0.20-Beta2"
 
 [libraries]
 accompanist-placeholder-material = { module = "com.google.accompanist:accompanist-placeholder-material3", version.ref = "accompanist" }
@@ -19,6 +20,8 @@ androidx-splashscreen = "androidx.core:core-splashscreen:1.2.0-alpha01"
 captureable = "dev.shreyaspatil:capturable:2.1.0"
 coil-compose = "io.coil-kt:coil-compose:2.6.0"
 graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
+haze = { module = "dev.chrisbanes.haze:haze", version.ref = "haze" }
+haze-materials = { module = "dev.chrisbanes.haze:haze-materials", version.ref = "haze" }
 konfetti = "nl.dionsegijn:konfetti-compose:2.1.0-beta01"
 lottie-compose = "com.airbnb.android:lottie-compose:6.4.1"
 physics-layout = "io.github.klassenkonstantin:physics-layout:0.4.1"
