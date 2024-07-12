@@ -1,10 +1,13 @@
 package de.nilsdruyen.composeparty
 
+import android.Manifest.permission.CAMERA
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,6 +23,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
+import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import de.nilsdruyen.composeparty.animations.AnimatedRow
 import de.nilsdruyen.composeparty.animations.ClockSample
@@ -32,6 +36,7 @@ import de.nilsdruyen.composeparty.buttons.AddToCartButtonDemo
 import de.nilsdruyen.composeparty.buttons.ChipButton
 import de.nilsdruyen.composeparty.buttons.LoadingButtonDemo
 import de.nilsdruyen.composeparty.buttons.TextButtonSample
+import de.nilsdruyen.composeparty.camera.QrCodeSample
 import de.nilsdruyen.composeparty.cards.CardTiltSample
 import de.nilsdruyen.composeparty.cards.PeopleCardSample
 import de.nilsdruyen.composeparty.cards.TeaserSample
@@ -93,6 +98,7 @@ import de.nilsdruyen.composeparty.utils.ItemList
 class MainActivity : ComponentActivity() {
 
     private val demoItems = mapOf<String, @Composable () -> Unit>(
+        "QrCodeSample" to { QrCodeSample() },
         "FavoriteIconAnimationSample" to { FavoriteIconAnimationSample() },
         "AccordionSample" to { AccordionSample() },
         "LineBreakSample" to { LineBreakSample() },
@@ -171,6 +177,10 @@ class MainActivity : ComponentActivity() {
 
         super.onCreate(savedInstanceState)
 
+        requestCameraPermissionIfMissing {
+            println("granted $it")
+        }
+
         setContent {
             ComposePartyTheme {
                 Surface(
@@ -202,7 +212,18 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    private fun requestCameraPermissionIfMissing(onResult: ((Boolean) -> Unit)) {
+        if (ContextCompat.checkSelfPermission(this, CAMERA) == PackageManager.PERMISSION_GRANTED) {
+            onResult(true)
+        } else {
+            registerForActivityResult(ActivityResultContracts.RequestPermission()) { onResult(it) }.launch(
+                CAMERA
+            )
+        }
+    }
 }
+
 
 @Composable
 private fun SampleList(

@@ -83,8 +83,14 @@ dependencies {
 
     implementation(libs.accompanist.placeholder.material)
 
-    implementation("dev.chrisbanes.haze:haze:0.7.2")
-    implementation("dev.chrisbanes.haze:haze-materials:0.7.2")
+    implementation("androidx.camera:camera-core:1.4.0-beta02")
+    implementation("androidx.camera:camera-camera2:1.4.0-beta02")
+    implementation("androidx.camera:camera-lifecycle:1.4.0-beta02")
+    implementation("androidx.camera:camera-mlkit-vision:1.4.0-beta02")
+    implementation("com.google.mlkit:barcode-scanning:17.2.0")
+
+    implementation(libs.haze)
+    implementation(libs.haze.materials)
     implementation(libs.coil.compose)
     implementation(libs.lottie.compose)
     implementation(libs.konfetti)
