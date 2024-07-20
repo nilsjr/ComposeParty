@@ -18,7 +18,7 @@ androidx-media-exoplayer = { module = "androidx.media3:media3-exoplayer", versio
 androidx-media-ui = { module = "androidx.media3:media3-ui", version.ref = "androidx-media" }
 androidx-splashscreen = "androidx.core:core-splashscreen:1.2.0-alpha01"
 captureable = "dev.shreyaspatil:capturable:2.1.0"
-coil-compose = "io.coil-kt:coil-compose:2.6.0"
+coil-compose = "io.coil-kt:coil-compose:2.7.0"
 graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
 haze = { module = "dev.chrisbanes.haze:haze", version.ref = "haze" }
 haze-materials = { module = "dev.chrisbanes.haze:haze-materials", version.ref = "haze" }
