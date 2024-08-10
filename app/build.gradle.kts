@@ -84,7 +84,7 @@ dependencies {
     implementation(libs.accompanist.placeholder.material)
 
     implementation("androidx.camera:camera-core:1.4.0-beta02")
-    implementation("androidx.camera:camera-camera2:1.4.0-beta02")
+    implementation("androidx.camera:camera-camera2:1.4.0-rc01")
     implementation("androidx.camera:camera-lifecycle:1.4.0-beta02")
     implementation("androidx.camera:camera-mlkit-vision:1.4.0-beta02")
     implementation("com.google.mlkit:barcode-scanning:17.2.0")
