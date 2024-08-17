@@ -1,6 +1,6 @@
 [versions]
 accompanist = "0.35.1-alpha"
-androidPlugin = "8.6.0-beta02"
+androidPlugin = "8.6.0-rc01"
 androidx-media = "1.4.0"
 composeConstraintLayout = "1.1.0-alpha13"
 glm = "0.9.9.1-11"
