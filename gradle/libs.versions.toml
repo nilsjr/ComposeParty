@@ -2,7 +2,7 @@
 accompanist = "0.35.1-alpha"
 androidPlugin = "8.6.0-rc01"
 androidx-media = "1.4.0"
-composeConstraintLayout = "1.1.0-alpha13"
+composeConstraintLayout = "1.1.0-alpha14"
 glm = "0.9.9.1-11"
 gradleVersions = "0.51.0"
 haze = "0.7.3"
