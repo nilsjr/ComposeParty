@@ -41,8 +41,9 @@ fun QrCodeSample(modifier: Modifier = Modifier) {
     val context = LocalContext.current
     val previewView = remember { PreviewView(context) }
     val analysisExecutor = Executors.newSingleThreadExecutor()
-    val barcodeFormats =
-        intArrayOf(Barcode.FORMAT_QR_CODE, Barcode.FORMAT_EAN_8, Barcode.FORMAT_EAN_13)
+    val barcodeFormats = intArrayOf(
+        Barcode.FORMAT_ALL_FORMATS
+    )
 
     val configuration = LocalConfiguration.current
     val screenSize = Size(configuration.screenWidthDp, configuration.screenHeightDp)
@@ -71,7 +72,7 @@ fun QrCodeSample(modifier: Modifier = Modifier) {
         .setResolutionSelector(
             ResolutionSelector.Builder().setResolutionStrategy(
                 ResolutionStrategy(
-                    Size(1280, 720),
+                    Size(screenSize.width, screenSize.height),
                     ResolutionStrategy.FALLBACK_RULE_CLOSEST_HIGHER_THEN_LOWER
                 )
             ).build()
@@ -83,8 +84,8 @@ fun QrCodeSample(modifier: Modifier = Modifier) {
                 QRCodeAnalyzer(
                     barcodeFormats = barcodeFormats,
                     onSuccess = { barcode ->
-                        it.clearAnalyzer()
-                        Timber.d("BARCODE: ${barcode.rawValue}")
+//                        it.clearAnalyzer()
+                        Timber.d("BARCODE: ${java.lang.String(barcode.rawBytes)} ${barcode.valueType} ${barcode.format}")
                     },
                     onFailure = { exception ->
 //                        onFailure(exception)

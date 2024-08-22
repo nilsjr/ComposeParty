@@ -16,7 +16,6 @@ import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontWeight
@@ -35,7 +34,6 @@ fun CanvasSample() {
     }
 }
 
-@OptIn(ExperimentalTextApi::class)
 @Composable
 fun RotateText() {
     val textMeasurer = rememberTextMeasurer()
