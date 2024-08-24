@@ -87,7 +87,7 @@ dependencies {
     implementation("androidx.camera:camera-camera2:1.4.0-rc01")
     implementation("androidx.camera:camera-lifecycle:1.4.0-rc01")
     implementation("androidx.camera:camera-mlkit-vision:1.4.0-rc01")
-    implementation("com.google.mlkit:barcode-scanning:17.2.0")
+    implementation("com.google.mlkit:barcode-scanning:17.3.0")
 
     implementation(libs.haze)
     implementation(libs.haze.materials)
