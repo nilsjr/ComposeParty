@@ -70,7 +70,7 @@ dependencies {
     implementation(libs.timber)
 
     //noinspection UseTomlInstead
-    implementation(platform("dev.chrisbanes.compose:compose-bom:2024.06.00-alpha01"))
+    implementation(platform("dev.chrisbanes.compose:compose-bom:2024.08.00-alpha02"))
     // Use whichever Compose artifacts you need without a version number
     implementation("androidx.compose.runtime:runtime")
     implementation("androidx.compose.foundation:foundation")
@@ -83,11 +83,11 @@ dependencies {
 
     implementation(libs.accompanist.placeholder.material)
 
-    implementation("androidx.camera:camera-core:1.4.0-rc01")
-    implementation("androidx.camera:camera-camera2:1.4.0-rc01")
-    implementation("androidx.camera:camera-lifecycle:1.4.0-rc01")
-    implementation("androidx.camera:camera-mlkit-vision:1.4.0-rc01")
-    implementation("com.google.mlkit:barcode-scanning:17.2.0")
+    implementation(libs.androidx.camera.core)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.mlkit.vision)
+    implementation(libs.barcode.scanning)
 
     implementation(libs.haze)
     implementation(libs.haze.materials)
