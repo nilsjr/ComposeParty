@@ -22,7 +22,7 @@ androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.15.0-alpha
 androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.9.0-alpha01" }
 androidx-media-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "androidx-media" }
 androidx-media-ui = { module = "androidx.media3:media3-ui", version.ref = "androidx-media" }
-androidx-splashscreen = "androidx.core:core-splashscreen:1.2.0-alpha01"
+androidx-splashscreen = "androidx.core:core-splashscreen:1.2.0-alpha02"
 barcode-scanning = { module = "com.google.mlkit:barcode-scanning", version.ref = "barcodeScanning" }
 captureable = "dev.shreyaspatil:capturable:2.1.0"
 coil-compose = "io.coil-kt:coil-compose:2.7.0"
