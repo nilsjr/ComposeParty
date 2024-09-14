@@ -1,6 +1,6 @@
 [versions]
 accompanist = "0.35.2-beta"
-androidPlugin = "8.7.0-beta01"
+androidPlugin = "8.7.0-beta02"
 androidx-media = "1.4.1"
 barcodeScanning = "17.3.0"
 cameraLifecycle = "1.4.0-rc01"
