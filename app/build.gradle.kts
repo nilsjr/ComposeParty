@@ -70,7 +70,7 @@ dependencies {
     implementation(libs.timber)
 
     //noinspection UseTomlInstead
-    implementation(platform("dev.chrisbanes.compose:compose-bom:2024.08.00-alpha02"))
+    implementation(platform(libs.androidx.compose.bom))
     // Use whichever Compose artifacts you need without a version number
     implementation("androidx.compose.runtime:runtime")
     implementation("androidx.compose.foundation:foundation")
