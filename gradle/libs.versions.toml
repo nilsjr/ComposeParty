@@ -1,22 +1,22 @@
 [versions]
 accompanist = "0.36.0"
-androidPlugin = "8.8.0-alpha02"
-androidx-media = "1.4.1"
+androidPlugin = "8.8.0-alpha03"
+androidx-media = "1.5.0-alpha01"
 androidx-compose = "2024.09.02"
 barcodeScanning = "17.3.0"
-cameraLifecycle = "1.4.0-rc02"
+camera = "1.5.0-alpha01"
 composeConstraintLayout = "1.1.0-beta01"
 glm = "0.9.9.1-11"
 gradleVersions = "0.51.0"
 haze = "0.9.0-beta01"
-kotlin = "2.0.20"
+kotlin = "2.1.0-Beta1"
 
 [libraries]
 accompanist-placeholder-material = { module = "com.google.accompanist:accompanist-placeholder-material3", version.ref = "accompanist" }
-androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraLifecycle" }
-androidx-camera-core = { module = "androidx.camera:camera-core", version.ref = "cameraLifecycle" }
-androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraLifecycle" }
-androidx-camera-mlkit-vision = { module = "androidx.camera:camera-mlkit-vision", version.ref = "cameraLifecycle" }
+androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "camera" }
+androidx-camera-core = { module = "androidx.camera:camera-core", version.ref = "camera" }
+androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "camera" }
+androidx-camera-mlkit-vision = { module = "androidx.camera:camera-mlkit-vision", version.ref = "camera" }
 androidx-compose-activity = "androidx.activity:activity-compose:1.9.2"
 androidx-compose-constraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.15.0-alpha02" }
@@ -26,7 +26,7 @@ androidx-media-ui = { module = "androidx.media3:media3-ui", version.ref = "andro
 androidx-splashscreen = "androidx.core:core-splashscreen:1.2.0-alpha02"
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidx-compose" }
 barcode-scanning = { module = "com.google.mlkit:barcode-scanning", version.ref = "barcodeScanning" }
-captureable = "dev.shreyaspatil:capturable:2.1.0"
+captureable = "dev.shreyaspatil:capturable:3.0.0"
 coil-compose = "io.coil-kt:coil-compose:2.7.0"
 graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
 haze = { module = "dev.chrisbanes.haze:haze", version.ref = "haze" }

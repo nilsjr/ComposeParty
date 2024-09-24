@@ -14,6 +14,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
@@ -23,17 +24,18 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.boundsInWindow
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInWindow
-import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import de.nilsdruyen.composeparty.freestyle.explodable.ExplosionAnimationSpec.Companion.SHRINK_DURATION_MS
-import dev.shreyaspatil.capturable.Capturable
+import dev.shreyaspatil.capturable.capturable
 import dev.shreyaspatil.capturable.controller.rememberCaptureController
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import java.util.Random
+import kotlin.math.roundToInt
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun Explodable(
     modifier: Modifier = Modifier,
@@ -44,7 +46,7 @@ fun Explodable(
     content: @Composable () -> Unit,
 ) {
     val animationScope = rememberCoroutineScope()
-    var explosionViewBitmap by remember { mutableStateOf<ImageBitmap?>(null) }
+    val explosionViewBitmap by remember { mutableStateOf<ImageBitmap?>(null) }
     var explosionBound by remember { mutableStateOf(Rect.Zero) }
 
     val animatedProgress = remember { Animatable(0f) }
@@ -70,60 +72,62 @@ fun Explodable(
             }
         }
 
-        // TODO: replace with own impl
         val captureController = rememberCaptureController()
-        Capturable(
-            controller = captureController,
-            onCaptured = { bitmap, error ->
-                bitmap?.let {
-                    explosionViewBitmap = it
-                }
-                error?.let {
-                    Timber.e("ExplodingComposable", "Failed to extract colors from content")
-                }
-            }
-        ) {
-            val contentScaleAndAlpha = when {
-                currentPositionMs < shakeDurationMs -> 1f
-                currentPositionMs > (shakeDurationMs + SHRINK_DURATION_MS) -> 0f
-                else -> (currentPositionMs - shakeDurationMs).mapInRange(
-                    0f,
-                    SHRINK_DURATION_MS.toFloat(),
-                    1f,
-                    0f
+        val contentScaleAndAlpha = when {
+            currentPositionMs < shakeDurationMs -> 1f
+            currentPositionMs > (shakeDurationMs + SHRINK_DURATION_MS) -> 0f
+            else -> (currentPositionMs - shakeDurationMs).mapInRange(
+                0f,
+                SHRINK_DURATION_MS.toFloat(),
+                1f,
+                0f
+            )
+        }
+        var contentSize by remember { mutableStateOf(IntSize.Zero) }
+
+        Box(modifier = Modifier
+            .wrapContentSize()
+            .capturable(
+                controller = captureController,
+
                 )
-            }
-            var contentSize by remember { mutableStateOf(IntSize.Zero) }
-            Box(modifier = Modifier
-                .wrapContentSize()
-                .onGloballyPositioned { coordinates ->
-                    contentSize = coordinates.size
-                    explosionBound = coordinates
-                        .boundsInWindow()
-                        .mutate {
-                            with(coordinates.positionInWindow()) {
-                                offset(-x, -y)
-                            }
-                            scale(explosionPower)
+            .onGloballyPositioned { coordinates ->
+                contentSize = coordinates.size
+                explosionBound = coordinates
+                    .boundsInWindow()
+                    .mutate {
+                        with(coordinates.positionInWindow()) {
+                            offset(-x, -y)
                         }
-                        .toRect()
-                    if (explosionViewBitmap == null) {
-                        captureController.capture()
+                        scale(explosionPower)
+                    }
+                    .toRect()
+                if (explosionViewBitmap == null) {
+                    animationScope.launch {
+                        val bitmapAsync = captureController.captureAsync()
+                        try {
+                            val bitmap = bitmapAsync.await()
+                            // Do something with `bitmap`.
+                        } catch (error: Throwable) {
+                            // Error occurred, do something.
+                        }
                     }
                 }
-                .scale(contentScaleAndAlpha)
-                .alpha(contentScaleAndAlpha)
-                .let {
-                    if (currentPositionMs > 0 && currentPositionMs < shakeDurationMs) {
-                        with(remember { Random() }) {
-                            it.offset(
-                                x = Dp((nextFloat() - 0.5f) * contentSize.width * 0.05f),
-                                y = Dp((nextFloat() - 0.5f) * contentSize.height * 0.05f)
+            }
+            .scale(contentScaleAndAlpha)
+            .alpha(contentScaleAndAlpha)
+            .let {
+                if (currentPositionMs > 0 && currentPositionMs < shakeDurationMs) {
+                    with(remember { Random() }) {
+                        it.offset {
+                            IntOffset(
+                                x = ((nextFloat() - 0.5f) * contentSize.width * 0.05f).roundToInt(),
+                                y = ((nextFloat() - 0.5f) * contentSize.height * 0.05f).roundToInt(),
                             )
                         }
-                    } else it
-                }) { content() }
-        }
+                    }
+                } else it
+            }) { content() }
     }
 
     LaunchedEffect(animationSpec) {
