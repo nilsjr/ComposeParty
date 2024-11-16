@@ -8,7 +8,7 @@ camera = "1.5.0-alpha03"
 composeConstraintLayout = "1.1.0"
 glm = "0.9.9.1-11"
 gradleVersions = "0.51.0"
-haze = "1.0.0"
+haze = "1.0.2"
 kotlin = "2.1.0-RC"
 
 [libraries]
