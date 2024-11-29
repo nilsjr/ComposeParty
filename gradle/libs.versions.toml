@@ -1,15 +1,15 @@
 [versions]
 accompanist = "0.36.0"
-androidPlugin = "8.8.0-beta01"
-androidx-media = "1.5.0-rc02"
-androidx-compose = "2024.10.01"
+androidPlugin = "8.9.0-alpha03"
+androidx-media = "1.5.0"
+androidx-compose = "2024.11.00"
 barcodeScanning = "17.3.0"
 camera = "1.5.0-alpha03"
 composeConstraintLayout = "1.1.0"
 glm = "0.9.9.1-11"
 gradleVersions = "0.51.0"
 haze = "1.0.2"
-kotlin = "2.1.0-RC2"
+kotlin = "2.1.0"
 
 [libraries]
 accompanist-placeholder-material = { module = "com.google.accompanist:accompanist-placeholder-material3", version.ref = "accompanist" }
