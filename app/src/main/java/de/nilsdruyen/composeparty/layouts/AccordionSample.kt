@@ -2,6 +2,7 @@ package de.nilsdruyen.composeparty.layouts
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,6 +10,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.carousel.HorizontalMultiBrowseCarousel
+import androidx.compose.material3.carousel.HorizontalUncontainedCarousel
+import androidx.compose.material3.carousel.rememberCarouselState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -33,13 +39,29 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import kotlin.math.absoluteValue
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AccordionSample(modifier: Modifier = Modifier) {
-    Box(modifier.fillMaxSize()) {
-        AccordionLazyRow(
-            Modifier
-                .fillMaxWidth()
-                .align(Alignment.Center))
+    Column(modifier.fillMaxWidth()) {
+//        AccordionLazyRow(
+//            Modifier.fillMaxWidth()
+//        )
+
+        HorizontalMultiBrowseCarousel(
+            state = rememberCarouselState { 6 },
+            preferredItemWidth = 160.dp,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data("https://picsum.photos/id/23$it/200/300")
+                    .crossfade(true)
+                    .build(),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.maskClip(MaterialTheme.shapes.extraLarge)
+            )
+        }
     }
 }
 
