@@ -1,6 +1,6 @@
 [versions]
 accompanist = "0.36.0"
-androidPlugin = "8.9.0-alpha05"
+androidPlugin = "8.9.0-alpha06"
 androidx-media = "1.5.0"
 androidx-compose = "2024.12.01"
 barcodeScanning = "17.3.0"
@@ -8,8 +8,8 @@ camera = "1.5.0-alpha04"
 composeConstraintLayout = "1.1.0"
 glm = "0.9.9.1-11"
 gradleVersions = "0.51.0"
-haze = "1.0.2"
-kotlin = "2.1.0"
+haze = "1.1.1"
+kotlin = "2.1.20-Beta1"
 
 [libraries]
 accompanist-placeholder-material = { module = "com.google.accompanist:accompanist-placeholder-material3", version.ref = "accompanist" }
@@ -26,13 +26,13 @@ androidx-media-ui = { module = "androidx.media3:media3-ui", version.ref = "andro
 androidx-splashscreen = "androidx.core:core-splashscreen:1.2.0-alpha02"
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidx-compose" }
 barcode-scanning = { module = "com.google.mlkit:barcode-scanning", version.ref = "barcodeScanning" }
-captureable = "dev.shreyaspatil:capturable:3.0.0"
+captureable = "dev.shreyaspatil:capturable:3.0.1"
 coil-compose = "io.coil-kt:coil-compose:2.7.0"
 graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
 haze = { module = "dev.chrisbanes.haze:haze", version.ref = "haze" }
 haze-materials = { module = "dev.chrisbanes.haze:haze-materials", version.ref = "haze" }
 konfetti = "nl.dionsegijn:konfetti-compose:2.1.0-beta01"
-lottie-compose = "com.airbnb.android:lottie-compose:6.6.1"
+lottie-compose = "com.airbnb.android:lottie-compose:6.6.2"
 physics-layout = "io.github.klassenkonstantin:physics-layout:0.4.1"
 skydoves-orbital = "com.github.skydoves:orbital:0.4.0"
 timber = "com.jakewharton.timber:timber:5.0.1"
