@@ -1,7 +1,7 @@
 [versions]
 accompanist = "0.36.0"
 androidPlugin = "8.9.0-alpha07"
-androidx-media = "1.5.1"
+androidx-media = "1.6.0-alpha01"
 androidx-compose = "2024.12.01"
 barcodeScanning = "17.3.0"
 camera = "1.5.0-alpha04"
