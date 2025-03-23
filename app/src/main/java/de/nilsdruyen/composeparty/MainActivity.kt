@@ -40,6 +40,7 @@ import de.nilsdruyen.composeparty.camera.QrCodeSample
 import de.nilsdruyen.composeparty.cards.CardTiltSample
 import de.nilsdruyen.composeparty.cards.PeopleCardSample
 import de.nilsdruyen.composeparty.cards.TeaserSample
+import de.nilsdruyen.composeparty.design.StarWarsSample
 import de.nilsdruyen.composeparty.freestyle.CanvasSample
 import de.nilsdruyen.composeparty.freestyle.ComposeLogo
 import de.nilsdruyen.composeparty.freestyle.DashedLine
@@ -98,6 +99,7 @@ import de.nilsdruyen.composeparty.utils.ItemList
 class MainActivity : ComponentActivity() {
 
     private val demoItems = mapOf<String, @Composable () -> Unit>(
+        "StarWarsSample" to { StarWarsSample() },
         "QrCodeSample" to { QrCodeSample() },
         "FavoriteIconAnimationSample" to { FavoriteIconAnimationSample() },
         "AccordionSample" to { AccordionSample() },

@@ -1,6 +1,7 @@
 package de.nilsdruyen.composeparty.design
 
 import android.R.attr.contentDescription
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,6 +19,8 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -25,14 +28,19 @@ import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.ImageShader
@@ -51,120 +59,125 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImagePainter.State.Empty.painter
 import com.google.common.math.LinearTransformation.horizontal
 import de.nilsdruyen.composeparty.R
+import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
 import de.nilsdruyen.composeparty.ui.theme.Pink40
 import de.nilsdruyen.composeparty.ui.theme.Purple40
 import de.nilsdruyen.composeparty.ui.theme.PurpleGrey40
 import de.nilsdruyen.composeparty.ui.theme.Typography
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview
 @Composable
 fun StarWarsSample(modifier: Modifier = Modifier) {
-    val image = ImageBitmap.imageResource(R.drawable.bg_patter02)
-    val brush =
-        remember(image) { ShaderBrush(ImageShader(image, TileMode.Repeated, TileMode.Repeated)) }
-
-    StarWarsTheme {
-        Scaffold(
-            modifier = modifier
+    Scaffold(
+        modifier = modifier
+            .fillMaxSize(),
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text("BB-SERIES")
+                },
+            )
+        },
+    ) {
+        Column(
+            modifier = Modifier
                 .fillMaxSize()
-                .background(brush),
-            topBar = {
-                TopAppBar(
-                    title = {
-                        Text("BB-SERIES")
-                    }
-                )
-            },
+                .padding(it)
         ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(it)
+            Box(
+                modifier = Modifier.fillMaxWidth(),
             ) {
-                Box(
-                    modifier = Modifier.fillMaxWidth(),
+                OutlinedCard(
+                    modifier = Modifier
+                        .fillMaxWidth(.8f)
+                        .height(500.dp),
+                    shape = starWarsShape,
                 ) {
-                    ElevatedCard(
-                        modifier = Modifier
-                            .fillMaxWidth(.8f)
-                            .height(500.dp),
-                        shape = starWarsShape,
-                    ) {
-                        Box {
-                            Image(
-                                painter = painterResource(id = R.drawable.galaxy),
-                                contentDescription = null,
-                                modifier = Modifier.fillMaxSize(),
-                                contentScale = ContentScale.Crop,
-                            )
-                            Image(
-                                painter = painterResource(id = R.drawable.img_bb8),
-                                contentDescription = null,
-                                modifier = Modifier
-                                    .fillMaxWidth(.9f)
-                                    .graphicsLayer {
-                                        translationX = 40f
-                                    }
-                                    .align(Alignment.BottomEnd),
-                            )
-                            Text(
-                                text = "BB-8",
-                                color = Color.White,
-                                style = MaterialTheme.typography.displayLarge.copy(
-                                    shadow = Shadow(
-                                        color = Color.Black, offset = Offset(10f, 10f), blurRadius = 20f
-                                    )
-                                ),
-                                modifier = Modifier.align(Alignment.BottomStart).padding(start = 16.dp, bottom = 32.dp),
-                            )
-                        }
-                    }
-                    Row(
-                        modifier = Modifier
-                            .align(Alignment.CenterEnd)
-                            .padding(end = 16.dp)
-                            .rotateVertically(false),
-                    ) {
-                        Text(
-                            text = "CLASS: DROID",
-                            style = MaterialTheme.typography.labelLarge,
-                            modifier = Modifier
-                                .wrapContentWidth()
-                                .padding(6.dp)
+                    Box {
+                        Image(
+                            painter = painterResource(id = R.drawable.galaxy),
+                            contentDescription = null,
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.Crop,
                         )
-                        Spacer(Modifier.size(32.dp))
-                        Text(
-                            text = "CLASS: DROID",
-                            style = MaterialTheme.typography.labelLarge,
+                        Image(
+                            painter = painterResource(id = R.drawable.img_bb8),
+                            contentDescription = null,
                             modifier = Modifier
-                                .wrapContentWidth()
-                                .padding(6.dp)
+                                .fillMaxWidth(.9f)
+                                .graphicsLayer {
+                                    translationX = 40f
+                                }
+                                .align(Alignment.BottomEnd),
                         )
+                        Text(
+                            text = "BB-8",
+                            color = Color.White,
+                            style = MaterialTheme.typography.displayLarge.copy(
+                                shadow = Shadow(
+                                    color = Color.Black,
+                                    offset = Offset(10f, 10f),
+                                    blurRadius = 20f
+                                )
+                            ),
+                            modifier = Modifier
+                                .align(Alignment.BottomStart)
+                                .padding(start = 16.dp, bottom = 32.dp),
+                        )
+                        Text("")
                     }
                 }
-                Spacer(Modifier.size(16.dp))
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Spacer(Modifier.size(8.dp))
-                    InfoTile(
-                        label = "COLOR",
-                        value = "White / Orange",
+                Row(
+                    modifier = Modifier
+                        .align(Alignment.CenterEnd)
+                        .padding(end = 16.dp)
+                        .rotateVertically(false),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Text(
+                        text = "MODEL:",
+                        style = MaterialTheme.typography.labelLarge,
+                        modifier = Modifier.alpha(.6f)
                     )
-                    InfoTile(
-                        label = "Height",
-                        value = "200",
+                    Text(
+                        text = "BB",
+                        style = MaterialTheme.typography.labelLarge,
+                        modifier = Modifier
                     )
-                    InfoTile(
-                        label = "ACCESSORY",
-                        value = "Stuff",
+                    Spacer(Modifier.size(32.dp))
+                    Text(
+                        text = "TYPE: ",
+                        style = MaterialTheme.typography.labelLarge,
+                        modifier = Modifier.alpha(.6f)
+                    )
+                    Text(
+                        text = "Astromechdroide",
+                        style = MaterialTheme.typography.labelLarge,
+                        modifier = Modifier
                     )
                 }
-                Text(
-                    text = stringResource(id = R.string.lorem),
-                    modifier = Modifier.padding(16.dp),
-                    overflow = TextOverflow.Ellipsis,
+            }
+            Spacer(Modifier.size(16.dp))
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Spacer(Modifier.size(8.dp))
+                InfoTile(
+                    label = "COLOR",
+                    value = "White / Orange",
+                )
+                InfoTile(
+                    label = "Height",
+                    value = "200",
+                )
+                InfoTile(
+                    label = "ACCESSORY",
+                    value = "Stuff",
                 )
             }
+            Text(
+                text = stringResource(id = R.string.lorem),
+                modifier = Modifier.padding(16.dp),
+                overflow = TextOverflow.Ellipsis,
+            )
         }
     }
 }
@@ -214,18 +227,11 @@ fun Modifier.rotateVertically(clockwise: Boolean = true): Modifier {
     return rotate then adjustBounds
 }
 
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40,
-)
-
+@Preview
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun StarWarsTheme(content: @Composable () -> Unit) {
-    MaterialTheme(
-        colorScheme = LightColorScheme,
-        typography = Typography,
-        content = content
-    )
+private fun StarWarsSamplePreview() {
+    ComposePartyTheme {
+        StarWarsSample()
+    }
 }
-
