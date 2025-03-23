@@ -1,14 +1,14 @@
 [versions]
 accompanist = "0.36.0"
-androidPlugin = "8.10.0-alpha08"
+androidPlugin = "8.11.0-alpha02"
 androidx-media = "1.6.0-rc02"
-androidx-compose = "2025.02.00"
+androidx-compose = "2025.03.00"
 barcodeScanning = "17.3.0"
 camera = "1.5.0-alpha06"
 composeConstraintLayout = "1.1.1"
 glm = "0.9.9.1-11"
 gradleVersions = "0.52.0"
-haze = "1.5.0"
+haze = "1.5.1"
 kotlin = "2.1.20"
 
 [libraries]
@@ -32,11 +32,11 @@ graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
 haze = { module = "dev.chrisbanes.haze:haze", version.ref = "haze" }
 haze-materials = { module = "dev.chrisbanes.haze:haze-materials", version.ref = "haze" }
 konfetti = "nl.dionsegijn:konfetti-compose:2.1.0-beta01"
-lottie-compose = "com.airbnb.android:lottie-compose:6.6.3"
+lottie-compose = "com.airbnb.android:lottie-compose:6.6.4"
 physics-layout = "io.github.klassenkonstantin:physics-layout:0.4.1"
 skydoves-orbital = "com.github.skydoves:orbital:0.4.0"
 timber = "com.jakewharton.timber:timber:5.0.1"
-zoomable = "net.engawapg.lib:zoomable:2.3.0"
+zoomable = "net.engawapg.lib:zoomable:2.4.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidPlugin" }

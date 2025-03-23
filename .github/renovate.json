@@ -19,6 +19,7 @@
     },
     {
       "matchUpdateTypes": [
+        "major",
         "patch",
         "minor"
       ],
