@@ -1,14 +1,14 @@
 [versions]
 accompanist = "0.36.0"
-androidPlugin = "8.11.0-alpha04"
+androidPlugin = "8.11.0-alpha06"
 androidx-media = "1.6.0"
-androidx-compose = "2025.03.01"
+androidx-compose = "2025.04.00"
 barcodeScanning = "17.3.0"
 camera = "1.5.0-alpha06"
 composeConstraintLayout = "1.1.1"
 glm = "0.9.9.1-11"
 gradleVersions = "0.52.0"
-haze = "1.5.1"
+haze = "1.5.2"
 kotlin = "2.1.20"
 
 [libraries]
@@ -19,7 +19,7 @@ androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", versi
 androidx-camera-mlkit-vision = { module = "androidx.camera:camera-mlkit-vision", version.ref = "camera" }
 androidx-compose-activity = "androidx.activity:activity-compose:1.10.1"
 androidx-compose-constraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
-androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.15.0" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.16.0" }
 androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.9.0-beta01" }
 androidx-media-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "androidx-media" }
 androidx-media-ui = { module = "androidx.media3:media3-ui", version.ref = "androidx-media" }
@@ -36,7 +36,7 @@ lottie-compose = "com.airbnb.android:lottie-compose:6.6.6"
 physics-layout = "io.github.klassenkonstantin:physics-layout:0.4.1"
 skydoves-orbital = "com.github.skydoves:orbital:0.4.0"
 timber = "com.jakewharton.timber:timber:5.0.1"
-zoomable = "net.engawapg.lib:zoomable:2.4.0"
+zoomable = "net.engawapg.lib:zoomable:2.6.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidPlugin" }
