@@ -9,12 +9,12 @@ plugins {
 
 android {
     namespace = "de.nilsdruyen.composeparty"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "de.nilsdruyen.composeparty"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
     }

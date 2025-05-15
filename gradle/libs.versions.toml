@@ -1,15 +1,16 @@
 [versions]
 accompanist = "0.36.0"
-androidPlugin = "8.11.0-alpha09"
+androidPlugin = "8.11.0-alpha10"
+androidx-activity-compose = "1.11.0-rc01"
+androidx-compose = "2025.05.00"
 androidx-media = "1.6.1"
-androidx-compose = "2025.04.01"
 barcodeScanning = "17.3.0"
 camera = "1.5.0-beta01"
 composeConstraintLayout = "1.1.1"
 glm = "0.9.9.1-11"
 gradleVersions = "0.52.0"
-haze = "1.5.4"
-kotlin = "2.2.0-Beta1"
+haze = "1.6.0"
+kotlin = "2.2.0-Beta2"
 
 [libraries]
 accompanist-placeholder-material = { module = "com.google.accompanist:accompanist-placeholder-material3", version.ref = "accompanist" }
@@ -17,14 +18,14 @@ androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.r
 androidx-camera-core = { module = "androidx.camera:camera-core", version.ref = "camera" }
 androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "camera" }
 androidx-camera-mlkit-vision = { module = "androidx.camera:camera-mlkit-vision", version.ref = "camera" }
-androidx-compose-activity = "androidx.activity:activity-compose:1.10.1"
+androidx-compose-activity = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
+androidx-compose-bom = { module = "androidx.compose:compose-bom-alpha", version.ref = "androidx-compose" }
 androidx-compose-constraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.16.0" }
 androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.9.0" }
 androidx-media-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "androidx-media" }
 androidx-media-ui = { module = "androidx.media3:media3-ui", version.ref = "androidx-media" }
 androidx-splashscreen = "androidx.core:core-splashscreen:1.2.0-beta02"
-androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidx-compose" }
 barcode-scanning = { module = "com.google.mlkit:barcode-scanning", version.ref = "barcodeScanning" }
 captureable = "dev.shreyaspatil:capturable:3.0.1"
 coil-compose = "io.coil-kt:coil-compose:2.7.0"
@@ -36,7 +37,7 @@ lottie-compose = "com.airbnb.android:lottie-compose:6.6.6"
 physics-layout = "io.github.klassenkonstantin:physics-layout:0.4.1"
 skydoves-orbital = "com.github.skydoves:orbital:0.4.0"
 timber = "com.jakewharton.timber:timber:5.0.1"
-zoomable = "net.engawapg.lib:zoomable:2.6.0"
+zoomable = "net.engawapg.lib:zoomable:2.7.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidPlugin" }
