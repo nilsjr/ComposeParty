@@ -76,6 +76,7 @@ import de.nilsdruyen.composeparty.layouts.PlaceholderSample
 import de.nilsdruyen.composeparty.layouts.SampleStaggeredGridLayout
 import de.nilsdruyen.composeparty.layouts.ScaffoldTabSample
 import de.nilsdruyen.composeparty.layouts.SharedElementSample
+import de.nilsdruyen.composeparty.layouts.StampcardSample
 import de.nilsdruyen.composeparty.layouts.ZoomImageSample
 import de.nilsdruyen.composeparty.material.ScrollableScaffold
 import de.nilsdruyen.composeparty.math.GravitySample
@@ -99,6 +100,7 @@ import de.nilsdruyen.composeparty.utils.ItemList
 class MainActivity : ComponentActivity() {
 
     private val demoItems = mapOf<String, @Composable () -> Unit>(
+        "Stampcard" to { StampcardSample() },
         "StarWarsSample" to { StarWarsSample() },
         "QrCodeSample" to { QrCodeSample() },
         "FavoriteIconAnimationSample" to { FavoriteIconAnimationSample() },
