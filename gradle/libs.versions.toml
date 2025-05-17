@@ -10,7 +10,7 @@ composeConstraintLayout = "1.1.1"
 glm = "0.9.9.1-11"
 gradleVersions = "0.52.0"
 haze = "1.6.0"
-kotlin = "2.2.0-Beta2"
+kotlin = "2.2.0-RC"
 
 [libraries]
 accompanist-placeholder-material = { module = "com.google.accompanist:accompanist-placeholder-material3", version.ref = "accompanist" }
