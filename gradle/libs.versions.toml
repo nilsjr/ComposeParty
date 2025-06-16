@@ -1,16 +1,17 @@
 [versions]
 accompanist = "0.36.0"
 androidPlugin = "8.12.0-alpha05"
-androidx-activity-compose = "1.11.0-rc01"
+androidx-activity-compose = "1.12.0-alpha02"
 androidx-compose = "2025.06.00"
-androidx-media = "1.7.1"
+androidx-compose-material3 = "1.4.0-alpha15"
+androidx-media = "1.8.0-alpha01"
 barcodeScanning = "17.3.0"
 camera = "1.5.0-beta01"
 composeConstraintLayout = "1.1.1"
 glm = "0.9.9.1-11"
 gradleVersions = "0.52.0"
 haze = "1.6.4"
-kotlin = "2.2.0-RC2"
+kotlin = "2.2.0-RC3"
 
 [libraries]
 accompanist-placeholder-material = { module = "com.google.accompanist:accompanist-placeholder-material3", version.ref = "accompanist" }
@@ -22,6 +23,7 @@ androidx-compose-activity = { module = "androidx.activity:activity-compose", ver
 androidx-compose-bom = { module = "androidx.compose:compose-bom-alpha", version.ref = "androidx-compose" }
 androidx-compose-constraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.16.0" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "androidx-compose-material3" }
 androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.9.1" }
 androidx-media-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "androidx-media" }
 androidx-media-ui = { module = "androidx.media3:media3-ui", version.ref = "androidx-media" }
@@ -37,7 +39,7 @@ lottie-compose = "com.airbnb.android:lottie-compose:6.6.6"
 physics-layout = "io.github.klassenkonstantin:physics-layout:0.4.1"
 skydoves-orbital = "com.github.skydoves:orbital:0.4.0"
 timber = "com.jakewharton.timber:timber:5.0.1"
-zoomable = "net.engawapg.lib:zoomable:2.8.0"
+zoomable = "net.engawapg.lib:zoomable:2.8.1-alpha02"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidPlugin" }
