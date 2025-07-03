@@ -29,7 +29,6 @@ import de.nilsdruyen.composeparty.animations.AnimatedRow
 import de.nilsdruyen.composeparty.animations.ClockSample
 import de.nilsdruyen.composeparty.animations.DynamicHueSample
 import de.nilsdruyen.composeparty.animations.LayoutAnimationSample
-import de.nilsdruyen.composeparty.animations.MoveableSample
 import de.nilsdruyen.composeparty.animations.ProgressAnimationSample
 import de.nilsdruyen.composeparty.animations.TextAnim
 import de.nilsdruyen.composeparty.buttons.AddToCartButtonDemo
@@ -148,7 +147,6 @@ class MainActivity : ComponentActivity() {
         "IsleExample" to { IsleExample() },
         "LoadingButtonDemo" to { LoadingButtonDemo() },
         "MotionLayoutExample" to { MotionLayoutExample() },
-        "Orbital" to { MoveableSample() },
         "Path Paw Anim" to { PathPawAnimation() },
         "PeopleCardSample" to { PeopleCardSample() },
         "Progress Sample" to { ProgressSample() },

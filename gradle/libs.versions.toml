@@ -1,10 +1,10 @@
 [versions]
 accompanist = "0.36.0"
 androidPlugin = "8.12.0-alpha07"
-androidx-activity-compose = "1.12.0-alpha03"
-androidx-compose = "2025.06.01"
-androidx-compose-material3 = "1.4.0-alpha16"
-androidx-media = "1.8.0-alpha01"
+androidx-activity-compose = "1.12.0-alpha04"
+androidx-compose = "2025.06.02"
+androidx-compose-material3 = "1.4.0-alpha17"
+androidx-media = "1.8.0-beta01"
 barcodeScanning = "17.3.0"
 camera = "1.5.0-beta01"
 composeConstraintLayout = "1.1.1"
@@ -27,7 +27,7 @@ androidx-compose-material3 = { module = "androidx.compose.material3:material3", 
 androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.9.1" }
 androidx-media-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "androidx-media" }
 androidx-media-ui = { module = "androidx.media3:media3-ui", version.ref = "androidx-media" }
-androidx-splashscreen = "androidx.core:core-splashscreen:1.2.0-beta02"
+androidx-splashscreen = "androidx.core:core-splashscreen:1.2.0-rc01"
 barcode-scanning = { module = "com.google.mlkit:barcode-scanning", version.ref = "barcodeScanning" }
 captureable = "dev.shreyaspatil:capturable:3.0.1"
 coil-compose = "io.coil-kt:coil-compose:2.7.0"
@@ -37,9 +37,8 @@ haze-materials = { module = "dev.chrisbanes.haze:haze-materials", version.ref = 
 konfetti = "nl.dionsegijn:konfetti-compose:2.1.0-beta01"
 lottie-compose = "com.airbnb.android:lottie-compose:6.6.7"
 physics-layout = "io.github.klassenkonstantin:physics-layout:0.4.1"
-skydoves-orbital = "com.github.skydoves:orbital:0.4.0"
 timber = "com.jakewharton.timber:timber:5.0.1"
-zoomable = "net.engawapg.lib:zoomable:2.8.1-alpha02"
+zoomable = "net.engawapg.lib:zoomable:2.8.1"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidPlugin" }
