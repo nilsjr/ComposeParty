@@ -2,16 +2,16 @@
 accompanist = "0.36.0"
 androidPlugin = "8.12.0-alpha08"
 androidx-activity-compose = "1.12.0-alpha04"
-androidx-compose = "2025.06.02"
-androidx-compose-material3 = "1.4.0-alpha17"
-androidx-media = "1.8.0-beta01"
+androidx-compose = "2025.07.00"
+androidx-compose-material3 = "1.4.0-alpha18"
+androidx-media = "1.8.0-rc01"
 barcodeScanning = "17.3.0"
-camera = "1.5.0-beta01"
+camera = "1.5.0-beta02"
 composeConstraintLayout = "1.1.1"
 glm = "0.9.9.1-11"
 gradleVersions = "0.52.0"
-haze = "1.6.7"
-kotlin = "2.2.0"
+haze = "1.6.8"
+kotlin = "2.2.20-Beta1"
 
 [libraries]
 accompanist-placeholder-material = { module = "com.google.accompanist:accompanist-placeholder-material3", version.ref = "accompanist" }
@@ -24,7 +24,7 @@ androidx-compose-bom = { module = "androidx.compose:compose-bom-alpha", version.
 androidx-compose-constraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.16.0" }
 androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "androidx-compose-material3" }
-androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.9.1" }
+androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.9.2" }
 androidx-media-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "androidx-media" }
 androidx-media-ui = { module = "androidx.media3:media3-ui", version.ref = "androidx-media" }
 androidx-splashscreen = "androidx.core:core-splashscreen:1.2.0-rc01"
