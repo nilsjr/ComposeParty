@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 plugins {
     id("com.android.application")
-    kotlin("android")
     alias(libs.plugins.kotlin.compose)
 }
 
@@ -13,7 +12,9 @@ android {
 
     defaultConfig {
         applicationId = "de.nilsdruyen.composeparty"
-        minSdk = 26
+        minSdk {
+            version = release(26)
+        }
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -57,6 +58,12 @@ android {
             excludes += "META-INF/INDEX.LIST"
             excludes += "META-INF/linux/x64/org/lwjgl/**"
         }
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_21
     }
 }
 
