@@ -43,7 +43,7 @@ android {
             freeCompilerArgs.addAll(
                 listOf(
                     "-opt-in=kotlin.RequiresOptIn",
-                    "-Xcontext-receivers",
+                    "-Xcontext-parameters",
                 )
             )
         }
@@ -83,8 +83,9 @@ dependencies {
     implementation("androidx.compose.foundation:foundation")
     implementation("androidx.compose.animation:animation")
     implementation("androidx.compose.animation:animation-graphics")
+    implementation("androidx.compose.material:material-icons-core")
     implementation("androidx.compose.material:material-icons-extended")
-    implementation(libs.androidx.compose.material3)
+    implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
 

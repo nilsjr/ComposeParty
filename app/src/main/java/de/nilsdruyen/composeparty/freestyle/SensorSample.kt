@@ -56,7 +56,8 @@ fun SensorSample() {
             val maxOffsetY = (minHeight * 1.2f - minHeight) / 2
             val offset = rememberSensorOffset(maxOffsetX, maxOffsetY, 3f)
 
-            Image(painter = painterResource(id = R.drawable.bg_forest),
+            Image(
+                painter = painterResource(id = R.drawable.bg_forest),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
@@ -122,12 +123,14 @@ fun rememberSensorOffset(
     return offset
 }
 
-context(Density)
+context(density: Density)
 fun Offset.roundToPx(multiplier: Float, rangeX: IntRange, rangeY: IntRange): IntOffset {
-    return IntOffset(
-        x = ((x * multiplier).dp.roundToPx()).coerceIn(rangeX),
-        y = ((-y * multiplier).dp.roundToPx()).coerceIn(rangeY),
-    )
+    return with(density) {
+        IntOffset(
+            x = ((x * multiplier).dp.roundToPx()).coerceIn(rangeX),
+            y = ((-y * multiplier).dp.roundToPx()).coerceIn(rangeY),
+        )
+    }
 }
 
 fun Modifier.withOverlay(brush: Brush, blendMode: BlendMode = BlendMode.Darken) = drawWithCache {

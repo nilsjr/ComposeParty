@@ -46,7 +46,7 @@ fun Explodable(
     content: @Composable () -> Unit,
 ) {
     val animationScope = rememberCoroutineScope()
-    val explosionViewBitmap by remember { mutableStateOf<ImageBitmap?>(null) }
+    var explosionViewBitmap by remember { mutableStateOf<ImageBitmap?>(null) }
     var explosionBound by remember { mutableStateOf(Rect.Zero) }
 
     val animatedProgress = remember { Animatable(0f) }
@@ -106,10 +106,13 @@ fun Explodable(
                     animationScope.launch {
                         val bitmapAsync = captureController.captureAsync()
                         try {
-                            val bitmap = bitmapAsync.await()
+                            // Correctly assign the captured bitmap
+                            explosionViewBitmap = bitmapAsync.await()
                             // Do something with `bitmap`.
                         } catch (error: Throwable) {
                             // Error occurred, do something.
+                            // Consider logging the error or showing a message to the user
+                            // Log.e("Explodable", "Error capturing bitmap", error)
                         }
                     }
                 }
@@ -139,8 +142,8 @@ fun Explodable(
                         animatedProgress.animateTo(targetValue = 1f, animationSpec = keyframes {
                             durationMillis = animationDurationMs.toInt()
                             0.0f at 0
-                            (shakeDurationMs / animationDurationMs) at shakeDurationMs.toInt() with LinearEasing
-                            1f at animationDurationMs.toInt() with CubicBezierEasing(
+                            (shakeDurationMs / animationDurationMs) at shakeDurationMs.toInt() using LinearEasing
+                            1f at animationDurationMs.toInt() using CubicBezierEasing(
                                 0.32f,
                                 0f,
                                 0.67f,

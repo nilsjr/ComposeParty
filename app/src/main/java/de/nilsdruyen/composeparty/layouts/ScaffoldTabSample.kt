@@ -10,6 +10,7 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
@@ -67,7 +68,7 @@ fun ScaffoldTabSample() {
                 title = {
                     Text(text = "Top app bar")
                 },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                colors = TopAppBarDefaults.topAppBarColors(
                     scrolledContainerColor = MaterialTheme.colorScheme.surface
                 ),
             )
@@ -81,7 +82,7 @@ fun ScaffoldTabSample() {
             onRefresh = { isRefreshing = true },
         ) {
             Column(Modifier) {
-                TabRow(selectedTabIndex = pagerState.currentPage) {
+                PrimaryTabRow(selectedTabIndex = pagerState.currentPage) {
                     tabData.forEachIndexed { index, s ->
                         Tab(
                             selected = pagerState.currentPage == index,

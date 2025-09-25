@@ -78,7 +78,7 @@ sealed interface CalendarScreen {
 data class Day(
     val number: Int,
     val color: Color,
-    @DrawableRes val icon: Int,
+    @param:DrawableRes val icon: Int,
 )
 
 val days = List(25) {

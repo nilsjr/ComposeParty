@@ -5,8 +5,11 @@ import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.DropdownMenu
@@ -21,6 +24,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,21 +35,31 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import de.nilsdruyen.composeparty.ui.theme.ComposePartyTheme
 import de.nilsdruyen.composeparty.utils.Centered
+import timber.log.Timber
 
 private val items = listOf("Nils", "Kristian", "Johannes", "Thomas")
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DropDownLayout() {
+fun DropDownLayout(expanded: Boolean = false) {
     var selectedText by remember { mutableStateOf(items.first()) }
     var expanded by remember { mutableStateOf(false) }
 
-    val sheetState = rememberModalBottomSheetState()
-    val scope = rememberCoroutineScope()
-    var showBottomSheet by remember { mutableStateOf(false) }
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    var showBottomSheet by remember { mutableStateOf(expanded) }
+
+    LaunchedEffect(sheetState, showBottomSheet) {
+        Timber.d("showBottomSheet: $showBottomSheet")
+        if (showBottomSheet) {
+            sheetState.show()
+        } else {
+            sheetState.hide()
+        }
+    }
 
     Scaffold {
         Centered(Modifier.padding(it)) {
@@ -74,6 +88,13 @@ fun DropDownLayout() {
                 },
                 sheetState = sheetState,
             ) {
+                Column(
+                    Modifier
+                    .weight(1f, fill = false)
+                    .verticalScroll(rememberScrollState())
+                ) {
+                    Text(LoremIpsum(400).values.first())
+                }
                 items.forEach {
                     Text(
                         text = it,
@@ -169,6 +190,6 @@ fun DropDownSelectedItem(selectedText: String, onClick: () -> Unit) {
 @Composable
 fun DropDownLayoutPreview() {
     ComposePartyTheme {
-        DropDownLayout()
+        DropDownLayout(expanded = true)
     }
 }

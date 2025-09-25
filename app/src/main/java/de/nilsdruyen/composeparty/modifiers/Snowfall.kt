@@ -100,7 +100,7 @@ private data class SnowfallState(
     val fallAngleDivider: Float,
     val rotationAngleRadSeed: Float,
     val rotationSpeedRadPerTick: ClosedRange<Float>,
-    @FloatRange(from = 0.0, to = 1.0) val snowDensity: Float,
+    @param:FloatRange(from = 0.0, to = 1.0) val snowDensity: Float,
     val context: Context,
 ) {
 
@@ -176,7 +176,7 @@ private fun Int.random(): Int = ThreadLocalRandom.current().nextInt(this)
 private fun Float.random(): Float = ThreadLocalRandom.current().nextFloat() * this
 
 @Suppress("unused")
-private enum class SnowflakeDrawable(@DrawableRes val id: Int) {
+private enum class SnowflakeDrawable(@param:DrawableRes val id: Int) {
 
     BERT(R.drawable.snowflake01), // Short for Englebert
     OLAF(R.drawable.snowflake02),
