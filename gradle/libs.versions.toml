@@ -8,7 +8,7 @@ barcodeScanning = "17.3.0"
 camera = "1.5.1"
 composeConstraintLayout = "1.1.1"
 glm = "0.9.9.1-11"
-gradleVersions = "0.52.0"
+gradleVersions = "0.53.0"
 haze = "1.6.10"
 kotlin = "2.2.20"
 
