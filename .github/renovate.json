@@ -3,19 +3,19 @@
   "extends": [
     "config:best-practices"
   ],
-  "baseBranches": [
+  "baseBranchPatterns": [
     "develop"
   ],
   "schedule": [
-    "before 5am every saturday"
+    "before 5am on saturday"
   ],
   "packageRules": [
     {
-      "matchPackagePatterns": [
-        "^org.jetbrains.kotlin",
-        "^com.google.devtools.ksp"
-      ],
-      "groupName": "Kotlin & KSP"
+      "groupName": "Kotlin & KSP",
+      "matchPackageNames": [
+        "/^org.jetbrains.kotlin/",
+        "/^com.google.devtools.ksp/"
+      ]
     },
     {
       "matchUpdateTypes": [
