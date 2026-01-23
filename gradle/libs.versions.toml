@@ -11,6 +11,8 @@ glm = "0.9.9.1-11"
 gradleVersions = "0.52.0"
 haze = "1.7.1"
 kotlin = "2.3.0"
+material-icons = "1.7.8"
+material3 = "1.5.0-alpha12"
 
 [libraries]
 accompanist-placeholder-material = { module = "com.google.accompanist:accompanist-placeholder-material3", version.ref = "accompanist" }
@@ -24,9 +26,9 @@ androidx-compose-animation-graphics = { group = "androidx.compose.animation", na
 androidx-compose-bom = { module = "androidx.compose:compose-bom-alpha", version.ref = "androidx-compose-bom" }
 androidx-compose-constraint = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
-androidx-compose-material-icons-core = { group = "androidx.compose.material", name = "material-icons-core", version = "1.7.8" }
-androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version = "1.7.8" }
-androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version = "1.4.0" }
+androidx-compose-material-icons-core = { group = "androidx.compose.material", name = "material-icons-core", version.ref = "material-icons" }
+androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "material-icons" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime" }
 androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
