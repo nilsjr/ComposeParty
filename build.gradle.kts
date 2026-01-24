@@ -6,7 +6,7 @@ plugins {
 buildscript {
     dependencies {
         // override kotlin gradle plugin version
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.3.0")
+        classpath(libs.kotlin.gradlePlugin)
     }
 }
 
