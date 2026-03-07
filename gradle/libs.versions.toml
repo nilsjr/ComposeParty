@@ -1,6 +1,6 @@
 [versions]
 accompanist = "0.36.0"
-androidPlugin = "9.1.0-rc01"
+androidPlugin = "9.1.0"
 androidx-activity-compose = "1.12.4"
 androidx-compose-bom = "2026.02.01"
 androidx-media = "1.9.2"
