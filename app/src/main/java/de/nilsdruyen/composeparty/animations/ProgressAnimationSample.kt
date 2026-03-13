@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.material3.CircularWavyProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.LinearWavyProgressIndicator
@@ -101,6 +102,12 @@ fun ProgressAnimationSample(modifier: Modifier = Modifier) {
                     .fillMaxWidth()
                     .padding(32.dp)
             )
+            Spacer(Modifier.size(4.dp))
+            CircularWavyProgressIndicator(
+                { animatedProgress },
+                Modifier.align(Alignment.CenterHorizontally)
+            )
+            Spacer(Modifier.size(4.dp))
         }
 
     }

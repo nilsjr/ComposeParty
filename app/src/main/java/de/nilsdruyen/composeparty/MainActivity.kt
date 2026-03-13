@@ -26,6 +26,7 @@ import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import de.nilsdruyen.composeparty.animations.AnimatedRow
+import de.nilsdruyen.composeparty.animations.CardAnimation
 import de.nilsdruyen.composeparty.animations.ClockSample
 import de.nilsdruyen.composeparty.animations.DynamicHueSample
 import de.nilsdruyen.composeparty.animations.LayoutAnimationSample
@@ -100,6 +101,7 @@ import de.nilsdruyen.composeparty.utils.ItemList
 class MainActivity : ComponentActivity() {
 
     private val demoItems = mapOf<String, @Composable () -> Unit>(
+        "CardAnimation" to { CardAnimation() },
         "ExpressiveSample" to { ExpressiveSample() },
         "Stampcard" to { StampcardSample() },
         "StarWarsSample" to { StarWarsSample() },
