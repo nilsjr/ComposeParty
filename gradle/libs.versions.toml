@@ -2,17 +2,17 @@
 accompanist = "0.36.0"
 androidPlugin = "9.2.0-alpha06"
 androidx-activity-compose = "1.13.0"
-androidx-compose-bom = "2026.03.00"
-androidx-media = "1.9.3"
+androidx-compose-bom = "2026.03.01"
+androidx-media = "1.10.0"
 barcodeScanning = "17.3.0"
-camera = "1.5.3"
+camera = "1.6.0"
 composeConstraintLayout = "1.1.1"
 glm = "0.9.9.1-11"
 gradleVersions = "0.52.0"
 haze = "1.7.2"
 kotlin = "2.3.20"
 material-icons = "1.7.8"
-material3 = "1.5.0-alpha15"
+material3 = "1.5.0-alpha16"
 
 [libraries]
 accompanist-placeholder-material = { module = "com.google.accompanist:accompanist-placeholder-material3", version.ref = "accompanist" }
