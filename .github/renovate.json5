@@ -18,6 +18,7 @@
       matchPackageNames: [
         '/^org.jetbrains.kotlin/',
         '/^com.google.devtools.ksp/',
+        '/^androidx.compose.compiler/'
       ],
     },
   ],
