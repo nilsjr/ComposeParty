@@ -30,6 +30,7 @@ import de.nilsdruyen.composeparty.animations.CardAnimation
 import de.nilsdruyen.composeparty.animations.ClockSample
 import de.nilsdruyen.composeparty.animations.DynamicHueSample
 import de.nilsdruyen.composeparty.animations.LayoutAnimationSample
+import de.nilsdruyen.composeparty.animations.LazyListAnimationSample
 import de.nilsdruyen.composeparty.animations.ProgressAnimationSample
 import de.nilsdruyen.composeparty.animations.TextAnim
 import de.nilsdruyen.composeparty.buttons.AddToCartButtonDemo
@@ -127,6 +128,7 @@ class MainActivity : ComponentActivity() {
         "DropDownLayout" to { DropDownLayout() },
         "PlaceholderSample" to { PlaceholderSample() },
         "LayoutAnimationSample" to { LayoutAnimationSample() },
+        "LazyListAnimationSample" to { LazyListAnimationSample() },
         "ProgressAnimationSample" to { ProgressAnimationSample() },
         "AddToCartButtonDemo" to { AddToCartButtonDemo() },
         "AutoSizeTextSample" to { AutoSizeTextSample() },
