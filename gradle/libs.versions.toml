@@ -10,7 +10,7 @@ composeConstraintLayout = "1.1.1"
 glm = "0.9.9.1-11"
 gradleVersions = "0.52.0"
 haze = "1.7.2"
-kotlin = "2.4.0-RC"
+kotlin = "2.4.0-RC2"
 material-icons = "1.7.8"
 material3 = "1.5.0-alpha20"
 
