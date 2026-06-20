@@ -2,7 +2,7 @@
 accompanist = "0.36.0"
 androidPlugin = "9.3.0-rc01"
 androidx-activity-compose = "1.13.0"
-androidx-compose-bom = "2026.05.02"
+androidx-compose-bom = "2026.06.00"
 androidx-media = "1.10.1"
 barcodeScanning = "17.3.0"
 camera = "1.6.1"
