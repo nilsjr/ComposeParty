@@ -1,18 +1,18 @@
 [versions]
 accompanist = "0.36.0"
-androidPlugin = "9.4.0-alpha08"
+androidPlugin = "9.5.0-alpha02"
 androidx-activity-compose = "1.13.0"
-androidx-compose-bom = "2026.07.01"
+androidx-compose-bom = "2026.08.00"
 androidx-media = "1.11.0"
 barcodeScanning = "17.3.0"
-camera = "1.7.0-alpha02"
+camera = "1.7.0-alpha03"
 composeConstraintLayout = "1.1.2"
 glm = "0.9.9.1-11"
-gradleVersions = "0.60.0"
+gradleVersions = "0.61.0"
 haze = "1.7.2"
-kotlin = "2.4.20-Beta2"
+kotlin = "2.4.20-RC"
 material-icons = "1.7.8"
-material3 = "1.5.0-alpha25"
+material3 = "1.5.0-alpha26"
 
 [libraries]
 accompanist-placeholder-material = { module = "com.google.accompanist:accompanist-placeholder-material3", version.ref = "accompanist" }
@@ -53,5 +53,5 @@ zoomable = "net.engawapg.lib:zoomable:2.13.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidPlugin" }
-ben-manes-versions = { id = "com.github.ben-manes.versions", version.ref = "gradleVersions" }
+ben-manes-versions = { id = "io.github.ben-manes.versions", version.ref = "gradleVersions" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
