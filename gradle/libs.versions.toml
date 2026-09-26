@@ -9,7 +9,7 @@ camera = "1.7.0-alpha03"
 composeConstraintLayout = "1.1.2"
 glm = "0.9.9.1-11"
 gradleVersions = "0.61.0"
-haze = "1.7.3"
+haze = "2.0.0"
 kotlin = "2.4.20-RC3"
 material-icons = "1.7.8"
 material3 = "1.5.0-alpha27"
@@ -43,7 +43,7 @@ captureable = "dev.shreyaspatil:capturable:3.0.1"
 coil-compose = "io.coil-kt:coil-compose:2.7.0"
 graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
 haze = { module = "dev.chrisbanes.haze:haze", version.ref = "haze" }
-haze-materials = { module = "dev.chrisbanes.haze:haze-materials", version.ref = "haze" }
+haze-blur-materials = { module = "dev.chrisbanes.haze:haze-blur-materials", version.ref = "haze" }
 konfetti = "nl.dionsegijn:konfetti-compose:2.1.0-beta01"
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 lottie-compose = "com.airbnb.android:lottie-compose:6.7.1"

@@ -95,7 +95,7 @@ dependencies {
     implementation(libs.barcode.scanning)
 
     implementation(libs.haze)
-    implementation(libs.haze.materials)
+    implementation(libs.haze.blur.materials)
     implementation(libs.coil.compose)
     implementation(libs.lottie.compose)
     implementation(libs.konfetti)
