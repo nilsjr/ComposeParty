@@ -2,6 +2,7 @@ package de.nilsdruyen.composeparty.buttons.sticky.core
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
+import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.atan2
 import kotlin.math.cos
@@ -52,6 +53,36 @@ fun Rect.stadiumRadius(angle: Float): Float {
 fun Rect.edgePoint(angle: Float, inset: Float = 0f): Offset {
     val r = stadiumRadius(angle) - inset
     return Offset(center.x + cos(angle) * r, center.y + sin(angle) * r)
+}
+
+/** A point on an outline with its outward unit normal. */
+data class OutlinePoint(val position: Offset, val normal: Offset)
+
+/** Perimeter of the horizontal pill inscribed in this rectangle. */
+val Rect.stadiumPerimeter: Float get() = 2f * max(0f, width - height) + PI.toFloat() * height
+
+/**
+ * Point and outward normal at arc-length parameter [u] (0..1) along a horizontal pill outline.
+ * Unlike angle sampling this spaces points evenly, which keeps ferrofluid spikes uniform.
+ */
+fun Rect.stadiumPerimeterPoint(u: Float): OutlinePoint {
+    val radius = height / 2f
+    val half = max(0f, width / 2f - radius)
+    val straight = 2f * half
+    val arc = PI.toFloat() * radius
+    var s = (((u % 1f) + 1f) % 1f) * (2f * straight + 2f * arc)
+
+    if (s < straight) return OutlinePoint(Offset(center.x - half + s, center.y - radius), Offset(0f, -1f))
+    s -= straight
+    if (s < arc) {
+        val t = -PI.toFloat() / 2f + s / radius
+        return OutlinePoint(Offset(center.x + half + cos(t) * radius, center.y + sin(t) * radius), Offset(cos(t), sin(t)))
+    }
+    s -= arc
+    if (s < straight) return OutlinePoint(Offset(center.x + half - s, center.y + radius), Offset(0f, 1f))
+    s -= straight
+    val t = PI.toFloat() / 2f + s / radius
+    return OutlinePoint(Offset(center.x - half + cos(t) * radius, center.y + sin(t) * radius), Offset(cos(t), sin(t)))
 }
 
 /** True when [point] lies inside the pill outline grown by [tolerance]. */

@@ -3,6 +3,7 @@ package de.nilsdruyen.composeparty.buttons.sticky.ui
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import de.nilsdruyen.composeparty.buttons.sticky.effects.OverlayColors
 import de.nilsdruyen.composeparty.buttons.sticky.render.BackdropColors
 
 /** Design tokens, mirrored from the web version's CSS custom properties. */
@@ -16,8 +17,13 @@ data class LabColors(
     val accent: Color,
     val dot: Color,
     val lightTint: Color,
+    /** Fill of a solid (non-liquid) button. */
+    val button: Color,
+    /** What a solid button heats up to. */
+    val warn: Color,
 ) {
     val backdrop: BackdropColors get() = BackdropColors(surface = surface, dot = dot, lightTint = lightTint)
+    val overlay: OverlayColors get() = OverlayColors(ink = ink, accent = accent)
 
     companion object {
         val Light = LabColors(
@@ -29,6 +35,8 @@ data class LabColors(
             accent = Color(0xFF3A35DC),
             dot = Color(0x21111218),
             lightTint = Color.White.copy(alpha = 0.85f),
+            button = Color(0xFF0B0C10),
+            warn = Color(0xFFD33F27),
         )
 
         val Dark = LabColors(
@@ -40,6 +48,8 @@ data class LabColors(
             accent = Color(0xFF938EFF),
             dot = Color(0x17EBECF0),
             lightTint = Color(0x33BEC4FF),
+            button = Color(0xFFDEDCD5),
+            warn = Color(0xFFFF6A4D),
         )
     }
 }

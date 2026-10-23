@@ -7,7 +7,12 @@ class EffectDescriptor(val meta: EffectMeta, val create: () -> ButtonEffect)
 object EffectRegistry {
     val all: List<EffectDescriptor> = listOf(
         EffectDescriptor(VenomEffect.META, ::VenomEffect),
+        EffectDescriptor(FerrofluidEffect.META, ::FerrofluidEffect),
+        EffectDescriptor(MercuryEffect.META, ::MercuryEffect),
         EffectDescriptor(GlassEffect.META, ::GlassEffect),
+        EffectDescriptor(GooEffect.META, ::GooEffect),
         EffectDescriptor(PixelSwarmEffect.META, ::PixelSwarmEffect),
+        EffectDescriptor(NervousEffect.META, ::NervousEffect),
+        EffectDescriptor(MagnetEffect.META, ::MagnetEffect),
     )
 }

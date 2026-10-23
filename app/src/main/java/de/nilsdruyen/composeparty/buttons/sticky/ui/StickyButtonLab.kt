@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,6 +27,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.nilsdruyen.composeparty.buttons.sticky.effects.EffectDescriptor
@@ -46,6 +49,20 @@ fun StickyButtonSample() {
             StickyButtonLab(Modifier.systemBarsPadding())
         }
     }
+}
+
+/** One stage per registered effect. Use interactive mode to see it animate; a static render shows a single frame. */
+@Preview(widthDp = 380, heightDp = 440)
+@Composable
+private fun StickyButtonStagePreview(@PreviewParameter(EffectPreviewProvider::class) descriptor: EffectDescriptor) {
+    CompositionLocalProvider(LocalLabColors provides LabColors.Light) {
+        StageView(remember(descriptor) { StageController(LightRig(), descriptor.create()) }, Modifier.fillMaxSize())
+    }
+}
+
+private class EffectPreviewProvider : PreviewParameterProvider<EffectDescriptor> {
+    override val values = EffectRegistry.all.asSequence()
+    override fun getDisplayName(index: Int) = EffectRegistry.all[index].meta.name
 }
 
 @Composable
@@ -80,7 +97,7 @@ fun StickyButtonLab(modifier: Modifier = Modifier) {
                 color = colors.inkSoft,
             )
 
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 EffectRegistry.all.forEach { descriptor ->
                     FilterChip(
                         selected = descriptor == selected,

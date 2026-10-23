@@ -56,7 +56,7 @@ class PixelSwarmEffect(private val random: Random = Random.Default) : ButtonEffe
         }
     }
 
-    override fun DrawScope.drawOverlay(frame: StageFrame) {
+    override fun DrawScope.drawOverlay(frame: StageFrame, colors: OverlayColors) {
         val cellSize = Size(CELL, CELL)
         val half = Offset(CELL / 2f, CELL / 2f)
         val loose = pixels.filterNot { it.isHome }

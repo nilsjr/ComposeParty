@@ -18,10 +18,14 @@ import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.lerp
+import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.scale
@@ -155,7 +159,7 @@ fun StageView(
             observe(tick)
             val frame = controller.frame ?: return@Canvas
             scale(density, Offset.Zero) {
-                with(effect) { drawOverlay(frame) }
+                with(effect) { drawOverlay(frame, colors.overlay) }
                 controller.light?.takeUnless { it.isFollowing }?.let { drawLightMarker(it, colors.accent) }
                 if (frame.pointer.isDemo) drawCircle(colors.ink.copy(alpha = 0.45f), 14f, frame.pointer.position, style = Stroke(1.5f))
             }
@@ -166,7 +170,19 @@ fun StageView(
             modifier = Modifier
                 .align(Alignment.Center)
                 .onGloballyPositioned { buttonBox = it.boundsInParent().let { b -> Rect(b.topLeft / density, b.bottomRight / density) } }
+                // After onGloballyPositioned, so the pose moves the button (and its touch target) but not the layout box.
+                .graphicsLayer {
+                    observe(tick)
+                    val pose = effect.pose()
+                    translationX = pose.offset.x * density
+                    translationY = pose.offset.y * density
+                    rotationZ = pose.rotation
+                }
                 .clip(RoundedCornerShape(50))
+                .drawBehind {
+                    observe(tick)
+                    if (meta.isSolidButton) drawSolidButton(lerp(colors.button, colors.warn, effect.pose().heat), controller.light, buttonBox, density)
+                }
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },
                     indication = null,
@@ -177,14 +193,30 @@ fun StageView(
         ) {
             val isPixel = meta.labelStyle == LabelStyle.Pixel
             Text(
-                text = if (isPixel) meta.buttonLabel.uppercase() else meta.buttonLabel,
-                color = meta.labelColor,
+                text = if (isPixel) effect.label.uppercase() else effect.label,
+                color = meta.labelColor.takeOrElse { colors.ground },
+                modifier = Modifier.graphicsLayer {
+                    observe(tick)
+                    val labelOffset = effect.pose().labelOffset
+                    translationX = labelOffset.x * density
+                    translationY = labelOffset.y * density
+                },
                 fontSize = if (isPixel) 13.sp else 17.sp,
                 fontWeight = if (isPixel) FontWeight.Normal else FontWeight.SemiBold,
                 fontFamily = if (isPixel) FontFamily.Monospace else FontFamily.Default,
             )
         }
     }
+}
+
+/** A regular pill button with a glossy glint that tracks the light. [box] is the button's layout box in dp. */
+private fun DrawScope.drawSolidButton(color: Color, light: LightState?, box: Rect, density: Float) {
+    drawRect(color)
+    if (light == null) return
+    val center = (light.position - box.topLeft) * density
+    val radius = GLINT_RADIUS * density
+    val alpha = light.strength.coerceIn(0f, 1f) * 0.45f
+    drawRect(Brush.radialGradient(0f to Color.White.copy(alpha = alpha), 0.75f to Color.Transparent, center = center, radius = radius))
 }
 
 /** Small sun glyph where a parked light sits, so its position is visible while adjusting it. */
@@ -207,3 +239,4 @@ private fun DrawScope.drawLightMarker(light: LightState, color: Color) {
 private fun observe(value: Long) = Unit
 
 private const val MAX_DT = 0.05f
+private const val GLINT_RADIUS = 90f
