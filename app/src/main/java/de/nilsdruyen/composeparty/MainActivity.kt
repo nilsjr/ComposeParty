@@ -37,6 +37,7 @@ import de.nilsdruyen.composeparty.buttons.AddToCartButtonDemo
 import de.nilsdruyen.composeparty.buttons.ChipButton
 import de.nilsdruyen.composeparty.buttons.LoadingButtonDemo
 import de.nilsdruyen.composeparty.buttons.TextButtonSample
+import de.nilsdruyen.composeparty.buttons.sticky.ui.StickyButtonSample
 import de.nilsdruyen.composeparty.camera.QrCodeSample
 import de.nilsdruyen.composeparty.cards.CardTiltSample
 import de.nilsdruyen.composeparty.cards.PeopleCardSample
@@ -161,6 +162,7 @@ class MainActivity : ComponentActivity() {
         "StaggeredGridLayout" to { SampleStaggeredGridLayout() },
         "Stampcard" to { StampcardSample() },
         "StarWarsSample" to { StarWarsSample() },
+        "Sticky Buttons" to { StickyButtonSample() },
         "Swipe Game" to { SwipeDemo() },
         "Teaser Card" to { TeaserSample() },
         "Text Animation" to { TextAnimationSample() },
