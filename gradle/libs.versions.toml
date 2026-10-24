@@ -44,7 +44,7 @@ coil-compose = "io.coil-kt:coil-compose:2.7.0"
 graphics-glm = { module = "kotlin.graphics:glm", version.ref = "glm" }
 haze = { module = "dev.chrisbanes.haze:haze", version.ref = "haze" }
 haze-blur-materials = { module = "dev.chrisbanes.haze:haze-blur-materials", version.ref = "haze" }
-konfetti = "nl.dionsegijn:konfetti-compose:2.1.0-beta01"
+konfetti = "nl.dionsegijn:konfetti-compose:2.2.0"
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 lottie-compose = "com.airbnb.android:lottie-compose:6.7.1"
 physics-layout = "io.github.klassenkonstantin:physics-layout:0.4.1"
